@@ -94,7 +94,7 @@ def validate_metadata() -> tuple[dict, dict]:
     metadata = json.loads((RELEASE / "metadata.json").read_text(encoding="utf-8"))
     body = metadata.get("metadata")
     if not isinstance(body, dict):
-        raise RuntimeError("metadata.json lacks Zenodo metadata object")
+        raise TypeError("metadata.json lacks Zenodo metadata object")
     expected = {
         "upload_type": "publication", "publication_type": "preprint",
         "version": VERSION, "publication_date": "2026-10-06", "language": "eng",

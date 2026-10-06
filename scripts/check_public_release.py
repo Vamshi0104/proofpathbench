@@ -9,6 +9,8 @@ import re
 import subprocess
 import tarfile
 import tempfile
+from collections.abc import Iterator
+from contextlib import contextmanager
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -28,21 +30,20 @@ SECRET_PATTERN = re.compile(
 SCAN_SUFFIXES = {".md", ".tex", ".bib", ".py", ".sh", ".json", ".yaml", ".yml", ".toml", ".txt", ".csv", ".cff"}
 
 
-def archive_members(path: Path) -> tuple[set[str], tarfile.TarFile]:
-    archive = tarfile.open(path, "r:gz")
-    ordered = [member.name.removeprefix("./") for member in archive.getmembers()]
-    if len(ordered) != len(set(ordered)):
-        duplicates = sorted({name for name in ordered if ordered.count(name) > 1})
-        archive.close()
-        raise SystemExit(f"duplicate archive members found in {path.name}: {duplicates}")
-    return set(ordered), archive
+@contextmanager
+def archive_members(path: Path) -> Iterator[tuple[set[str], tarfile.TarFile]]:
+    with tarfile.open(path, "r:gz") as archive:
+        ordered = [member.name.removeprefix("./") for member in archive.getmembers()]
+        if len(ordered) != len(set(ordered)):
+            duplicates = sorted({name for name in ordered if ordered.count(name) > 1})
+            raise SystemExit(f"duplicate archive members found in {path.name}: {duplicates}")
+        yield set(ordered), archive
 
 
 def check_artifact() -> None:
     if not ARTIFACT.is_file() or ARTIFACT.stat().st_size == 0:
         raise SystemExit(f"missing artifact: {ARTIFACT}")
-    names, archive = archive_members(ARTIFACT)
-    try:
+    with archive_members(ARTIFACT) as (names, archive):
         bad = sorted(name for name in names if FORBIDDEN_MEMBER.search(name))
         if bad:
             raise SystemExit(f"private/generated artifact members found: {bad}")
@@ -75,24 +76,21 @@ def check_artifact() -> None:
             content = stream.read() if stream else b""
             if SECRET_PATTERN.search(content):
                 raise SystemExit(f"credential pattern or local absolute path found in {name}")
-    finally:
-        archive.close()
 
 
 def check_final() -> None:
     for path in (PDF, SOURCE):
         if not path.is_file() or path.stat().st_size == 0:
             raise SystemExit(f"missing public release file: {path}")
-    source_names, archive = archive_members(SOURCE)
-    archive.close()
-    required = {
-        "main.tex", "main.bbl", "references.bib",
-        "figures/proofpath_architecture.pdf",
-        "figures/prospective_power.pdf",
-        "anc/proofpath_artifact.tar.gz",
-    }
-    if missing := sorted(required - source_names):
-        raise SystemExit(f"missing arXiv-source members: {missing}")
+    with archive_members(SOURCE) as (source_names, _):
+        required = {
+            "main.tex", "main.bbl", "references.bib",
+            "figures/proofpath_architecture.pdf",
+            "figures/prospective_power.pdf",
+            "anc/proofpath_artifact.tar.gz",
+        }
+        if missing := sorted(required - source_names):
+            raise SystemExit(f"missing arXiv-source members: {missing}")
     with tempfile.TemporaryDirectory(prefix="proofpath-release-check-") as directory:
         text_path = Path(directory) / "paper.txt"
         subprocess.run(["pdftotext", str(PDF), str(text_path)], check=True)

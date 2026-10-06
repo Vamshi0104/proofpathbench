@@ -17,6 +17,7 @@ def _run(command: list[str]) -> str:
     result = subprocess.run(
         command,
         cwd=ROOT,
+        check=False,
         text=True,
         stdout=subprocess.PIPE,
         stderr=subprocess.STDOUT,

@@ -280,18 +280,24 @@ def build_artifact(release_version: str) -> Path:
             if parent == top:
                 break
             parent = parent.parent
-    with temporary.open("wb") as raw:
-        with gzip.GzipFile(filename="", mode="wb", fileobj=raw, mtime=0, compresslevel=9) as gz:
-            with tarfile.open(fileobj=gz, mode="w", format=tarfile.PAX_FORMAT) as archive:
-                for directory in sorted(directories, key=lambda item: (len(item.parts), item.as_posix())):
-                    info = tarfile.TarInfo(directory.as_posix())
-                    info.type = tarfile.DIRTYPE
-                    archive.addfile(normalized(info))
-                for source, relative in sources:
-                    info = archive.gettarinfo(str(source), arcname=(top / relative).as_posix())
-                    info = normalized(info)
-                    with source.open("rb") as stream:
-                        archive.addfile(info, stream)
+    with (
+        temporary.open("wb") as raw,
+        gzip.GzipFile(
+            filename="", mode="wb", fileobj=raw, mtime=0, compresslevel=9
+        ) as gz,
+        tarfile.open(fileobj=gz, mode="w", format=tarfile.PAX_FORMAT) as archive,
+    ):
+        for directory in sorted(
+            directories, key=lambda item: (len(item.parts), item.as_posix())
+        ):
+            info = tarfile.TarInfo(directory.as_posix())
+            info.type = tarfile.DIRTYPE
+            archive.addfile(normalized(info))
+        for source, relative in sources:
+            info = archive.gettarinfo(str(source), arcname=(top / relative).as_posix())
+            info = normalized(info)
+            with source.open("rb") as stream:
+                archive.addfile(info, stream)
     temporary.replace(target)
     return target
 

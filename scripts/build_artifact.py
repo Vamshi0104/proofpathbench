@@ -40,9 +40,7 @@ def prohibited(relative: PurePosixPath) -> bool:
         return True
     if relative.parts[:2] == ("results", "raw"):
         return True
-    if relative.parts[:2] == ("paper", "arxiv"):
-        return True
-    return False
+    return relative.parts[:2] == ("paper", "arxiv")
 
 
 def members() -> list[tuple[Path, PurePosixPath]]:
@@ -79,16 +77,20 @@ def normalized(info: tarfile.TarInfo) -> tarfile.TarInfo:
 def build() -> None:
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     temporary = OUTPUT.with_suffix(OUTPUT.suffix + ".tmp")
-    with temporary.open("wb") as raw:
-        with gzip.GzipFile(filename="", mode="wb", fileobj=raw, mtime=0, compresslevel=9) as compressed:
-            with tarfile.open(fileobj=compressed, mode="w", format=tarfile.PAX_FORMAT) as archive:
-                for source, relative in members():
-                    info = normalized(archive.gettarinfo(str(source), arcname=relative.as_posix()))
-                    if info.isfile():
-                        with source.open("rb") as stream:
-                            archive.addfile(info, stream)
-                    else:
-                        archive.addfile(info)
+    with (
+        temporary.open("wb") as raw,
+        gzip.GzipFile(
+            filename="", mode="wb", fileobj=raw, mtime=0, compresslevel=9
+        ) as compressed,
+        tarfile.open(fileobj=compressed, mode="w", format=tarfile.PAX_FORMAT) as archive,
+    ):
+        for source, relative in members():
+            info = normalized(archive.gettarinfo(str(source), arcname=relative.as_posix()))
+            if info.isfile():
+                with source.open("rb") as stream:
+                    archive.addfile(info, stream)
+            else:
+                archive.addfile(info)
     temporary.replace(OUTPUT)
     print(f"Artifact: {OUTPUT.relative_to(ROOT)}")
 
