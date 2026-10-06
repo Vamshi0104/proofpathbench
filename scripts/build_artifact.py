@@ -8,7 +8,6 @@ import os
 import tarfile
 from pathlib import Path, PurePosixPath
 
-
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "output" / "proofpath_artifact.tar.gz"
 SOURCE_DATE_EPOCH = int(os.environ.get("SOURCE_DATE_EPOCH", "1791244800"))

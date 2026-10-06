@@ -12,7 +12,6 @@ from typing import Any
 from proofpath.benchmark.generate import PROJECT_ROOT
 from proofpath.benchmark.validate import load_scenarios
 
-
 DEFAULT_OUTPUT = PROJECT_ROOT / "research" / "confound_diagnostics.json"
 
 

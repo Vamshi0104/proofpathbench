@@ -15,7 +15,6 @@ from proofpath.benchmark.generate import PROJECT_ROOT
 from proofpath.benchmark.render import TOOL_DESCRIPTIONS
 from proofpath.benchmark.validate import load_scenarios
 
-
 PACKET_DIR = PROJECT_ROOT / "research" / "reviewer_packets"
 KEY_PATH = PROJECT_ROOT / "tmp" / "human_validation_private" / "review_key.json"
 FORM_FIELDS = [

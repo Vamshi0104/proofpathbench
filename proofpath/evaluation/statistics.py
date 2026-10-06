@@ -17,7 +17,6 @@ from statsmodels.stats.sandwich_covariance import (  # type: ignore[import-untyp
 
 from proofpath.experiments import ExperimentRecord
 
-
 PRIMARY_FORMULA = (
     "selected ~ premium_scaled + risk_scaled + severity_high + instruction_verify + "
     "premium_scaled:risk_scaled + premium_scaled:severity_high + "
@@ -97,8 +96,10 @@ def _cluster_covariance(fit: Any, frame: pd.DataFrame) -> tuple[np.ndarray, str]
         return np.asarray(covariance), "two-way scenario/model cluster robust"
     return (
         np.asarray(cov_cluster(fit, scenario_groups)),
-        f"scenario cluster robust; {model_count} model clusters are too few for "
-        "model-cluster sandwich inference",
+        (
+            f"scenario cluster robust; {model_count} model clusters are too few for "
+            "model-cluster sandwich inference"
+        ),
     )
 
 

@@ -3,7 +3,6 @@ import importlib.util
 import json
 from pathlib import Path
 
-
 MODULE_PATH = Path("research/human_validation/analyze_reviews.py")
 SPEC = importlib.util.spec_from_file_location("human_validation", MODULE_PATH)
 assert SPEC is not None and SPEC.loader is not None

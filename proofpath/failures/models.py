@@ -6,7 +6,6 @@ from typing import Literal
 
 from pydantic import BaseModel, ConfigDict, Field
 
-
 FailureType = Literal[
     "explicit_failure",
     "false_success",
@@ -30,6 +29,6 @@ class FaultSpec(BaseModel):
     derived_seed: int = Field(ge=0)
     draw: float = Field(ge=0, lt=1)
 
-    def model_post_init(self, __context: object) -> None:
+    def model_post_init(self, __context: object, /) -> None:
         if self.activated != (self.failure_type is not None):
             raise ValueError("activated and failure_type must agree")

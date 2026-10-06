@@ -13,7 +13,6 @@ from proofpath.benchmark.validate import load_scenarios
 from proofpath.manipulation import run_manipulation_check
 from proofpath.prepilot import prepilot_audit
 
-
 MANIPULATION_PREREQUISITES = (
     "runtime_validation",
     "blinded_human_review",

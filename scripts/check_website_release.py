@@ -11,7 +11,6 @@ from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import unquote, urlsplit
 
-
 ROOT = Path(__file__).resolve().parents[1]
 DOCS = ROOT / "docs"
 TEXT_SUFFIXES = {".bib", ".cff", ".cjs", ".csv", ".html", ".js", ".json", ".md", ".py", ".sh", ".tex", ".toml", ".txt", ".yaml", ".yml"}
@@ -21,7 +20,7 @@ SECRET_PATTERNS = (
     re.compile(rb"gh[pousr]_[A-Za-z0-9_]{20,}"),
     re.compile(rb"xox[baprs]-[A-Za-z0-9-]{10,}"),
     re.compile(rb"-----BEGIN (?:RSA|OPENSSH|EC|DSA)? ?PRIVATE KEY-----"),
-    re.compile(rb"Authorization\s*:\s*Bearer\s+[A-Za-z0-9._~+/=-]{12,}", re.I),
+    re.compile(rb"Authorization\s*:\s*Bearer\s+[A-Za-z0-9._~+/=-]{12,}", re.IGNORECASE),
 )
 PRIVATE_PATH = re.compile(rb"(?:/Users/[^/\s]+|/home/[^/\s]+|[A-Z]:\\Users\\[^\\\s]+)")
 
@@ -102,7 +101,7 @@ def check_claims() -> None:
         raise SystemExit(f"website scientific-count mismatch: {mismatches}")
 
     engine = (DOCS / "engine.js").read_text(encoding="utf-8")
-    block = re.search(r"const FAILURE_TYPES = \[(.*?)\];", engine, re.S)
+    block = re.search(r"const FAILURE_TYPES = \[(.*?)\];", engine, re.DOTALL)
     failures = set(re.findall(r'"([a-z_]+)"', block.group(1) if block else ""))
     if failures != set(runtime["forced_failure_results"]):
         raise SystemExit("browser failure classes disagree with runtime validation")
@@ -115,7 +114,7 @@ def check_claims() -> None:
     )
     if missing := [item for item in required if item not in public_copy]:
         raise SystemExit(f"required scope statement missing from site: {missing}")
-    if re.search(r"Paired risk model|Live-model failure risk|arXiv:\s*(?:X+|0+\.0+)", public_copy, re.I):
+    if re.search(r"Paired risk model|Live-model failure risk|arXiv:\s*(?:X+|0+\.0+)", public_copy, re.IGNORECASE):
         raise SystemExit("ambiguous simulation language or placeholder arXiv ID remains")
 
 
@@ -133,7 +132,7 @@ def check_metadata(pages: dict[Path, Page]) -> None:
     if png[:8] != b"\x89PNG\r\n\x1a\n" or struct.unpack(">II", png[16:24]) != (1200, 630):
         raise SystemExit("Open Graph image must be a 1200 x 630 PNG")
     config = (DOCS / "site-config.js").read_text(encoding="utf-8")
-    if re.search(r"github\.com/(?:owner|username|your)|arxivId:\s*['\"](?:X+|0+)", config, re.I):
+    if re.search(r"github\.com/(?:owner|username|your)|arxivId:\s*['\"](?:X+|0+)", config, re.IGNORECASE):
         raise SystemExit("publication configuration contains a fabricated placeholder")
 
 
@@ -161,7 +160,7 @@ def check_privacy() -> None:
         if PRIVATE_PATH.search(content):
             raise SystemExit(f"private absolute path in intended public file: {relative}")
     for name in ("index.html", "app.js", "data.js", "engine.js", "site-config.js", "release-meta.js", "styles.css"):
-        if re.search(r"localhost|127\.0\.0\.1|file://|/Users/", (DOCS / name).read_text(encoding="utf-8"), re.I):
+        if re.search(r"localhost|127\.0\.0\.1|file://|/Users/", (DOCS / name).read_text(encoding="utf-8"), re.IGNORECASE):
             raise SystemExit(f"development-only reference in published runtime asset: {name}")
 
 

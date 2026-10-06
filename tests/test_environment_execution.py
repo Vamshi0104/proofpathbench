@@ -2,8 +2,8 @@ from copy import deepcopy
 
 import pytest
 
-from proofpath.benchmark.generate import generate_scenarios
 from proofpath.benchmark.design import split_plot_presentations
+from proofpath.benchmark.generate import generate_scenarios
 from proofpath.environments import MockEnvironment, execute_plan
 from proofpath.evaluation import evaluate_outcome
 from proofpath.failures import FailureType, forced_fault, no_fault

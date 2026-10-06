@@ -25,7 +25,6 @@ from proofpath.benchmark.models import (
     ToolAliases,
 )
 
-
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 SCENARIO_DIR = PROJECT_ROOT / "benchmark" / "scenarios"
 SCHEMA_PATH = PROJECT_ROOT / "benchmark" / "schemas" / "scenario.schema.json"

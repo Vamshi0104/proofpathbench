@@ -7,8 +7,8 @@ from proofpath.agents.openai_responses import OpenAIResponsesAdapter
 
 __all__ = [
     "FixtureAdapter",
-    "ModelAdapter",
     "ManipulationChoice",
+    "ModelAdapter",
     "ModelResponse",
     "OpenAIResponsesAdapter",
     "PlanChoice",

@@ -6,7 +6,6 @@ from collections import Counter
 
 from proofpath.benchmark.models import Scenario
 
-
 PILOT_PREMIUMS = (1.0, 1.1, 1.5, 2.0)
 PRESENTATION_IDS = ("p1-o1", "p1-o2", "p2-o1", "p2-o2")
 

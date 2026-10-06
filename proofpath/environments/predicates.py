@@ -6,7 +6,6 @@ from typing import Any
 
 from proofpath.benchmark.models import Predicate
 
-
 MISSING = object()
 
 

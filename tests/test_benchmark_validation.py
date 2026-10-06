@@ -1,5 +1,5 @@
 from proofpath.benchmark.generate import generate_scenarios
-from proofpath.benchmark.validate import validation_report, validate_scenarios
+from proofpath.benchmark.validate import validate_scenarios, validation_report
 
 
 def test_generated_scenarios_pass_static_validation() -> None:

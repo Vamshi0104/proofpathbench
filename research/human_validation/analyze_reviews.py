@@ -15,7 +15,6 @@ from typing import Any
 from proofpath.benchmark.render import TOOL_DESCRIPTIONS
 from proofpath.benchmark.validate import load_scenarios
 
-
 ROOT = Path(__file__).resolve().parents[2]
 HERE = Path(__file__).resolve().parent
 DEFAULT_SEED = 20261006

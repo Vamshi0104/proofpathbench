@@ -11,7 +11,6 @@ import tarfile
 import tempfile
 from pathlib import Path
 
-
 ROOT = Path(__file__).resolve().parents[1]
 PDF = ROOT / "output" / "pdf" / "proofpath_benchmark.pdf"
 SOURCE = ROOT / "output" / "proofpath_arxiv_source.tar.gz"
@@ -105,7 +104,7 @@ def check_final() -> None:
     )
     if missing := [claim for claim in claims if claim not in normalized]:
         raise SystemExit(f"required scope statements absent from PDF: {missing}")
-    if re.search(r"Author identity to be supplied|Firstname Lastname|\b(?:TODO|TBD)\b", normalized, re.I):
+    if re.search(r"Author identity to be supplied|Firstname Lastname|\b(?:TODO|TBD)\b", normalized, re.IGNORECASE):
         raise SystemExit("placeholder text remains in public PDF")
     runtime = json.loads((ROOT / "benchmark/runtime_validation_report.json").read_text())
     counts = runtime["scenario_count"], runtime["split_plot_unit_count"], runtime["no_fault_plan_executions"]

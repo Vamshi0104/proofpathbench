@@ -10,13 +10,12 @@ from typing import Any
 
 import yaml
 
-from proofpath.benchmark.generate import INDEX_PATH
 from proofpath.benchmark.design import split_plot_presentations, validate_split_plot
+from proofpath.benchmark.generate import INDEX_PATH
 from proofpath.benchmark.validate import load_scenarios, validate_index, validate_scenarios
 from proofpath.environments import MockEnvironment, execute_plan
 from proofpath.evaluation import evaluate_outcome
 from proofpath.failures import FailureType, forced_fault, no_fault
-
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_CONFIG = PROJECT_ROOT / "configs" / "pilot.yaml"

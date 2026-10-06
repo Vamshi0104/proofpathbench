@@ -14,7 +14,6 @@ import tarfile
 import tempfile
 from pathlib import Path, PurePosixPath
 
-
 ROOT = Path(__file__).resolve().parents[2]
 RELEASE = ROOT / "zenodo"
 VERSION = "0.0.1"

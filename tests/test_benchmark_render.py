@@ -5,7 +5,6 @@ import pytest
 from proofpath.benchmark.generate import generate_scenarios
 from proofpath.benchmark.render import agent_payload, render_prompt
 
-
 HIDDEN_TERMS = {
     "evidence_profile",
     "evidence_mechanism",

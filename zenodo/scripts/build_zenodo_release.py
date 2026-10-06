@@ -15,7 +15,6 @@ import sys
 import tarfile
 from pathlib import Path, PurePosixPath
 
-
 ROOT = Path(__file__).resolve().parents[2]
 RELEASE = ROOT / "zenodo"
 ARTIFACT_DIR = RELEASE / "artifact"
@@ -308,7 +307,7 @@ def write_manifest(release_version: str, artifact: Path, zenodo_doi: str | None)
         "release_version": release_version,
         "zenodo_doi": zenodo_doi,
         "build_timestamp_utc": dt.datetime.fromtimestamp(
-            SOURCE_DATE_EPOCH, tz=dt.timezone.utc
+            SOURCE_DATE_EPOCH, tz=dt.UTC
         ).isoformat().replace("+00:00", "Z"),
         "paper_sha256": sha256(RELEASE / "PAPER.pdf"),
         "artifact_sha256": sha256(artifact),

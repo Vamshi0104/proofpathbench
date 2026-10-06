@@ -9,7 +9,6 @@ from typing import Any, Literal
 
 from proofpath.benchmark.models import PlanStep, PresentationVariant, Scenario
 
-
 InstructionCondition = Literal["vanilla", "verify_instruction"]
 
 TOOL_DESCRIPTIONS = {

@@ -10,7 +10,7 @@ from datetime import UTC, datetime
 from pathlib import Path
 from typing import Literal
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, ValidationError
 
 from proofpath.agents import ModelAdapter, ModelResponse, PlanChoice
 from proofpath.benchmark.generate import INDEX_PATH, PROJECT_ROOT
@@ -19,7 +19,6 @@ from proofpath.benchmark.render import InstructionCondition, render_prompt
 from proofpath.environments import ExecutionTrace, execute_plan
 from proofpath.evaluation.outcomes import OutcomeEvaluation, evaluate_outcome
 from proofpath.failures import FaultSpec, sample_fault
-
 
 RUN_ID_PATTERN = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._-]{0,79}$")
 
@@ -99,7 +98,7 @@ def source_tree_digest() -> str:
 def _parse_choice(response: ModelResponse) -> tuple[PlanChoice | None, str | None]:
     try:
         return PlanChoice.model_validate_json(response.output_text), None
-    except Exception as error:  # Pydantic exposes multiple version-specific error types.
+    except ValidationError as error:
         return None, f"{type(error).__name__}: {error}"
 
 

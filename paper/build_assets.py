@@ -10,7 +10,6 @@ from typing import Any
 import matplotlib.pyplot as plt
 import yaml
 
-
 plt.rcParams["pdf.fonttype"] = 42
 plt.rcParams["ps.fonttype"] = 42
 

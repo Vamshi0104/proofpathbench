@@ -8,7 +8,7 @@ from datetime import UTC, datetime
 from pathlib import Path
 from typing import Literal
 
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, ValidationError
 
 from proofpath.agents import ManipulationChoice, ModelAdapter, ModelResponse
 from proofpath.benchmark.models import Scenario
@@ -39,7 +39,7 @@ class ManipulationRecord(BaseModel):
 def _parse(response: ModelResponse) -> tuple[ManipulationChoice | None, str | None]:
     try:
         return ManipulationChoice.model_validate_json(response.output_text), None
-    except Exception as error:
+    except ValidationError as error:
         return None, f"{type(error).__name__}: {error}"
 
 

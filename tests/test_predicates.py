@@ -1,7 +1,6 @@
 from proofpath.benchmark.models import Predicate
 from proofpath.environments.predicates import evaluate_predicate, resolve_path
 
-
 STATE = {
     "resources": {
         "x": {"value": "target", "version": 2, "tags": ["a", "b"]},

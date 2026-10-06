@@ -11,7 +11,6 @@ from typing import Literal
 from proofpath.benchmark.generate import INDEX_PATH, SCENARIO_DIR
 from proofpath.benchmark.models import Domain, Scenario
 
-
 PROHIBITED_AGENT_VISIBLE_TERMS = {
     "better_plan",
     "preferred_plan",
