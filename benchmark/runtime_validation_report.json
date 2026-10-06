@@ -1,0 +1,88 @@
+{
+  "config_path": "configs/pilot.yaml",
+  "config_sha256": "cb5ee5e66b31fc3cd19eb61e78f05fcd7cc98089fe49e4609e46159dc44f6ec9",
+  "errors": [],
+  "forced_failure_results": {
+    "delayed_visibility": {
+      "activated": true,
+      "collateral_satisfied": true,
+      "duplicate_effect": false,
+      "false_completion_if_claimed": false,
+      "goal_satisfied": true,
+      "verified_task_success": true
+    },
+    "duplicated_action": {
+      "activated": true,
+      "collateral_satisfied": true,
+      "duplicate_effect": true,
+      "false_completion_if_claimed": false,
+      "goal_satisfied": true,
+      "verified_task_success": true
+    },
+    "explicit_failure": {
+      "activated": true,
+      "collateral_satisfied": false,
+      "duplicate_effect": false,
+      "false_completion_if_claimed": true,
+      "goal_satisfied": false,
+      "verified_task_success": false
+    },
+    "false_success": {
+      "activated": true,
+      "collateral_satisfied": false,
+      "duplicate_effect": false,
+      "false_completion_if_claimed": true,
+      "goal_satisfied": false,
+      "verified_task_success": false
+    },
+    "partial_update": {
+      "activated": true,
+      "collateral_satisfied": false,
+      "duplicate_effect": false,
+      "false_completion_if_claimed": true,
+      "goal_satisfied": true,
+      "verified_task_success": false
+    },
+    "stale_readback": {
+      "activated": true,
+      "collateral_satisfied": true,
+      "duplicate_effect": false,
+      "false_completion_if_claimed": false,
+      "goal_satisfied": true,
+      "verified_task_success": true
+    },
+    "timeout_after": {
+      "activated": true,
+      "collateral_satisfied": true,
+      "duplicate_effect": false,
+      "false_completion_if_claimed": false,
+      "goal_satisfied": true,
+      "verified_task_success": true
+    },
+    "timeout_before": {
+      "activated": true,
+      "collateral_satisfied": false,
+      "duplicate_effect": false,
+      "false_completion_if_claimed": true,
+      "goal_satisfied": false,
+      "verified_task_success": false
+    },
+    "wrong_target": {
+      "activated": true,
+      "collateral_satisfied": false,
+      "duplicate_effect": false,
+      "false_completion_if_claimed": true,
+      "goal_satisfied": false,
+      "verified_task_success": false
+    }
+  },
+  "no_fault_plan_executions": 768,
+  "no_fault_semantic_equivalence_passed": true,
+  "scenario_count": 96,
+  "scenario_index_sha256": "452d012a906c2fb5c32e7f37e170b0432f806b831048d8e26252b9d3c58777cf",
+  "scope": "deterministic pre-pilot runtime acceptance; not an empirical result",
+  "split_plot_unit_count": 384,
+  "split_plot_valid": true,
+  "state_isolation_passed": true,
+  "valid": true
+}

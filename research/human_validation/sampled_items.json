@@ -1,0 +1,2592 @@
+{
+  "items": [
+    {
+      "candidates": [
+        {
+          "candidate": "X",
+          "steps": [
+            {
+              "arguments": {
+                "field": "status",
+                "resource_id": "order-003",
+                "value": "held"
+              },
+              "simulated_cost_units": 1.0,
+              "simulated_latency_ms": 100,
+              "tool": "apply_change",
+              "tool_description": "Request the specified state change. It returns a reported status and an operation ID, but the reported status can be affected by the disclosed fault process."
+            },
+            {
+              "arguments": {
+                "freshness": "current",
+                "resource_id": "order-003"
+              },
+              "simulated_cost_units": 0.0,
+              "simulated_latency_ms": 0,
+              "tool": "inspect_resource",
+              "tool_description": "Read the current resource through the modeled resource-read path."
+            },
+            {
+              "arguments": {
+                "operation_id": "$mutation.operation_id"
+              },
+              "simulated_cost_units": 0.0,
+              "simulated_latency_ms": 0,
+              "tool": "inspect_history",
+              "tool_description": "Read the modeled append-only history for an operation ID."
+            }
+          ],
+          "total_simulated_cost_units": 1.0,
+          "total_simulated_latency_ms": 100
+        },
+        {
+          "candidate": "Y",
+          "steps": [
+            {
+              "arguments": {
+                "field": "status",
+                "resource_id": "order-003",
+                "value": "held"
+              },
+              "simulated_cost_units": 1.0,
+              "simulated_latency_ms": 100,
+              "tool": "apply_change",
+              "tool_description": "Request the specified state change. It returns a reported status and an operation ID, but the reported status can be affected by the disclosed fault process."
+            }
+          ],
+          "total_simulated_cost_units": 1.0,
+          "total_simulated_latency_ms": 100
+        }
+      ],
+      "collateral_constraints": [
+        {
+          "expected": 1,
+          "operator": "count_eq",
+          "path": "resources.__count__"
+        },
+        {
+          "expected": 2,
+          "operator": "version_ge",
+          "path": "resources.order-003.version"
+        }
+      ],
+      "consequence_mechanics": {
+        "affected_mock_dependents": 1,
+        "description": "One isolated mock dependent consumes the resulting state.",
+        "recovery_actions_required": 1
+      },
+      "domain": "commerce",
+      "fault_context": {
+        "disclosed_mutation_fault_probability": 0.2
+      },
+      "required_outcome": {
+        "expected": "held",
+        "operator": "eq",
+        "path": "resources.order-003.status"
+      },
+      "review_id": "hv-18dfdc0a87c0",
+      "task": "Hold the mock order order-003 so that status is 'held'."
+    },
+    {
+      "candidates": [
+        {
+          "candidate": "X",
+          "steps": [
+            {
+              "arguments": {
+                "field": "owner",
+                "resource_id": "file-003",
+                "value": "team-blue"
+              },
+              "simulated_cost_units": 1.0,
+              "simulated_latency_ms": 100,
+              "tool": "commit_update",
+              "tool_description": "Request the specified state change. It returns a reported status and an operation ID, but the reported status can be affected by the disclosed fault process."
+            }
+          ],
+          "total_simulated_cost_units": 1.0,
+          "total_simulated_latency_ms": 100
+        },
+        {
+          "candidate": "Y",
+          "steps": [
+            {
+              "arguments": {
+                "field": "owner",
+                "resource_id": "file-003",
+                "value": "team-blue"
+              },
+              "simulated_cost_units": 1.0,
+              "simulated_latency_ms": 100,
+              "tool": "commit_update",
+              "tool_description": "Request the specified state change. It returns a reported status and an operation ID, but the reported status can be affected by the disclosed fault process."
+            },
+            {
+              "arguments": {
+                "freshness": "current",
+                "resource_id": "file-003"
+              },
+              "simulated_cost_units": 0.0,
+              "simulated_latency_ms": 0,
+              "tool": "fetch_resource",
+              "tool_description": "Read the current resource through the modeled resource-read path."
+            },
+            {
+              "arguments": {
+                "operation_id": "$mutation.operation_id"
+              },
+              "simulated_cost_units": 0.0,
+              "simulated_latency_ms": 0,
+              "tool": "fetch_history",
+              "tool_description": "Read the modeled append-only history for an operation ID."
+            }
+          ],
+          "total_simulated_cost_units": 1.0,
+          "total_simulated_latency_ms": 100
+        }
+      ],
+      "collateral_constraints": [
+        {
+          "expected": 1,
+          "operator": "count_eq",
+          "path": "resources.__count__"
+        },
+        {
+          "expected": 2,
+          "operator": "version_ge",
+          "path": "resources.file-003.version"
+        }
+      ],
+      "consequence_mechanics": {
+        "affected_mock_dependents": 1,
+        "description": "One isolated mock dependent consumes the resulting state.",
+        "recovery_actions_required": 1
+      },
+      "domain": "filesystem",
+      "fault_context": {
+        "disclosed_mutation_fault_probability": 0.2
+      },
+      "required_outcome": {
+        "expected": "team-blue",
+        "operator": "eq",
+        "path": "resources.file-003.owner"
+      },
+      "review_id": "hv-44f657454c7e",
+      "task": "Change the mock file file-003 so that owner is 'team-blue'."
+    },
+    {
+      "candidates": [
+        {
+          "candidate": "Y",
+          "steps": [
+            {
+              "arguments": {
+                "field": "delivery_window",
+                "resource_id": "order-010",
+                "value": "afternoon"
+              },
+              "simulated_cost_units": 1.0,
+              "simulated_latency_ms": 100,
+              "tool": "commit_update",
+              "tool_description": "Request the specified state change. It returns a reported status and an operation ID, but the reported status can be affected by the disclosed fault process."
+            }
+          ],
+          "total_simulated_cost_units": 1.0,
+          "total_simulated_latency_ms": 100
+        },
+        {
+          "candidate": "X",
+          "steps": [
+            {
+              "arguments": {
+                "field": "delivery_window",
+                "resource_id": "order-010",
+                "value": "afternoon"
+              },
+              "simulated_cost_units": 1.0,
+              "simulated_latency_ms": 100,
+              "tool": "commit_update",
+              "tool_description": "Request the specified state change. It returns a reported status and an operation ID, but the reported status can be affected by the disclosed fault process."
+            },
+            {
+              "arguments": {
+                "operation_id": "$mutation.operation_id"
+              },
+              "simulated_cost_units": 1.0,
+              "simulated_latency_ms": 100,
+              "tool": "get_operation",
+              "tool_description": "Resolve an operation ID against the modeled operation lifecycle ledger."
+            }
+          ],
+          "total_simulated_cost_units": 2.0,
+          "total_simulated_latency_ms": 200
+        }
+      ],
+      "collateral_constraints": [
+        {
+          "expected": 1,
+          "operator": "count_eq",
+          "path": "resources.__count__"
+        },
+        {
+          "expected": 2,
+          "operator": "version_ge",
+          "path": "resources.order-010.version"
+        }
+      ],
+      "consequence_mechanics": {
+        "affected_mock_dependents": 20,
+        "description": "Twenty mock dependents consume the resulting state before the next checkpoint.",
+        "recovery_actions_required": 5
+      },
+      "domain": "commerce",
+      "fault_context": {
+        "disclosed_mutation_fault_probability": 0.0
+      },
+      "required_outcome": {
+        "expected": "afternoon",
+        "operator": "eq",
+        "path": "resources.order-010.delivery_window"
+      },
+      "review_id": "hv-8da3246c29a1",
+      "task": "Change the mock order order-010 so that delivery_window is 'afternoon'."
+    },
+    {
+      "candidates": [
+        {
+          "candidate": "Y",
+          "steps": [
+            {
+              "arguments": {
+                "field": "units",
+                "resource_id": "profile-012",
+                "value": "metric"
+              },
+              "simulated_cost_units": 1.0,
+              "simulated_latency_ms": 100,
+              "tool": "apply_change",
+              "tool_description": "Request the specified state change. It returns a reported status and an operation ID, but the reported status can be affected by the disclosed fault process."
+            },
+            {
+              "arguments": {
+                "operation_id": "$mutation.operation_id"
+              },
+              "simulated_cost_units": 1.0,
+              "simulated_latency_ms": 100,
+              "tool": "lookup_operation",
+              "tool_description": "Resolve an operation ID against the modeled operation lifecycle ledger."
+            }
+          ],
+          "total_simulated_cost_units": 2.0,
+          "total_simulated_latency_ms": 200
+        },
+        {
+          "candidate": "X",
+          "steps": [
+            {
+              "arguments": {
+                "field": "units",
+                "resource_id": "profile-012",
+                "value": "metric"
+              },
+              "simulated_cost_units": 1.0,
+              "simulated_latency_ms": 100,
+              "tool": "apply_change",
+              "tool_description": "Request the specified state change. It returns a reported status and an operation ID, but the reported status can be affected by the disclosed fault process."
+            }
+          ],
+          "total_simulated_cost_units": 1.0,
+          "total_simulated_latency_ms": 100
+        }
+      ],
+      "collateral_constraints": [
+        {
+          "expected": 1,
+          "operator": "count_eq",
+          "path": "resources.__count__"
+        },
+        {
+          "expected": 2,
+          "operator": "version_ge",
+          "path": "resources.profile-012.version"
+        }
+      ],
+      "consequence_mechanics": {
+        "affected_mock_dependents": 20,
+        "description": "Twenty mock dependents consume the resulting state before the next checkpoint.",
+        "recovery_actions_required": 5
+      },
+      "domain": "profile",
+      "fault_context": {
+        "disclosed_mutation_fault_probability": 0.2
+      },
+      "required_outcome": {
+        "expected": "metric",
+        "operator": "eq",
+        "path": "resources.profile-012.units"
+      },
+      "review_id": "hv-18889ac474a3",
+      "task": "Change the mock profile profile-012 so that units is 'metric'."
+    },
+    {
+      "candidates": [
+        {
+          "candidate": "X",
+          "steps": [
+            {
+              "arguments": {
+                "field": "addon",
+                "resource_id": "subscription-009",
+                "value": "reports"
+              },
+              "simulated_cost_units": 1.0,
+              "simulated_latency_ms": 100,
+              "tool": "apply_change",
+              "tool_description": "Request the specified state change. It returns a reported status and an operation ID, but the reported status can be affected by the disclosed fault process."
+            },
+            {
+              "arguments": {
+                "freshness": "current",
+                "resource_id": "subscription-009"
+              },
+              "simulated_cost_units": 0.25,
+              "simulated_latency_ms": 25,
+              "tool": "inspect_resource",
+              "tool_description": "Read the current resource through the modeled resource-read path."
+            },
+            {
+              "arguments": {
+                "operation_id": "$mutation.operation_id"
+              },
+              "simulated_cost_units": 0.25,
+              "simulated_latency_ms": 25,
+              "tool": "inspect_history",
+              "tool_description": "Read the modeled append-only history for an operation ID."
+            }
+          ],
+          "total_simulated_cost_units": 1.5,
+          "total_simulated_latency_ms": 150
+        },
+        {
+          "candidate": "Y",
+          "steps": [
+            {
+              "arguments": {
+                "field": "addon",
+                "resource_id": "subscription-009",
+                "value": "reports"
+              },
+              "simulated_cost_units": 1.0,
+              "simulated_latency_ms": 100,
+              "tool": "apply_change",
+              "tool_description": "Request the specified state change. It returns a reported status and an operation ID, but the reported status can be affected by the disclosed fault process."
+            }
+          ],
+          "total_simulated_cost_units": 1.0,
+          "total_simulated_latency_ms": 100
+        }
+      ],
+      "collateral_constraints": [
+        {
+          "expected": 1,
+          "operator": "count_eq",
+          "path": "resources.__count__"
+        },
+        {
+          "expected": 2,
+          "operator": "version_ge",
+          "path": "resources.subscription-009.version"
+        }
+      ],
+      "consequence_mechanics": {
+        "affected_mock_dependents": 20,
+        "description": "Twenty mock dependents consume the resulting state before the next checkpoint.",
+        "recovery_actions_required": 5
+      },
+      "domain": "subscription",
+      "fault_context": {
+        "disclosed_mutation_fault_probability": 0.2
+      },
+      "required_outcome": {
+        "expected": "reports",
+        "operator": "eq",
+        "path": "resources.subscription-009.addon"
+      },
+      "review_id": "hv-1e37a815134e",
+      "task": "Add the mock subscription subscription-009 so that addon is 'reports'."
+    },
+    {
+      "candidates": [
+        {
+          "candidate": "X",
+          "steps": [
+            {
+              "arguments": {
+                "field": "status",
+                "resource_id": "record-001",
+                "value": "approved"
+              },
+              "simulated_cost_units": 1.0,
+              "simulated_latency_ms": 100,
+              "tool": "commit_update",
+              "tool_description": "Request the specified state change. It returns a reported status and an operation ID, but the reported status can be affected by the disclosed fault process."
+            }
+          ],
+          "total_simulated_cost_units": 1.0,
+          "total_simulated_latency_ms": 100
+        },
+        {
+          "candidate": "Y",
+          "steps": [
+            {
+              "arguments": {
+                "field": "status",
+                "resource_id": "record-001",
+                "value": "approved"
+              },
+              "simulated_cost_units": 1.0,
+              "simulated_latency_ms": 100,
+              "tool": "commit_update",
+              "tool_description": "Request the specified state change. It returns a reported status and an operation ID, but the reported status can be affected by the disclosed fault process."
+            },
+            {
+              "arguments": {
+                "operation_id": "$mutation.operation_id"
+              },
+              "simulated_cost_units": 0.0,
+              "simulated_latency_ms": 0,
+              "tool": "get_operation",
+              "tool_description": "Resolve an operation ID against the modeled operation lifecycle ledger."
+            }
+          ],
+          "total_simulated_cost_units": 1.0,
+          "total_simulated_latency_ms": 100
+        }
+      ],
+      "collateral_constraints": [
+        {
+          "expected": 1,
+          "operator": "count_eq",
+          "path": "resources.__count__"
+        },
+        {
+          "expected": 2,
+          "operator": "version_ge",
+          "path": "resources.record-001.version"
+        }
+      ],
+      "consequence_mechanics": {
+        "affected_mock_dependents": 20,
+        "description": "Twenty mock dependents consume the resulting state before the next checkpoint.",
+        "recovery_actions_required": 5
+      },
+      "domain": "database",
+      "fault_context": {
+        "disclosed_mutation_fault_probability": 0.0
+      },
+      "required_outcome": {
+        "expected": "approved",
+        "operator": "eq",
+        "path": "resources.record-001.status"
+      },
+      "review_id": "hv-02fd8b640eae",
+      "task": "Update the mock record record-001 so that status is 'approved'."
+    },
+    {
+      "candidates": [
+        {
+          "candidate": "Y",
+          "steps": [
+            {
+              "arguments": {
+                "field": "enabled",
+                "resource_id": "setting-001",
+                "value": true
+              },
+              "simulated_cost_units": 1.0,
+              "simulated_latency_ms": 100,
+              "tool": "commit_update",
+              "tool_description": "Request the specified state change. It returns a reported status and an operation ID, but the reported status can be affected by the disclosed fault process."
+            }
+          ],
+          "total_simulated_cost_units": 1.0,
+          "total_simulated_latency_ms": 100
+        },
+        {
+          "candidate": "X",
+          "steps": [
+            {
+              "arguments": {
+                "field": "enabled",
+                "resource_id": "setting-001",
+                "value": true
+              },
+              "simulated_cost_units": 1.0,
+              "simulated_latency_ms": 100,
+              "tool": "commit_update",
+              "tool_description": "Request the specified state change. It returns a reported status and an operation ID, but the reported status can be affected by the disclosed fault process."
+            },
+            {
+              "arguments": {
+                "freshness": "current",
+                "resource_id": "setting-001"
+              },
+              "simulated_cost_units": 0.0,
+              "simulated_latency_ms": 0,
+              "tool": "fetch_resource",
+              "tool_description": "Read the current resource through the modeled resource-read path."
+            }
+          ],
+          "total_simulated_cost_units": 1.0,
+          "total_simulated_latency_ms": 100
+        }
+      ],
+      "collateral_constraints": [
+        {
+          "expected": 1,
+          "operator": "count_eq",
+          "path": "resources.__count__"
+        },
+        {
+          "expected": 2,
+          "operator": "version_ge",
+          "path": "resources.setting-001.version"
+        }
+      ],
+      "consequence_mechanics": {
+        "affected_mock_dependents": 20,
+        "description": "Twenty mock dependents consume the resulting state before the next checkpoint.",
+        "recovery_actions_required": 5
+      },
+      "domain": "configuration",
+      "fault_context": {
+        "disclosed_mutation_fault_probability": 0.0
+      },
+      "required_outcome": {
+        "expected": true,
+        "operator": "eq",
+        "path": "resources.setting-001.enabled"
+      },
+      "review_id": "hv-23aa9de5c335",
+      "task": "Enable the mock setting setting-001 so that enabled is True."
+    },
+    {
+      "candidates": [
+        {
+          "candidate": "Y",
+          "steps": [
+            {
+              "arguments": {
+                "field": "language",
+                "resource_id": "profile-008",
+                "value": "Spanish"
+              },
+              "simulated_cost_units": 1.0,
+              "simulated_latency_ms": 100,
+              "tool": "apply_change",
+              "tool_description": "Request the specified state change. It returns a reported status and an operation ID, but the reported status can be affected by the disclosed fault process."
+            },
+            {
+              "arguments": {
+                "freshness": "current",
+                "resource_id": "profile-008"
+              },
+              "simulated_cost_units": 0.25,
+              "simulated_latency_ms": 25,
+              "tool": "inspect_resource",
+              "tool_description": "Read the current resource through the modeled resource-read path."
+            },
+            {
+              "arguments": {
+                "operation_id": "$mutation.operation_id"
+              },
+              "simulated_cost_units": 0.25,
+              "simulated_latency_ms": 25,
+              "tool": "inspect_history",
+              "tool_description": "Read the modeled append-only history for an operation ID."
+            }
+          ],
+          "total_simulated_cost_units": 1.5,
+          "total_simulated_latency_ms": 150
+        },
+        {
+          "candidate": "X",
+          "steps": [
+            {
+              "arguments": {
+                "field": "language",
+                "resource_id": "profile-008",
+                "value": "Spanish"
+              },
+              "simulated_cost_units": 1.0,
+              "simulated_latency_ms": 100,
+              "tool": "apply_change",
+              "tool_description": "Request the specified state change. It returns a reported status and an operation ID, but the reported status can be affected by the disclosed fault process."
+            }
+          ],
+          "total_simulated_cost_units": 1.0,
+          "total_simulated_latency_ms": 100
+        }
+      ],
+      "collateral_constraints": [
+        {
+          "expected": 1,
+          "operator": "count_eq",
+          "path": "resources.__count__"
+        },
+        {
+          "expected": 2,
+          "operator": "version_ge",
+          "path": "resources.profile-008.version"
+        }
+      ],
+      "consequence_mechanics": {
+        "affected_mock_dependents": 20,
+        "description": "Twenty mock dependents consume the resulting state before the next checkpoint.",
+        "recovery_actions_required": 5
+      },
+      "domain": "profile",
+      "fault_context": {
+        "disclosed_mutation_fault_probability": 0.05
+      },
+      "required_outcome": {
+        "expected": "Spanish",
+        "operator": "eq",
+        "path": "resources.profile-008.language"
+      },
+      "review_id": "hv-555853396811",
+      "task": "Change the mock profile profile-008 so that language is 'Spanish'."
+    },
+    {
+      "candidates": [
+        {
+          "candidate": "X",
+          "steps": [
+            {
+              "arguments": {
+                "field": "cache",
+                "resource_id": "setting-008",
+                "value": "on"
+              },
+              "simulated_cost_units": 1.0,
+              "simulated_latency_ms": 100,
+              "tool": "apply_change",
+              "tool_description": "Request the specified state change. It returns a reported status and an operation ID, but the reported status can be affected by the disclosed fault process."
+            },
+            {
+              "arguments": {
+                "freshness": "current",
+                "resource_id": "setting-008"
+              },
+              "simulated_cost_units": 0.25,
+              "simulated_latency_ms": 25,
+              "tool": "inspect_resource",
+              "tool_description": "Read the current resource through the modeled resource-read path."
+            },
+            {
+              "arguments": {
+                "operation_id": "$mutation.operation_id"
+              },
+              "simulated_cost_units": 0.25,
+              "simulated_latency_ms": 25,
+              "tool": "inspect_history",
+              "tool_description": "Read the modeled append-only history for an operation ID."
+            }
+          ],
+          "total_simulated_cost_units": 1.5,
+          "total_simulated_latency_ms": 150
+        },
+        {
+          "candidate": "Y",
+          "steps": [
+            {
+              "arguments": {
+                "field": "cache",
+                "resource_id": "setting-008",
+                "value": "on"
+              },
+              "simulated_cost_units": 1.0,
+              "simulated_latency_ms": 100,
+              "tool": "apply_change",
+              "tool_description": "Request the specified state change. It returns a reported status and an operation ID, but the reported status can be affected by the disclosed fault process."
+            }
+          ],
+          "total_simulated_cost_units": 1.0,
+          "total_simulated_latency_ms": 100
+        }
+      ],
+      "collateral_constraints": [
+        {
+          "expected": 1,
+          "operator": "count_eq",
+          "path": "resources.__count__"
+        },
+        {
+          "expected": 2,
+          "operator": "version_ge",
+          "path": "resources.setting-008.version"
+        }
+      ],
+      "consequence_mechanics": {
+        "affected_mock_dependents": 1,
+        "description": "One isolated mock dependent consumes the resulting state.",
+        "recovery_actions_required": 1
+      },
+      "domain": "configuration",
+      "fault_context": {
+        "disclosed_mutation_fault_probability": 0.05
+      },
+      "required_outcome": {
+        "expected": "on",
+        "operator": "eq",
+        "path": "resources.setting-008.cache"
+      },
+      "review_id": "hv-7638b767d501",
+      "task": "Enable the mock setting setting-008 so that cache is 'on'."
+    },
+    {
+      "candidates": [
+        {
+          "candidate": "X",
+          "steps": [
+            {
+              "arguments": {
+                "field": "expiry_hours",
+                "resource_id": "message-009",
+                "value": 48
+              },
+              "simulated_cost_units": 1.0,
+              "simulated_latency_ms": 100,
+              "tool": "commit_update",
+              "tool_description": "Request the specified state change. It returns a reported status and an operation ID, but the reported status can be affected by the disclosed fault process."
+            }
+          ],
+          "total_simulated_cost_units": 1.0,
+          "total_simulated_latency_ms": 100
+        },
+        {
+          "candidate": "Y",
+          "steps": [
+            {
+              "arguments": {
+                "field": "expiry_hours",
+                "resource_id": "message-009",
+                "value": 48
+              },
+              "simulated_cost_units": 1.0,
+              "simulated_latency_ms": 100,
+              "tool": "commit_update",
+              "tool_description": "Request the specified state change. It returns a reported status and an operation ID, but the reported status can be affected by the disclosed fault process."
+            },
+            {
+              "arguments": {
+                "freshness": "current",
+                "resource_id": "message-009"
+              },
+              "simulated_cost_units": 0.5,
+              "simulated_latency_ms": 50,
+              "tool": "fetch_resource",
+              "tool_description": "Read the current resource through the modeled resource-read path."
+            }
+          ],
+          "total_simulated_cost_units": 1.5,
+          "total_simulated_latency_ms": 150
+        }
+      ],
+      "collateral_constraints": [
+        {
+          "expected": 1,
+          "operator": "count_eq",
+          "path": "resources.__count__"
+        },
+        {
+          "expected": 2,
+          "operator": "version_ge",
+          "path": "resources.message-009.version"
+        }
+      ],
+      "consequence_mechanics": {
+        "affected_mock_dependents": 1,
+        "description": "One isolated mock dependent consumes the resulting state.",
+        "recovery_actions_required": 1
+      },
+      "domain": "messaging",
+      "fault_context": {
+        "disclosed_mutation_fault_probability": 0.2
+      },
+      "required_outcome": {
+        "expected": 48,
+        "operator": "eq",
+        "path": "resources.message-009.expiry_hours"
+      },
+      "review_id": "hv-8e26b879d704",
+      "task": "Extend the mock message message-009 so that expiry_hours is 48."
+    },
+    {
+      "candidates": [
+        {
+          "candidate": "Y",
+          "steps": [
+            {
+              "arguments": {
+                "field": "tag",
+                "resource_id": "file-005",
+                "value": "released"
+              },
+              "simulated_cost_units": 1.0,
+              "simulated_latency_ms": 100,
+              "tool": "commit_update",
+              "tool_description": "Request the specified state change. It returns a reported status and an operation ID, but the reported status can be affected by the disclosed fault process."
+            }
+          ],
+          "total_simulated_cost_units": 1.0,
+          "total_simulated_latency_ms": 100
+        },
+        {
+          "candidate": "X",
+          "steps": [
+            {
+              "arguments": {
+                "field": "tag",
+                "resource_id": "file-005",
+                "value": "released"
+              },
+              "simulated_cost_units": 1.0,
+              "simulated_latency_ms": 100,
+              "tool": "commit_update",
+              "tool_description": "Request the specified state change. It returns a reported status and an operation ID, but the reported status can be affected by the disclosed fault process."
+            },
+            {
+              "arguments": {
+                "freshness": "current",
+                "resource_id": "file-005"
+              },
+              "simulated_cost_units": 0.05,
+              "simulated_latency_ms": 5,
+              "tool": "fetch_resource",
+              "tool_description": "Read the current resource through the modeled resource-read path."
+            },
+            {
+              "arguments": {
+                "operation_id": "$mutation.operation_id"
+              },
+              "simulated_cost_units": 0.05,
+              "simulated_latency_ms": 5,
+              "tool": "fetch_history",
+              "tool_description": "Read the modeled append-only history for an operation ID."
+            }
+          ],
+          "total_simulated_cost_units": 1.1,
+          "total_simulated_latency_ms": 110
+        }
+      ],
+      "collateral_constraints": [
+        {
+          "expected": 1,
+          "operator": "count_eq",
+          "path": "resources.__count__"
+        },
+        {
+          "expected": 2,
+          "operator": "version_ge",
+          "path": "resources.file-005.version"
+        }
+      ],
+      "consequence_mechanics": {
+        "affected_mock_dependents": 1,
+        "description": "One isolated mock dependent consumes the resulting state.",
+        "recovery_actions_required": 1
+      },
+      "domain": "filesystem",
+      "fault_context": {
+        "disclosed_mutation_fault_probability": 0.05
+      },
+      "required_outcome": {
+        "expected": "released",
+        "operator": "eq",
+        "path": "resources.file-005.tag"
+      },
+      "review_id": "hv-8d8462ca557d",
+      "task": "Retag the mock file file-005 so that tag is 'released'."
+    },
+    {
+      "candidates": [
+        {
+          "candidate": "Y",
+          "steps": [
+            {
+              "arguments": {
+                "field": "item",
+                "resource_id": "order-005",
+                "value": "sku-101"
+              },
+              "simulated_cost_units": 1.0,
+              "simulated_latency_ms": 100,
+              "tool": "apply_change",
+              "tool_description": "Request the specified state change. It returns a reported status and an operation ID, but the reported status can be affected by the disclosed fault process."
+            },
+            {
+              "arguments": {
+                "freshness": "current",
+                "resource_id": "order-005"
+              },
+              "simulated_cost_units": 0.05,
+              "simulated_latency_ms": 5,
+              "tool": "inspect_resource",
+              "tool_description": "Read the current resource through the modeled resource-read path."
+            },
+            {
+              "arguments": {
+                "operation_id": "$mutation.operation_id"
+              },
+              "simulated_cost_units": 0.05,
+              "simulated_latency_ms": 5,
+              "tool": "inspect_history",
+              "tool_description": "Read the modeled append-only history for an operation ID."
+            }
+          ],
+          "total_simulated_cost_units": 1.1,
+          "total_simulated_latency_ms": 110
+        },
+        {
+          "candidate": "X",
+          "steps": [
+            {
+              "arguments": {
+                "field": "item",
+                "resource_id": "order-005",
+                "value": "sku-101"
+              },
+              "simulated_cost_units": 1.0,
+              "simulated_latency_ms": 100,
+              "tool": "apply_change",
+              "tool_description": "Request the specified state change. It returns a reported status and an operation ID, but the reported status can be affected by the disclosed fault process."
+            }
+          ],
+          "total_simulated_cost_units": 1.0,
+          "total_simulated_latency_ms": 100
+        }
+      ],
+      "collateral_constraints": [
+        {
+          "expected": 1,
+          "operator": "count_eq",
+          "path": "resources.__count__"
+        },
+        {
+          "expected": 2,
+          "operator": "version_ge",
+          "path": "resources.order-005.version"
+        }
+      ],
+      "consequence_mechanics": {
+        "affected_mock_dependents": 1,
+        "description": "One isolated mock dependent consumes the resulting state.",
+        "recovery_actions_required": 1
+      },
+      "domain": "commerce",
+      "fault_context": {
+        "disclosed_mutation_fault_probability": 0.05
+      },
+      "required_outcome": {
+        "expected": "sku-101",
+        "operator": "eq",
+        "path": "resources.order-005.item"
+      },
+      "review_id": "hv-f8104667dcd1",
+      "task": "Replace the mock order order-005 so that item is 'sku-101'."
+    },
+    {
+      "candidates": [
+        {
+          "candidate": "X",
+          "steps": [
+            {
+              "arguments": {
+                "field": "priority",
+                "resource_id": "message-006",
+                "value": "high"
+              },
+              "simulated_cost_units": 1.0,
+              "simulated_latency_ms": 100,
+              "tool": "apply_change",
+              "tool_description": "Request the specified state change. It returns a reported status and an operation ID, but the reported status can be affected by the disclosed fault process."
+            },
+            {
+              "arguments": {
+                "freshness": "current",
+                "resource_id": "message-006"
+              },
+              "simulated_cost_units": 0.1,
+              "simulated_latency_ms": 10,
+              "tool": "inspect_resource",
+              "tool_description": "Read the current resource through the modeled resource-read path."
+            }
+          ],
+          "total_simulated_cost_units": 1.1,
+          "total_simulated_latency_ms": 110
+        },
+        {
+          "candidate": "Y",
+          "steps": [
+            {
+              "arguments": {
+                "field": "priority",
+                "resource_id": "message-006",
+                "value": "high"
+              },
+              "simulated_cost_units": 1.0,
+              "simulated_latency_ms": 100,
+              "tool": "apply_change",
+              "tool_description": "Request the specified state change. It returns a reported status and an operation ID, but the reported status can be affected by the disclosed fault process."
+            }
+          ],
+          "total_simulated_cost_units": 1.0,
+          "total_simulated_latency_ms": 100
+        }
+      ],
+      "collateral_constraints": [
+        {
+          "expected": 1,
+          "operator": "count_eq",
+          "path": "resources.__count__"
+        },
+        {
+          "expected": 2,
+          "operator": "version_ge",
+          "path": "resources.message-006.version"
+        }
+      ],
+      "consequence_mechanics": {
+        "affected_mock_dependents": 20,
+        "description": "Twenty mock dependents consume the resulting state before the next checkpoint.",
+        "recovery_actions_required": 5
+      },
+      "domain": "messaging",
+      "fault_context": {
+        "disclosed_mutation_fault_probability": 0.2
+      },
+      "required_outcome": {
+        "expected": "high",
+        "operator": "eq",
+        "path": "resources.message-006.priority"
+      },
+      "review_id": "hv-98a691fc6e89",
+      "task": "Change the mock message message-006 so that priority is 'high'."
+    },
+    {
+      "candidates": [
+        {
+          "candidate": "X",
+          "steps": [
+            {
+              "arguments": {
+                "field": "retention_days",
+                "resource_id": "file-010",
+                "value": 30
+              },
+              "simulated_cost_units": 1.0,
+              "simulated_latency_ms": 100,
+              "tool": "commit_update",
+              "tool_description": "Request the specified state change. It returns a reported status and an operation ID, but the reported status can be affected by the disclosed fault process."
+            }
+          ],
+          "total_simulated_cost_units": 1.0,
+          "total_simulated_latency_ms": 100
+        },
+        {
+          "candidate": "Y",
+          "steps": [
+            {
+              "arguments": {
+                "field": "retention_days",
+                "resource_id": "file-010",
+                "value": 30
+              },
+              "simulated_cost_units": 1.0,
+              "simulated_latency_ms": 100,
+              "tool": "commit_update",
+              "tool_description": "Request the specified state change. It returns a reported status and an operation ID, but the reported status can be affected by the disclosed fault process."
+            },
+            {
+              "arguments": {
+                "operation_id": "$mutation.operation_id"
+              },
+              "simulated_cost_units": 1.0,
+              "simulated_latency_ms": 100,
+              "tool": "get_operation",
+              "tool_description": "Resolve an operation ID against the modeled operation lifecycle ledger."
+            }
+          ],
+          "total_simulated_cost_units": 2.0,
+          "total_simulated_latency_ms": 200
+        }
+      ],
+      "collateral_constraints": [
+        {
+          "expected": 1,
+          "operator": "count_eq",
+          "path": "resources.__count__"
+        },
+        {
+          "expected": 2,
+          "operator": "version_ge",
+          "path": "resources.file-010.version"
+        }
+      ],
+      "consequence_mechanics": {
+        "affected_mock_dependents": 20,
+        "description": "Twenty mock dependents consume the resulting state before the next checkpoint.",
+        "recovery_actions_required": 5
+      },
+      "domain": "filesystem",
+      "fault_context": {
+        "disclosed_mutation_fault_probability": 0.0
+      },
+      "required_outcome": {
+        "expected": 30,
+        "operator": "eq",
+        "path": "resources.file-010.retention_days"
+      },
+      "review_id": "hv-e149d5ea16cb",
+      "task": "Change the mock file file-010 so that retention_days is 30."
+    },
+    {
+      "candidates": [
+        {
+          "candidate": "Y",
+          "steps": [
+            {
+              "arguments": {
+                "field": "archived",
+                "resource_id": "file-008",
+                "value": true
+              },
+              "simulated_cost_units": 1.0,
+              "simulated_latency_ms": 100,
+              "tool": "commit_update",
+              "tool_description": "Request the specified state change. It returns a reported status and an operation ID, but the reported status can be affected by the disclosed fault process."
+            }
+          ],
+          "total_simulated_cost_units": 1.0,
+          "total_simulated_latency_ms": 100
+        },
+        {
+          "candidate": "X",
+          "steps": [
+            {
+              "arguments": {
+                "field": "archived",
+                "resource_id": "file-008",
+                "value": true
+              },
+              "simulated_cost_units": 1.0,
+              "simulated_latency_ms": 100,
+              "tool": "commit_update",
+              "tool_description": "Request the specified state change. It returns a reported status and an operation ID, but the reported status can be affected by the disclosed fault process."
+            },
+            {
+              "arguments": {
+                "operation_id": "$mutation.operation_id"
+              },
+              "simulated_cost_units": 0.5,
+              "simulated_latency_ms": 50,
+              "tool": "get_operation",
+              "tool_description": "Resolve an operation ID against the modeled operation lifecycle ledger."
+            }
+          ],
+          "total_simulated_cost_units": 1.5,
+          "total_simulated_latency_ms": 150
+        }
+      ],
+      "collateral_constraints": [
+        {
+          "expected": 1,
+          "operator": "count_eq",
+          "path": "resources.__count__"
+        },
+        {
+          "expected": 2,
+          "operator": "version_ge",
+          "path": "resources.file-008.version"
+        }
+      ],
+      "consequence_mechanics": {
+        "affected_mock_dependents": 20,
+        "description": "Twenty mock dependents consume the resulting state before the next checkpoint.",
+        "recovery_actions_required": 5
+      },
+      "domain": "filesystem",
+      "fault_context": {
+        "disclosed_mutation_fault_probability": 0.05
+      },
+      "required_outcome": {
+        "expected": true,
+        "operator": "eq",
+        "path": "resources.file-008.archived"
+      },
+      "review_id": "hv-27926c015f7d",
+      "task": "Archive the mock file file-008 so that archived is True."
+    },
+    {
+      "candidates": [
+        {
+          "candidate": "Y",
+          "steps": [
+            {
+              "arguments": {
+                "field": "limit",
+                "resource_id": "record-006",
+                "value": 25
+              },
+              "simulated_cost_units": 1.0,
+              "simulated_latency_ms": 100,
+              "tool": "apply_change",
+              "tool_description": "Request the specified state change. It returns a reported status and an operation ID, but the reported status can be affected by the disclosed fault process."
+            },
+            {
+              "arguments": {
+                "freshness": "current",
+                "resource_id": "record-006"
+              },
+              "simulated_cost_units": 0.1,
+              "simulated_latency_ms": 10,
+              "tool": "inspect_resource",
+              "tool_description": "Read the current resource through the modeled resource-read path."
+            }
+          ],
+          "total_simulated_cost_units": 1.1,
+          "total_simulated_latency_ms": 110
+        },
+        {
+          "candidate": "X",
+          "steps": [
+            {
+              "arguments": {
+                "field": "limit",
+                "resource_id": "record-006",
+                "value": 25
+              },
+              "simulated_cost_units": 1.0,
+              "simulated_latency_ms": 100,
+              "tool": "apply_change",
+              "tool_description": "Request the specified state change. It returns a reported status and an operation ID, but the reported status can be affected by the disclosed fault process."
+            }
+          ],
+          "total_simulated_cost_units": 1.0,
+          "total_simulated_latency_ms": 100
+        }
+      ],
+      "collateral_constraints": [
+        {
+          "expected": 1,
+          "operator": "count_eq",
+          "path": "resources.__count__"
+        },
+        {
+          "expected": 2,
+          "operator": "version_ge",
+          "path": "resources.record-006.version"
+        }
+      ],
+      "consequence_mechanics": {
+        "affected_mock_dependents": 1,
+        "description": "One isolated mock dependent consumes the resulting state.",
+        "recovery_actions_required": 1
+      },
+      "domain": "database",
+      "fault_context": {
+        "disclosed_mutation_fault_probability": 0.2
+      },
+      "required_outcome": {
+        "expected": 25,
+        "operator": "eq",
+        "path": "resources.record-006.limit"
+      },
+      "review_id": "hv-365ab9db5990",
+      "task": "Update the mock record record-006 so that limit is 25."
+    },
+    {
+      "candidates": [
+        {
+          "candidate": "X",
+          "steps": [
+            {
+              "arguments": {
+                "field": "reminder_minutes",
+                "resource_id": "event-010",
+                "value": 30
+              },
+              "simulated_cost_units": 1.0,
+              "simulated_latency_ms": 100,
+              "tool": "apply_change",
+              "tool_description": "Request the specified state change. It returns a reported status and an operation ID, but the reported status can be affected by the disclosed fault process."
+            },
+            {
+              "arguments": {
+                "operation_id": "$mutation.operation_id"
+              },
+              "simulated_cost_units": 1.0,
+              "simulated_latency_ms": 100,
+              "tool": "lookup_operation",
+              "tool_description": "Resolve an operation ID against the modeled operation lifecycle ledger."
+            }
+          ],
+          "total_simulated_cost_units": 2.0,
+          "total_simulated_latency_ms": 200
+        },
+        {
+          "candidate": "Y",
+          "steps": [
+            {
+              "arguments": {
+                "field": "reminder_minutes",
+                "resource_id": "event-010",
+                "value": 30
+              },
+              "simulated_cost_units": 1.0,
+              "simulated_latency_ms": 100,
+              "tool": "apply_change",
+              "tool_description": "Request the specified state change. It returns a reported status and an operation ID, but the reported status can be affected by the disclosed fault process."
+            }
+          ],
+          "total_simulated_cost_units": 1.0,
+          "total_simulated_latency_ms": 100
+        }
+      ],
+      "collateral_constraints": [
+        {
+          "expected": 1,
+          "operator": "count_eq",
+          "path": "resources.__count__"
+        },
+        {
+          "expected": 2,
+          "operator": "version_ge",
+          "path": "resources.event-010.version"
+        }
+      ],
+      "consequence_mechanics": {
+        "affected_mock_dependents": 1,
+        "description": "One isolated mock dependent consumes the resulting state.",
+        "recovery_actions_required": 1
+      },
+      "domain": "calendar",
+      "fault_context": {
+        "disclosed_mutation_fault_probability": 0.0
+      },
+      "required_outcome": {
+        "expected": 30,
+        "operator": "eq",
+        "path": "resources.event-010.reminder_minutes"
+      },
+      "review_id": "hv-694e1fab55a3",
+      "task": "Change the mock event event-010 so that reminder_minutes is 30."
+    },
+    {
+      "candidates": [
+        {
+          "candidate": "X",
+          "steps": [
+            {
+              "arguments": {
+                "field": "renewal",
+                "resource_id": "subscription-010",
+                "value": false
+              },
+              "simulated_cost_units": 1.0,
+              "simulated_latency_ms": 100,
+              "tool": "commit_update",
+              "tool_description": "Request the specified state change. It returns a reported status and an operation ID, but the reported status can be affected by the disclosed fault process."
+            }
+          ],
+          "total_simulated_cost_units": 1.0,
+          "total_simulated_latency_ms": 100
+        },
+        {
+          "candidate": "Y",
+          "steps": [
+            {
+              "arguments": {
+                "field": "renewal",
+                "resource_id": "subscription-010",
+                "value": false
+              },
+              "simulated_cost_units": 1.0,
+              "simulated_latency_ms": 100,
+              "tool": "commit_update",
+              "tool_description": "Request the specified state change. It returns a reported status and an operation ID, but the reported status can be affected by the disclosed fault process."
+            },
+            {
+              "arguments": {
+                "freshness": "current",
+                "resource_id": "subscription-010"
+              },
+              "simulated_cost_units": 1.0,
+              "simulated_latency_ms": 100,
+              "tool": "fetch_resource",
+              "tool_description": "Read the current resource through the modeled resource-read path."
+            }
+          ],
+          "total_simulated_cost_units": 2.0,
+          "total_simulated_latency_ms": 200
+        }
+      ],
+      "collateral_constraints": [
+        {
+          "expected": 1,
+          "operator": "count_eq",
+          "path": "resources.__count__"
+        },
+        {
+          "expected": 2,
+          "operator": "version_ge",
+          "path": "resources.subscription-010.version"
+        }
+      ],
+      "consequence_mechanics": {
+        "affected_mock_dependents": 1,
+        "description": "One isolated mock dependent consumes the resulting state.",
+        "recovery_actions_required": 1
+      },
+      "domain": "subscription",
+      "fault_context": {
+        "disclosed_mutation_fault_probability": 0.0
+      },
+      "required_outcome": {
+        "expected": false,
+        "operator": "eq",
+        "path": "resources.subscription-010.renewal"
+      },
+      "review_id": "hv-fd362724515e",
+      "task": "Disable the mock subscription subscription-010 so that renewal is False."
+    },
+    {
+      "candidates": [
+        {
+          "candidate": "Y",
+          "steps": [
+            {
+              "arguments": {
+                "field": "category",
+                "resource_id": "record-007",
+                "value": "special"
+              },
+              "simulated_cost_units": 1.0,
+              "simulated_latency_ms": 100,
+              "tool": "commit_update",
+              "tool_description": "Request the specified state change. It returns a reported status and an operation ID, but the reported status can be affected by the disclosed fault process."
+            }
+          ],
+          "total_simulated_cost_units": 1.0,
+          "total_simulated_latency_ms": 100
+        },
+        {
+          "candidate": "X",
+          "steps": [
+            {
+              "arguments": {
+                "field": "category",
+                "resource_id": "record-007",
+                "value": "special"
+              },
+              "simulated_cost_units": 1.0,
+              "simulated_latency_ms": 100,
+              "tool": "commit_update",
+              "tool_description": "Request the specified state change. It returns a reported status and an operation ID, but the reported status can be affected by the disclosed fault process."
+            },
+            {
+              "arguments": {
+                "freshness": "current",
+                "resource_id": "record-007"
+              },
+              "simulated_cost_units": 0.5,
+              "simulated_latency_ms": 50,
+              "tool": "fetch_resource",
+              "tool_description": "Read the current resource through the modeled resource-read path."
+            }
+          ],
+          "total_simulated_cost_units": 1.5,
+          "total_simulated_latency_ms": 150
+        }
+      ],
+      "collateral_constraints": [
+        {
+          "expected": 1,
+          "operator": "count_eq",
+          "path": "resources.__count__"
+        },
+        {
+          "expected": 2,
+          "operator": "version_ge",
+          "path": "resources.record-007.version"
+        }
+      ],
+      "consequence_mechanics": {
+        "affected_mock_dependents": 20,
+        "description": "Twenty mock dependents consume the resulting state before the next checkpoint.",
+        "recovery_actions_required": 5
+      },
+      "domain": "database",
+      "fault_context": {
+        "disclosed_mutation_fault_probability": 0.0
+      },
+      "required_outcome": {
+        "expected": "special",
+        "operator": "eq",
+        "path": "resources.record-007.category"
+      },
+      "review_id": "hv-4ad838d892be",
+      "task": "Classify the mock record record-007 so that category is 'special'."
+    },
+    {
+      "candidates": [
+        {
+          "candidate": "Y",
+          "steps": [
+            {
+              "arguments": {
+                "field": "expiry_day",
+                "resource_id": "record-012",
+                "value": 20
+              },
+              "simulated_cost_units": 1.0,
+              "simulated_latency_ms": 100,
+              "tool": "apply_change",
+              "tool_description": "Request the specified state change. It returns a reported status and an operation ID, but the reported status can be affected by the disclosed fault process."
+            },
+            {
+              "arguments": {
+                "freshness": "current",
+                "resource_id": "record-012"
+              },
+              "simulated_cost_units": 0.5,
+              "simulated_latency_ms": 50,
+              "tool": "inspect_resource",
+              "tool_description": "Read the current resource through the modeled resource-read path."
+            },
+            {
+              "arguments": {
+                "operation_id": "$mutation.operation_id"
+              },
+              "simulated_cost_units": 0.5,
+              "simulated_latency_ms": 50,
+              "tool": "inspect_history",
+              "tool_description": "Read the modeled append-only history for an operation ID."
+            }
+          ],
+          "total_simulated_cost_units": 2.0,
+          "total_simulated_latency_ms": 200
+        },
+        {
+          "candidate": "X",
+          "steps": [
+            {
+              "arguments": {
+                "field": "expiry_day",
+                "resource_id": "record-012",
+                "value": 20
+              },
+              "simulated_cost_units": 1.0,
+              "simulated_latency_ms": 100,
+              "tool": "apply_change",
+              "tool_description": "Request the specified state change. It returns a reported status and an operation ID, but the reported status can be affected by the disclosed fault process."
+            }
+          ],
+          "total_simulated_cost_units": 1.0,
+          "total_simulated_latency_ms": 100
+        }
+      ],
+      "collateral_constraints": [
+        {
+          "expected": 1,
+          "operator": "count_eq",
+          "path": "resources.__count__"
+        },
+        {
+          "expected": 2,
+          "operator": "version_ge",
+          "path": "resources.record-012.version"
+        }
+      ],
+      "consequence_mechanics": {
+        "affected_mock_dependents": 1,
+        "description": "One isolated mock dependent consumes the resulting state.",
+        "recovery_actions_required": 1
+      },
+      "domain": "database",
+      "fault_context": {
+        "disclosed_mutation_fault_probability": 0.2
+      },
+      "required_outcome": {
+        "expected": 20,
+        "operator": "eq",
+        "path": "resources.record-012.expiry_day"
+      },
+      "review_id": "hv-f9d5ecd04076",
+      "task": "Extend the mock record record-012 so that expiry_day is 20."
+    },
+    {
+      "candidates": [
+        {
+          "candidate": "X",
+          "steps": [
+            {
+              "arguments": {
+                "field": "subject",
+                "resource_id": "message-001",
+                "value": "Approved"
+              },
+              "simulated_cost_units": 1.0,
+              "simulated_latency_ms": 100,
+              "tool": "apply_change",
+              "tool_description": "Request the specified state change. It returns a reported status and an operation ID, but the reported status can be affected by the disclosed fault process."
+            },
+            {
+              "arguments": {
+                "freshness": "current",
+                "resource_id": "message-001"
+              },
+              "simulated_cost_units": 0.0,
+              "simulated_latency_ms": 0,
+              "tool": "inspect_resource",
+              "tool_description": "Read the current resource through the modeled resource-read path."
+            },
+            {
+              "arguments": {
+                "operation_id": "$mutation.operation_id"
+              },
+              "simulated_cost_units": 0.0,
+              "simulated_latency_ms": 0,
+              "tool": "inspect_history",
+              "tool_description": "Read the modeled append-only history for an operation ID."
+            }
+          ],
+          "total_simulated_cost_units": 1.0,
+          "total_simulated_latency_ms": 100
+        },
+        {
+          "candidate": "Y",
+          "steps": [
+            {
+              "arguments": {
+                "field": "subject",
+                "resource_id": "message-001",
+                "value": "Approved"
+              },
+              "simulated_cost_units": 1.0,
+              "simulated_latency_ms": 100,
+              "tool": "apply_change",
+              "tool_description": "Request the specified state change. It returns a reported status and an operation ID, but the reported status can be affected by the disclosed fault process."
+            }
+          ],
+          "total_simulated_cost_units": 1.0,
+          "total_simulated_latency_ms": 100
+        }
+      ],
+      "collateral_constraints": [
+        {
+          "expected": 1,
+          "operator": "count_eq",
+          "path": "resources.__count__"
+        },
+        {
+          "expected": 2,
+          "operator": "version_ge",
+          "path": "resources.message-001.version"
+        }
+      ],
+      "consequence_mechanics": {
+        "affected_mock_dependents": 1,
+        "description": "One isolated mock dependent consumes the resulting state.",
+        "recovery_actions_required": 1
+      },
+      "domain": "messaging",
+      "fault_context": {
+        "disclosed_mutation_fault_probability": 0.0
+      },
+      "required_outcome": {
+        "expected": "Approved",
+        "operator": "eq",
+        "path": "resources.message-001.subject"
+      },
+      "review_id": "hv-ac66cea90292",
+      "task": "Change the mock message message-001 so that subject is 'Approved'."
+    },
+    {
+      "candidates": [
+        {
+          "candidate": "X",
+          "steps": [
+            {
+              "arguments": {
+                "field": "rollout_percent",
+                "resource_id": "setting-012",
+                "value": 25
+              },
+              "simulated_cost_units": 1.0,
+              "simulated_latency_ms": 100,
+              "tool": "commit_update",
+              "tool_description": "Request the specified state change. It returns a reported status and an operation ID, but the reported status can be affected by the disclosed fault process."
+            }
+          ],
+          "total_simulated_cost_units": 1.0,
+          "total_simulated_latency_ms": 100
+        },
+        {
+          "candidate": "Y",
+          "steps": [
+            {
+              "arguments": {
+                "field": "rollout_percent",
+                "resource_id": "setting-012",
+                "value": 25
+              },
+              "simulated_cost_units": 1.0,
+              "simulated_latency_ms": 100,
+              "tool": "commit_update",
+              "tool_description": "Request the specified state change. It returns a reported status and an operation ID, but the reported status can be affected by the disclosed fault process."
+            },
+            {
+              "arguments": {
+                "operation_id": "$mutation.operation_id"
+              },
+              "simulated_cost_units": 1.0,
+              "simulated_latency_ms": 100,
+              "tool": "get_operation",
+              "tool_description": "Resolve an operation ID against the modeled operation lifecycle ledger."
+            }
+          ],
+          "total_simulated_cost_units": 2.0,
+          "total_simulated_latency_ms": 200
+        }
+      ],
+      "collateral_constraints": [
+        {
+          "expected": 1,
+          "operator": "count_eq",
+          "path": "resources.__count__"
+        },
+        {
+          "expected": 2,
+          "operator": "version_ge",
+          "path": "resources.setting-012.version"
+        }
+      ],
+      "consequence_mechanics": {
+        "affected_mock_dependents": 1,
+        "description": "One isolated mock dependent consumes the resulting state.",
+        "recovery_actions_required": 1
+      },
+      "domain": "configuration",
+      "fault_context": {
+        "disclosed_mutation_fault_probability": 0.2
+      },
+      "required_outcome": {
+        "expected": 25,
+        "operator": "eq",
+        "path": "resources.setting-012.rollout_percent"
+      },
+      "review_id": "hv-b47482604bb7",
+      "task": "Increase the mock setting setting-012 so that rollout_percent is 25."
+    },
+    {
+      "candidates": [
+        {
+          "candidate": "Y",
+          "steps": [
+            {
+              "arguments": {
+                "field": "visibility",
+                "resource_id": "event-008",
+                "value": "private"
+              },
+              "simulated_cost_units": 1.0,
+              "simulated_latency_ms": 100,
+              "tool": "commit_update",
+              "tool_description": "Request the specified state change. It returns a reported status and an operation ID, but the reported status can be affected by the disclosed fault process."
+            }
+          ],
+          "total_simulated_cost_units": 1.0,
+          "total_simulated_latency_ms": 100
+        },
+        {
+          "candidate": "X",
+          "steps": [
+            {
+              "arguments": {
+                "field": "visibility",
+                "resource_id": "event-008",
+                "value": "private"
+              },
+              "simulated_cost_units": 1.0,
+              "simulated_latency_ms": 100,
+              "tool": "commit_update",
+              "tool_description": "Request the specified state change. It returns a reported status and an operation ID, but the reported status can be affected by the disclosed fault process."
+            },
+            {
+              "arguments": {
+                "operation_id": "$mutation.operation_id"
+              },
+              "simulated_cost_units": 0.5,
+              "simulated_latency_ms": 50,
+              "tool": "get_operation",
+              "tool_description": "Resolve an operation ID against the modeled operation lifecycle ledger."
+            }
+          ],
+          "total_simulated_cost_units": 1.5,
+          "total_simulated_latency_ms": 150
+        }
+      ],
+      "collateral_constraints": [
+        {
+          "expected": 1,
+          "operator": "count_eq",
+          "path": "resources.__count__"
+        },
+        {
+          "expected": 2,
+          "operator": "version_ge",
+          "path": "resources.event-008.version"
+        }
+      ],
+      "consequence_mechanics": {
+        "affected_mock_dependents": 1,
+        "description": "One isolated mock dependent consumes the resulting state.",
+        "recovery_actions_required": 1
+      },
+      "domain": "calendar",
+      "fault_context": {
+        "disclosed_mutation_fault_probability": 0.05
+      },
+      "required_outcome": {
+        "expected": "private",
+        "operator": "eq",
+        "path": "resources.event-008.visibility"
+      },
+      "review_id": "hv-02ee501f379b",
+      "task": "Change the mock event event-008 so that visibility is 'private'."
+    },
+    {
+      "candidates": [
+        {
+          "candidate": "Y",
+          "steps": [
+            {
+              "arguments": {
+                "field": "warehouse",
+                "resource_id": "order-008",
+                "value": "wh-b"
+              },
+              "simulated_cost_units": 1.0,
+              "simulated_latency_ms": 100,
+              "tool": "apply_change",
+              "tool_description": "Request the specified state change. It returns a reported status and an operation ID, but the reported status can be affected by the disclosed fault process."
+            },
+            {
+              "arguments": {
+                "operation_id": "$mutation.operation_id"
+              },
+              "simulated_cost_units": 0.5,
+              "simulated_latency_ms": 50,
+              "tool": "lookup_operation",
+              "tool_description": "Resolve an operation ID against the modeled operation lifecycle ledger."
+            }
+          ],
+          "total_simulated_cost_units": 1.5,
+          "total_simulated_latency_ms": 150
+        },
+        {
+          "candidate": "X",
+          "steps": [
+            {
+              "arguments": {
+                "field": "warehouse",
+                "resource_id": "order-008",
+                "value": "wh-b"
+              },
+              "simulated_cost_units": 1.0,
+              "simulated_latency_ms": 100,
+              "tool": "apply_change",
+              "tool_description": "Request the specified state change. It returns a reported status and an operation ID, but the reported status can be affected by the disclosed fault process."
+            }
+          ],
+          "total_simulated_cost_units": 1.0,
+          "total_simulated_latency_ms": 100
+        }
+      ],
+      "collateral_constraints": [
+        {
+          "expected": 1,
+          "operator": "count_eq",
+          "path": "resources.__count__"
+        },
+        {
+          "expected": 2,
+          "operator": "version_ge",
+          "path": "resources.order-008.version"
+        }
+      ],
+      "consequence_mechanics": {
+        "affected_mock_dependents": 20,
+        "description": "Twenty mock dependents consume the resulting state before the next checkpoint.",
+        "recovery_actions_required": 5
+      },
+      "domain": "commerce",
+      "fault_context": {
+        "disclosed_mutation_fault_probability": 0.05
+      },
+      "required_outcome": {
+        "expected": "wh-b",
+        "operator": "eq",
+        "path": "resources.order-008.warehouse"
+      },
+      "review_id": "hv-d801e563534a",
+      "task": "Reroute the mock order order-008 so that warehouse is 'wh-b'."
+    },
+    {
+      "candidates": [
+        {
+          "candidate": "X",
+          "steps": [
+            {
+              "arguments": {
+                "field": "conference",
+                "resource_id": "event-011",
+                "value": "mock-video"
+              },
+              "simulated_cost_units": 1.0,
+              "simulated_latency_ms": 100,
+              "tool": "apply_change",
+              "tool_description": "Request the specified state change. It returns a reported status and an operation ID, but the reported status can be affected by the disclosed fault process."
+            },
+            {
+              "arguments": {
+                "freshness": "current",
+                "resource_id": "event-011"
+              },
+              "simulated_cost_units": 1.0,
+              "simulated_latency_ms": 100,
+              "tool": "inspect_resource",
+              "tool_description": "Read the current resource through the modeled resource-read path."
+            }
+          ],
+          "total_simulated_cost_units": 2.0,
+          "total_simulated_latency_ms": 200
+        },
+        {
+          "candidate": "Y",
+          "steps": [
+            {
+              "arguments": {
+                "field": "conference",
+                "resource_id": "event-011",
+                "value": "mock-video"
+              },
+              "simulated_cost_units": 1.0,
+              "simulated_latency_ms": 100,
+              "tool": "apply_change",
+              "tool_description": "Request the specified state change. It returns a reported status and an operation ID, but the reported status can be affected by the disclosed fault process."
+            }
+          ],
+          "total_simulated_cost_units": 1.0,
+          "total_simulated_latency_ms": 100
+        }
+      ],
+      "collateral_constraints": [
+        {
+          "expected": 1,
+          "operator": "count_eq",
+          "path": "resources.__count__"
+        },
+        {
+          "expected": 2,
+          "operator": "version_ge",
+          "path": "resources.event-011.version"
+        }
+      ],
+      "consequence_mechanics": {
+        "affected_mock_dependents": 20,
+        "description": "Twenty mock dependents consume the resulting state before the next checkpoint.",
+        "recovery_actions_required": 5
+      },
+      "domain": "calendar",
+      "fault_context": {
+        "disclosed_mutation_fault_probability": 0.05
+      },
+      "required_outcome": {
+        "expected": "mock-video",
+        "operator": "eq",
+        "path": "resources.event-011.conference"
+      },
+      "review_id": "hv-40b8129a45bd",
+      "task": "Add the mock event event-011 so that conference is 'mock-video'."
+    },
+    {
+      "candidates": [
+        {
+          "candidate": "X",
+          "steps": [
+            {
+              "arguments": {
+                "field": "contact_method",
+                "resource_id": "profile-005",
+                "value": "sms"
+              },
+              "simulated_cost_units": 1.0,
+              "simulated_latency_ms": 100,
+              "tool": "commit_update",
+              "tool_description": "Request the specified state change. It returns a reported status and an operation ID, but the reported status can be affected by the disclosed fault process."
+            }
+          ],
+          "total_simulated_cost_units": 1.0,
+          "total_simulated_latency_ms": 100
+        },
+        {
+          "candidate": "Y",
+          "steps": [
+            {
+              "arguments": {
+                "field": "contact_method",
+                "resource_id": "profile-005",
+                "value": "sms"
+              },
+              "simulated_cost_units": 1.0,
+              "simulated_latency_ms": 100,
+              "tool": "commit_update",
+              "tool_description": "Request the specified state change. It returns a reported status and an operation ID, but the reported status can be affected by the disclosed fault process."
+            },
+            {
+              "arguments": {
+                "freshness": "current",
+                "resource_id": "profile-005"
+              },
+              "simulated_cost_units": 0.1,
+              "simulated_latency_ms": 10,
+              "tool": "fetch_resource",
+              "tool_description": "Read the current resource through the modeled resource-read path."
+            }
+          ],
+          "total_simulated_cost_units": 1.1,
+          "total_simulated_latency_ms": 110
+        }
+      ],
+      "collateral_constraints": [
+        {
+          "expected": 1,
+          "operator": "count_eq",
+          "path": "resources.__count__"
+        },
+        {
+          "expected": 2,
+          "operator": "version_ge",
+          "path": "resources.profile-005.version"
+        }
+      ],
+      "consequence_mechanics": {
+        "affected_mock_dependents": 1,
+        "description": "One isolated mock dependent consumes the resulting state.",
+        "recovery_actions_required": 1
+      },
+      "domain": "profile",
+      "fault_context": {
+        "disclosed_mutation_fault_probability": 0.05
+      },
+      "required_outcome": {
+        "expected": "sms",
+        "operator": "eq",
+        "path": "resources.profile-005.contact_method"
+      },
+      "review_id": "hv-9bc690514d79",
+      "task": "Change the mock profile profile-005 so that contact_method is 'sms'."
+    },
+    {
+      "candidates": [
+        {
+          "candidate": "Y",
+          "steps": [
+            {
+              "arguments": {
+                "field": "status",
+                "resource_id": "subscription-005",
+                "value": "active"
+              },
+              "simulated_cost_units": 1.0,
+              "simulated_latency_ms": 100,
+              "tool": "commit_update",
+              "tool_description": "Request the specified state change. It returns a reported status and an operation ID, but the reported status can be affected by the disclosed fault process."
+            }
+          ],
+          "total_simulated_cost_units": 1.0,
+          "total_simulated_latency_ms": 100
+        },
+        {
+          "candidate": "X",
+          "steps": [
+            {
+              "arguments": {
+                "field": "status",
+                "resource_id": "subscription-005",
+                "value": "active"
+              },
+              "simulated_cost_units": 1.0,
+              "simulated_latency_ms": 100,
+              "tool": "commit_update",
+              "tool_description": "Request the specified state change. It returns a reported status and an operation ID, but the reported status can be affected by the disclosed fault process."
+            },
+            {
+              "arguments": {
+                "freshness": "current",
+                "resource_id": "subscription-005"
+              },
+              "simulated_cost_units": 0.1,
+              "simulated_latency_ms": 10,
+              "tool": "fetch_resource",
+              "tool_description": "Read the current resource through the modeled resource-read path."
+            }
+          ],
+          "total_simulated_cost_units": 1.1,
+          "total_simulated_latency_ms": 110
+        }
+      ],
+      "collateral_constraints": [
+        {
+          "expected": 1,
+          "operator": "count_eq",
+          "path": "resources.__count__"
+        },
+        {
+          "expected": 2,
+          "operator": "version_ge",
+          "path": "resources.subscription-005.version"
+        }
+      ],
+      "consequence_mechanics": {
+        "affected_mock_dependents": 20,
+        "description": "Twenty mock dependents consume the resulting state before the next checkpoint.",
+        "recovery_actions_required": 5
+      },
+      "domain": "subscription",
+      "fault_context": {
+        "disclosed_mutation_fault_probability": 0.05
+      },
+      "required_outcome": {
+        "expected": "active",
+        "operator": "eq",
+        "path": "resources.subscription-005.status"
+      },
+      "review_id": "hv-f6d6e356db6f",
+      "task": "Reactivate the mock subscription subscription-005 so that status is 'active'."
+    },
+    {
+      "candidates": [
+        {
+          "candidate": "Y",
+          "steps": [
+            {
+              "arguments": {
+                "field": "retries",
+                "resource_id": "setting-005",
+                "value": 3
+              },
+              "simulated_cost_units": 1.0,
+              "simulated_latency_ms": 100,
+              "tool": "apply_change",
+              "tool_description": "Request the specified state change. It returns a reported status and an operation ID, but the reported status can be affected by the disclosed fault process."
+            },
+            {
+              "arguments": {
+                "freshness": "current",
+                "resource_id": "setting-005"
+              },
+              "simulated_cost_units": 0.05,
+              "simulated_latency_ms": 5,
+              "tool": "inspect_resource",
+              "tool_description": "Read the current resource through the modeled resource-read path."
+            },
+            {
+              "arguments": {
+                "operation_id": "$mutation.operation_id"
+              },
+              "simulated_cost_units": 0.05,
+              "simulated_latency_ms": 5,
+              "tool": "inspect_history",
+              "tool_description": "Read the modeled append-only history for an operation ID."
+            }
+          ],
+          "total_simulated_cost_units": 1.1,
+          "total_simulated_latency_ms": 110
+        },
+        {
+          "candidate": "X",
+          "steps": [
+            {
+              "arguments": {
+                "field": "retries",
+                "resource_id": "setting-005",
+                "value": 3
+              },
+              "simulated_cost_units": 1.0,
+              "simulated_latency_ms": 100,
+              "tool": "apply_change",
+              "tool_description": "Request the specified state change. It returns a reported status and an operation ID, but the reported status can be affected by the disclosed fault process."
+            }
+          ],
+          "total_simulated_cost_units": 1.0,
+          "total_simulated_latency_ms": 100
+        }
+      ],
+      "collateral_constraints": [
+        {
+          "expected": 1,
+          "operator": "count_eq",
+          "path": "resources.__count__"
+        },
+        {
+          "expected": 2,
+          "operator": "version_ge",
+          "path": "resources.setting-005.version"
+        }
+      ],
+      "consequence_mechanics": {
+        "affected_mock_dependents": 20,
+        "description": "Twenty mock dependents consume the resulting state before the next checkpoint.",
+        "recovery_actions_required": 5
+      },
+      "domain": "configuration",
+      "fault_context": {
+        "disclosed_mutation_fault_probability": 0.05
+      },
+      "required_outcome": {
+        "expected": 3,
+        "operator": "eq",
+        "path": "resources.setting-005.retries"
+      },
+      "review_id": "hv-b4cde62e8d4d",
+      "task": "Increase the mock setting setting-005 so that retries is 3."
+    },
+    {
+      "candidates": [
+        {
+          "candidate": "X",
+          "steps": [
+            {
+              "arguments": {
+                "field": "status",
+                "resource_id": "subscription-003",
+                "value": "active"
+              },
+              "simulated_cost_units": 1.0,
+              "simulated_latency_ms": 100,
+              "tool": "apply_change",
+              "tool_description": "Request the specified state change. It returns a reported status and an operation ID, but the reported status can be affected by the disclosed fault process."
+            },
+            {
+              "arguments": {
+                "freshness": "current",
+                "resource_id": "subscription-003"
+              },
+              "simulated_cost_units": 0.0,
+              "simulated_latency_ms": 0,
+              "tool": "inspect_resource",
+              "tool_description": "Read the current resource through the modeled resource-read path."
+            }
+          ],
+          "total_simulated_cost_units": 1.0,
+          "total_simulated_latency_ms": 100
+        },
+        {
+          "candidate": "Y",
+          "steps": [
+            {
+              "arguments": {
+                "field": "status",
+                "resource_id": "subscription-003",
+                "value": "active"
+              },
+              "simulated_cost_units": 1.0,
+              "simulated_latency_ms": 100,
+              "tool": "apply_change",
+              "tool_description": "Request the specified state change. It returns a reported status and an operation ID, but the reported status can be affected by the disclosed fault process."
+            }
+          ],
+          "total_simulated_cost_units": 1.0,
+          "total_simulated_latency_ms": 100
+        }
+      ],
+      "collateral_constraints": [
+        {
+          "expected": 1,
+          "operator": "count_eq",
+          "path": "resources.__count__"
+        },
+        {
+          "expected": 2,
+          "operator": "version_ge",
+          "path": "resources.subscription-003.version"
+        }
+      ],
+      "consequence_mechanics": {
+        "affected_mock_dependents": 20,
+        "description": "Twenty mock dependents consume the resulting state before the next checkpoint.",
+        "recovery_actions_required": 5
+      },
+      "domain": "subscription",
+      "fault_context": {
+        "disclosed_mutation_fault_probability": 0.2
+      },
+      "required_outcome": {
+        "expected": "active",
+        "operator": "eq",
+        "path": "resources.subscription-003.status"
+      },
+      "review_id": "hv-22c55dd127c1",
+      "task": "Resume the mock subscription subscription-003 so that status is 'active'."
+    },
+    {
+      "candidates": [
+        {
+          "candidate": "X",
+          "steps": [
+            {
+              "arguments": {
+                "field": "day",
+                "resource_id": "event-001",
+                "value": "2026-10-06"
+              },
+              "simulated_cost_units": 1.0,
+              "simulated_latency_ms": 100,
+              "tool": "commit_update",
+              "tool_description": "Request the specified state change. It returns a reported status and an operation ID, but the reported status can be affected by the disclosed fault process."
+            }
+          ],
+          "total_simulated_cost_units": 1.0,
+          "total_simulated_latency_ms": 100
+        },
+        {
+          "candidate": "Y",
+          "steps": [
+            {
+              "arguments": {
+                "field": "day",
+                "resource_id": "event-001",
+                "value": "2026-10-06"
+              },
+              "simulated_cost_units": 1.0,
+              "simulated_latency_ms": 100,
+              "tool": "commit_update",
+              "tool_description": "Request the specified state change. It returns a reported status and an operation ID, but the reported status can be affected by the disclosed fault process."
+            },
+            {
+              "arguments": {
+                "freshness": "current",
+                "resource_id": "event-001"
+              },
+              "simulated_cost_units": 0.0,
+              "simulated_latency_ms": 0,
+              "tool": "fetch_resource",
+              "tool_description": "Read the current resource through the modeled resource-read path."
+            },
+            {
+              "arguments": {
+                "operation_id": "$mutation.operation_id"
+              },
+              "simulated_cost_units": 0.0,
+              "simulated_latency_ms": 0,
+              "tool": "fetch_history",
+              "tool_description": "Read the modeled append-only history for an operation ID."
+            }
+          ],
+          "total_simulated_cost_units": 1.0,
+          "total_simulated_latency_ms": 100
+        }
+      ],
+      "collateral_constraints": [
+        {
+          "expected": 1,
+          "operator": "count_eq",
+          "path": "resources.__count__"
+        },
+        {
+          "expected": 2,
+          "operator": "version_ge",
+          "path": "resources.event-001.version"
+        }
+      ],
+      "consequence_mechanics": {
+        "affected_mock_dependents": 20,
+        "description": "Twenty mock dependents consume the resulting state before the next checkpoint.",
+        "recovery_actions_required": 5
+      },
+      "domain": "calendar",
+      "fault_context": {
+        "disclosed_mutation_fault_probability": 0.0
+      },
+      "required_outcome": {
+        "expected": "2026-10-06",
+        "operator": "eq",
+        "path": "resources.event-001.day"
+      },
+      "review_id": "hv-a3a1cc2ce491",
+      "task": "Reschedule the mock event event-001 so that day is '2026-10-06'."
+    },
+    {
+      "candidates": [
+        {
+          "candidate": "Y",
+          "steps": [
+            {
+              "arguments": {
+                "field": "status",
+                "resource_id": "message-004",
+                "value": "cancelled"
+              },
+              "simulated_cost_units": 1.0,
+              "simulated_latency_ms": 100,
+              "tool": "commit_update",
+              "tool_description": "Request the specified state change. It returns a reported status and an operation ID, but the reported status can be affected by the disclosed fault process."
+            }
+          ],
+          "total_simulated_cost_units": 1.0,
+          "total_simulated_latency_ms": 100
+        },
+        {
+          "candidate": "X",
+          "steps": [
+            {
+              "arguments": {
+                "field": "status",
+                "resource_id": "message-004",
+                "value": "cancelled"
+              },
+              "simulated_cost_units": 1.0,
+              "simulated_latency_ms": 100,
+              "tool": "commit_update",
+              "tool_description": "Request the specified state change. It returns a reported status and an operation ID, but the reported status can be affected by the disclosed fault process."
+            },
+            {
+              "arguments": {
+                "operation_id": "$mutation.operation_id"
+              },
+              "simulated_cost_units": 0.1,
+              "simulated_latency_ms": 10,
+              "tool": "get_operation",
+              "tool_description": "Resolve an operation ID against the modeled operation lifecycle ledger."
+            }
+          ],
+          "total_simulated_cost_units": 1.1,
+          "total_simulated_latency_ms": 110
+        }
+      ],
+      "collateral_constraints": [
+        {
+          "expected": 1,
+          "operator": "count_eq",
+          "path": "resources.__count__"
+        },
+        {
+          "expected": 2,
+          "operator": "version_ge",
+          "path": "resources.message-004.version"
+        }
+      ],
+      "consequence_mechanics": {
+        "affected_mock_dependents": 20,
+        "description": "Twenty mock dependents consume the resulting state before the next checkpoint.",
+        "recovery_actions_required": 5
+      },
+      "domain": "messaging",
+      "fault_context": {
+        "disclosed_mutation_fault_probability": 0.0
+      },
+      "required_outcome": {
+        "expected": "cancelled",
+        "operator": "eq",
+        "path": "resources.message-004.status"
+      },
+      "review_id": "hv-9884bb3d8f15",
+      "task": "Cancel the mock message message-004 so that status is 'cancelled'."
+    },
+    {
+      "candidates": [
+        {
+          "candidate": "Y",
+          "steps": [
+            {
+              "arguments": {
+                "field": "locale",
+                "resource_id": "profile-003",
+                "value": "es-US"
+              },
+              "simulated_cost_units": 1.0,
+              "simulated_latency_ms": 100,
+              "tool": "apply_change",
+              "tool_description": "Request the specified state change. It returns a reported status and an operation ID, but the reported status can be affected by the disclosed fault process."
+            },
+            {
+              "arguments": {
+                "freshness": "current",
+                "resource_id": "profile-003"
+              },
+              "simulated_cost_units": 0.0,
+              "simulated_latency_ms": 0,
+              "tool": "inspect_resource",
+              "tool_description": "Read the current resource through the modeled resource-read path."
+            }
+          ],
+          "total_simulated_cost_units": 1.0,
+          "total_simulated_latency_ms": 100
+        },
+        {
+          "candidate": "X",
+          "steps": [
+            {
+              "arguments": {
+                "field": "locale",
+                "resource_id": "profile-003",
+                "value": "es-US"
+              },
+              "simulated_cost_units": 1.0,
+              "simulated_latency_ms": 100,
+              "tool": "apply_change",
+              "tool_description": "Request the specified state change. It returns a reported status and an operation ID, but the reported status can be affected by the disclosed fault process."
+            }
+          ],
+          "total_simulated_cost_units": 1.0,
+          "total_simulated_latency_ms": 100
+        }
+      ],
+      "collateral_constraints": [
+        {
+          "expected": 1,
+          "operator": "count_eq",
+          "path": "resources.__count__"
+        },
+        {
+          "expected": 2,
+          "operator": "version_ge",
+          "path": "resources.profile-003.version"
+        }
+      ],
+      "consequence_mechanics": {
+        "affected_mock_dependents": 1,
+        "description": "One isolated mock dependent consumes the resulting state.",
+        "recovery_actions_required": 1
+      },
+      "domain": "profile",
+      "fault_context": {
+        "disclosed_mutation_fault_probability": 0.2
+      },
+      "required_outcome": {
+        "expected": "es-US",
+        "operator": "eq",
+        "path": "resources.profile-003.locale"
+      },
+      "review_id": "hv-0c55631cfe70",
+      "task": "Change the mock profile profile-003 so that locale is 'es-US'."
+    }
+  ],
+  "notice": "Blinded review materials; expected labels and internal scenario identifiers are omitted.",
+  "sample_size": 32,
+  "seed_commitment_sha256": "664090f08a01438469aca3f811e6c4c99e8e6a3f16a7824f08106ee9d4bb3722"
+}

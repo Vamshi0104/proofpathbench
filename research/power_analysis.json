@@ -1,0 +1,83 @@
+{
+  "factorial_effects": {
+    "assumed_log_odds_coefficients": {
+      "premium_by_risk": 0.4054651081081642,
+      "premium_by_severity": 0.4054651081081642,
+      "premium_scaled": -0.4054651081081642
+    },
+    "critical_z": 1.9599639845400536,
+    "limitation": "factorial power uses a linear-probability approximation with scenario-clustered uncertainty",
+    "method": "cluster-robust linear-probability approximation to the prospectively specified factorial logistic analysis",
+    "power_grid": [
+      {
+        "estimated_power": {
+          "premium_by_risk": 0.2899,
+          "premium_by_severity": 0.3768,
+          "premium_scaled": 0.4839
+        },
+        "repetitions_per_presentation": 1,
+        "total_registered_choice_calls": 2304
+      },
+      {
+        "estimated_power": {
+          "premium_by_risk": 0.5009,
+          "premium_by_severity": 0.6336,
+          "premium_scaled": 0.7691
+        },
+        "repetitions_per_presentation": 2,
+        "total_registered_choice_calls": 4608
+      },
+      {
+        "estimated_power": {
+          "premium_by_risk": 0.6705,
+          "premium_by_severity": 0.8024,
+          "premium_scaled": 0.9086
+        },
+        "repetitions_per_presentation": 3,
+        "total_registered_choice_calls": 6912
+      }
+    ],
+    "scope": "prospective simulation; contains no observed model outcomes",
+    "target_terms": [
+      "premium_scaled",
+      "premium_by_risk",
+      "premium_by_severity"
+    ]
+  },
+  "instruction_contrast": {
+    "adjusted_one_sided_alpha": 0.025,
+    "assumed_marginal_instruction_effect": 0.08022751745186696,
+    "critical_z": 1.9599639845400536,
+    "limitations": [
+      "factorial power uses a linear-probability approximation with scenario-clustered uncertainty",
+      "The result depends on the stated random-effect and Bernoulli assumptions.",
+      "Provider failures, exclusions, model drift, and presentation-specific random effects are not simulated."
+    ],
+    "minimum_repetition_recommendation": 1,
+    "power_grid": [
+      {
+        "estimated_power": 0.9911,
+        "monte_carlo_standard_error": 0.0009391906089820116,
+        "repetitions_per_presentation": 1,
+        "total_registered_choice_calls": 2304
+      },
+      {
+        "estimated_power": 1.0,
+        "monte_carlo_standard_error": 0.0,
+        "repetitions_per_presentation": 2,
+        "total_registered_choice_calls": 4608
+      },
+      {
+        "estimated_power": 1.0,
+        "monte_carlo_standard_error": 0.0,
+        "repetitions_per_presentation": 3,
+        "total_registered_choice_calls": 6912
+      }
+    ],
+    "scenario_by_model_clusters": 288,
+    "scope": "prospective simulation; contains no observed model outcomes",
+    "seed": 20260928,
+    "simulation_replicates": 10000,
+    "smallest_effect_size_of_interest": 0.1
+  }
+}

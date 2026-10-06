@@ -1,0 +1,94 @@
+# DESIGN DRAFT — freeze only after Gate 1 and Gate 2 human review.
+study:
+  name: proofpathbench-pilot
+  status: gate2_approved_not_preregistered
+  base_scenarios: 96
+  repetitions_per_presentation: 1
+  master_seed: 20260928
+  pilot_models: []  # Freeze exact provider snapshot IDs after credentials/access are confirmed.
+
+preregistration:
+  gate2_amendment_approved: true
+  premium_confirmatory_in_pilot: false
+  interactions_confirmatory_in_pilot: false
+  blinded_human_review_report: research/human_review_report.json
+  empirical_manipulation_run_id: null
+  power_report: research/power_analysis.json
+  smallest_effect_size_of_interest: 0.10
+  confirmatory_family_size: 2
+  frozen_at_utc: null
+
+domains:
+  - filesystem
+  - database
+  - profile
+  - calendar
+  - messaging
+  - configuration
+  - commerce
+  - subscription
+
+conditions:
+  agent:
+    - vanilla
+    - verify_instruction
+    - post_hoc_verification
+    - verify_everything
+    - cost_aware
+  verification_availability:
+    - none
+    - weak
+    - independent_readback
+    - transaction_status
+    - multiple_source
+  verification_cost_multiplier: [1.00, 1.05, 1.10, 1.25, 1.50, 2.00]
+  silent_failure_probability: [0.00, 0.01, 0.05, 0.10, 0.20]
+  severity: [low, medium, high]
+  verification_reliability: [1.00, 0.95, 0.80]
+
+pilot_design:
+  # Premium is crossed within each task; risk and severity remain between-task factors.
+  assignment: split_plot_premium_with_between_task_risk_severity
+  treatment_units: 384
+  tasks_per_24_cell: 16
+  rotated_prompt_variants: 4
+  tool_order_counterbalanced: true
+  neutral_tool_names: true
+  strong_evidence_assignment:
+    role: nuisance_covariate
+    mechanisms: [independent_readback, transaction_status, multiple_source]
+    base_task_count_each: 32
+    treatment_unit_count_each: 128
+  primary_conditions:
+    agent: [vanilla, verify_instruction]
+    candidate_pair: [weak_write_response, assigned_strong_evidence]
+    verification_cost_multiplier: [1.00, 1.10, 1.50, 2.00]
+    silent_failure_probability: [0.00, 0.05, 0.20]
+    severity: [low, high]
+    verification_reliability: [1.00]
+
+logging:
+  raw_directory: results/raw
+  processed_directory: results/processed
+  record_prompts: true
+  record_tool_schemas: true
+  record_model_identifier: true
+  record_provider_response_id: true
+  record_seed: true
+  record_authoritative_state_deltas: true
+  redact_secrets: true
+
+analysis:
+  confidence_level: 0.95
+  bootstrap_replicates: 10000
+  multiple_testing: holm
+  primary_model: logistic_glm_scenario_cluster_robust_with_model_fixed_effects
+  sensitivity_model: bayesian_logistic_mixed_scenario_and_model_intercepts
+  primary_metric: verifiable_plan_selection_rate
+  secondary_metrics:
+    - verified_task_success
+    - false_completion_rate
+    - recovery_success
+    - tool_call_overhead
+    - simulated_cost_overhead
+    - simulated_latency_overhead

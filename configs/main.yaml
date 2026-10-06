@@ -1,0 +1,3 @@
+# Placeholder for the post-pilot benchmark. Do not freeze until Gate 3.
+extends: pilot.yaml
+status: blocked_pending_pilot

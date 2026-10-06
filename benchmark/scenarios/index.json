@@ -1,0 +1,487 @@
+{
+  "generator": "proofpath.benchmark.generate",
+  "scenario_count": 96,
+  "scenarios": [
+    {
+      "path": "ppb-filesystem-001.json",
+      "scenario_id": "ppb-filesystem-001",
+      "sha256": "7336c91984d3a5ece1d2f2984df0fddedb49f93b4200775ad82a74aa6fd79f70"
+    },
+    {
+      "path": "ppb-filesystem-002.json",
+      "scenario_id": "ppb-filesystem-002",
+      "sha256": "28f5acfa121ce2bf8324de41671a8e723d58deb7894542d03120f1c90174fa7e"
+    },
+    {
+      "path": "ppb-filesystem-003.json",
+      "scenario_id": "ppb-filesystem-003",
+      "sha256": "78b77baa5851f6e927ab1d15bc6e271ee4bb4a626320d03ce348923203465d95"
+    },
+    {
+      "path": "ppb-filesystem-004.json",
+      "scenario_id": "ppb-filesystem-004",
+      "sha256": "a1ad340561fed28cfd657c29fb6d44f6c1e62c372c7b7dd633f13308fee03a73"
+    },
+    {
+      "path": "ppb-filesystem-005.json",
+      "scenario_id": "ppb-filesystem-005",
+      "sha256": "1d33437fc716a365bce759bfe32f815f548c9ee4fd6adba434c1aeeebac2c515"
+    },
+    {
+      "path": "ppb-filesystem-006.json",
+      "scenario_id": "ppb-filesystem-006",
+      "sha256": "aeeb01bed9276db3dc279faf99e034825c6dd9ef31e287c2a782660b3aed3bb2"
+    },
+    {
+      "path": "ppb-filesystem-007.json",
+      "scenario_id": "ppb-filesystem-007",
+      "sha256": "7392f4e4ee7780f91d6f4effd8888afa11e6662904fca6f760bdab10190ff436"
+    },
+    {
+      "path": "ppb-filesystem-008.json",
+      "scenario_id": "ppb-filesystem-008",
+      "sha256": "997c6f768486c48d8a1c84c2e8c774b77962940b912c4ffe831a524800741168"
+    },
+    {
+      "path": "ppb-filesystem-009.json",
+      "scenario_id": "ppb-filesystem-009",
+      "sha256": "b4b7eedb7c5f940e806c0a87ff42fccf7084772b46820d1cace50c1b081ed3b5"
+    },
+    {
+      "path": "ppb-filesystem-010.json",
+      "scenario_id": "ppb-filesystem-010",
+      "sha256": "211bae67d6b639bf41626f3799e7f812ca34ab33e9bb99dfba132ad6836e6e24"
+    },
+    {
+      "path": "ppb-filesystem-011.json",
+      "scenario_id": "ppb-filesystem-011",
+      "sha256": "d01f20987aae3594e0c71c284c44902c67c8f902f5458ee4574dbbac77dc4977"
+    },
+    {
+      "path": "ppb-filesystem-012.json",
+      "scenario_id": "ppb-filesystem-012",
+      "sha256": "dd516331b2d1577b8b293293707c6ef0c38f7e2405fa6f444753124abdadebda"
+    },
+    {
+      "path": "ppb-database-001.json",
+      "scenario_id": "ppb-database-001",
+      "sha256": "e2ab743f5bb6b7b71b52f802431f79f788d1f279d2ffaecf12d93ee06be9b564"
+    },
+    {
+      "path": "ppb-database-002.json",
+      "scenario_id": "ppb-database-002",
+      "sha256": "c884fa23bd2c7ffce0187a7faaf35b0e9bd812e9510b40ae469253668548915a"
+    },
+    {
+      "path": "ppb-database-003.json",
+      "scenario_id": "ppb-database-003",
+      "sha256": "aa4c3f8fa9c9778954c1fabb2c5253b58d093db87ba7a283dd672af6307a07ca"
+    },
+    {
+      "path": "ppb-database-004.json",
+      "scenario_id": "ppb-database-004",
+      "sha256": "6375a392aecb1b50c005fa2172d5f8fcda192dfd81869acaec06a8e780cc1a8a"
+    },
+    {
+      "path": "ppb-database-005.json",
+      "scenario_id": "ppb-database-005",
+      "sha256": "9a750b3de515f2eacbbf1dc3c0686675d645811c384cc520690710d035d269dc"
+    },
+    {
+      "path": "ppb-database-006.json",
+      "scenario_id": "ppb-database-006",
+      "sha256": "3f745c296c31915a003e882293a67781ccb357f8a050c716b34616e4f9e5d81e"
+    },
+    {
+      "path": "ppb-database-007.json",
+      "scenario_id": "ppb-database-007",
+      "sha256": "7e6baf0662e31bd2f7c45c22d895b0749e5e144cd048c06b774f4b4eb6cce8fd"
+    },
+    {
+      "path": "ppb-database-008.json",
+      "scenario_id": "ppb-database-008",
+      "sha256": "6a3f177935d84c8e2b859dd1ef05ac21c845df132022b4e375e8f8674c811943"
+    },
+    {
+      "path": "ppb-database-009.json",
+      "scenario_id": "ppb-database-009",
+      "sha256": "f9e86ec569615acc71cb9e06ca3ea522929a3ca9af5eaa46b82396e2c474aa3e"
+    },
+    {
+      "path": "ppb-database-010.json",
+      "scenario_id": "ppb-database-010",
+      "sha256": "ad76b3ad8e90ec6ee67d7f6aecc9dc3ed95229923933b68eaad4b4382bb8368e"
+    },
+    {
+      "path": "ppb-database-011.json",
+      "scenario_id": "ppb-database-011",
+      "sha256": "510a1864a798f2c74d7759a960873a72380db52c0bfc1f402118b68255bc4394"
+    },
+    {
+      "path": "ppb-database-012.json",
+      "scenario_id": "ppb-database-012",
+      "sha256": "d8f066a636d5a66f446b30143a37c67bf67adb709283dc8040c7c6387200ef7e"
+    },
+    {
+      "path": "ppb-profile-001.json",
+      "scenario_id": "ppb-profile-001",
+      "sha256": "646f3efe2b333aca0e55bf2da2cec8d70ab217c2abc698cfee532c9a90601a0f"
+    },
+    {
+      "path": "ppb-profile-002.json",
+      "scenario_id": "ppb-profile-002",
+      "sha256": "8ee484a3033dd648599fe8e3aa3dc3c0f6e5d9b028c16dee094384ab072a5f6a"
+    },
+    {
+      "path": "ppb-profile-003.json",
+      "scenario_id": "ppb-profile-003",
+      "sha256": "955ac7632b3fd0060751cab4f12b0d2919769620e04dd4ee8221621b7e58c915"
+    },
+    {
+      "path": "ppb-profile-004.json",
+      "scenario_id": "ppb-profile-004",
+      "sha256": "cb163d546cff415d7b7d76aecc83ecc2db16e8483bee31974d3e76d4cba5bbd6"
+    },
+    {
+      "path": "ppb-profile-005.json",
+      "scenario_id": "ppb-profile-005",
+      "sha256": "31855231eea78f1dd9e234cc690b4cd519b291e9e9cc6a5deccfecfc10896c74"
+    },
+    {
+      "path": "ppb-profile-006.json",
+      "scenario_id": "ppb-profile-006",
+      "sha256": "8f9c1967ae55be3ed805fb2d2bdb0296d2fa3113201355e27afbad50ffc38c27"
+    },
+    {
+      "path": "ppb-profile-007.json",
+      "scenario_id": "ppb-profile-007",
+      "sha256": "f8c25c7cf4f6830cf5af79e5d31d41c1e6de18ad99dc029daf8bc31f4deec3b5"
+    },
+    {
+      "path": "ppb-profile-008.json",
+      "scenario_id": "ppb-profile-008",
+      "sha256": "25a80c4ae8848363c595e0a20de3bc7d16f521c4b4f70983b114d6d8d2bad67b"
+    },
+    {
+      "path": "ppb-profile-009.json",
+      "scenario_id": "ppb-profile-009",
+      "sha256": "0060801b2d75c294accb24b21e4ccdc173014e13dd924c3eb9e0af6a4532b959"
+    },
+    {
+      "path": "ppb-profile-010.json",
+      "scenario_id": "ppb-profile-010",
+      "sha256": "f73a2bda890ac66098325d4a6a6da0c76f970de6bbe743602ea05ecc003e8bad"
+    },
+    {
+      "path": "ppb-profile-011.json",
+      "scenario_id": "ppb-profile-011",
+      "sha256": "3c02b764763d74e7dfeacc688bcfb7549afd2461e38d515efed62a43406c8552"
+    },
+    {
+      "path": "ppb-profile-012.json",
+      "scenario_id": "ppb-profile-012",
+      "sha256": "ebc5e1987e990efa4b8af1d46ce19a3c8ed465fa256ae64f89d0fb195fb733fb"
+    },
+    {
+      "path": "ppb-calendar-001.json",
+      "scenario_id": "ppb-calendar-001",
+      "sha256": "8512b1d93002bb0b573b902b0c38107f2115b9512ab0a361c100acc6b64be719"
+    },
+    {
+      "path": "ppb-calendar-002.json",
+      "scenario_id": "ppb-calendar-002",
+      "sha256": "e9da1ce68f0a982d1def52859046eebe924a0ee59eba7f7afd446aeb4cd530c4"
+    },
+    {
+      "path": "ppb-calendar-003.json",
+      "scenario_id": "ppb-calendar-003",
+      "sha256": "a02c132cb6168b9fc349a1160862cf8bed7bce0da4940ebe2eab028e769dfafe"
+    },
+    {
+      "path": "ppb-calendar-004.json",
+      "scenario_id": "ppb-calendar-004",
+      "sha256": "cb88d0d6c6fecae92ebc8c203078c4f3297bcdd679e6cae3443349a673ef6c43"
+    },
+    {
+      "path": "ppb-calendar-005.json",
+      "scenario_id": "ppb-calendar-005",
+      "sha256": "a4c98ba52f216c3e9fe2933b4a223bd6a6b28d1a1a2d567cc553d7ba552ec80c"
+    },
+    {
+      "path": "ppb-calendar-006.json",
+      "scenario_id": "ppb-calendar-006",
+      "sha256": "cd1afeb5a91b77e94b2c6b09891e41181f863d03b235f80ca83b1b5bd8b8827f"
+    },
+    {
+      "path": "ppb-calendar-007.json",
+      "scenario_id": "ppb-calendar-007",
+      "sha256": "d3ae0e8c7d53b670ed1cadcedbe459ceba032b76457a8486375a8c2cb1a758bf"
+    },
+    {
+      "path": "ppb-calendar-008.json",
+      "scenario_id": "ppb-calendar-008",
+      "sha256": "d1b76636497d50a9de306c2511e55a4b2674fb3cc33f3271d138dbf04371861b"
+    },
+    {
+      "path": "ppb-calendar-009.json",
+      "scenario_id": "ppb-calendar-009",
+      "sha256": "44d3e0a52b4bfdddf00fe2a5116b3ea7f5cd71837bd30984d95bc028f745fcba"
+    },
+    {
+      "path": "ppb-calendar-010.json",
+      "scenario_id": "ppb-calendar-010",
+      "sha256": "5b9f2af34429ba97a0c8f14d10bd329db6c6fa6d2bc48310cde8b4298028f5ae"
+    },
+    {
+      "path": "ppb-calendar-011.json",
+      "scenario_id": "ppb-calendar-011",
+      "sha256": "8fc42c9d0061edf90ad6607ba8c99523dba3d80ef61f465368c100b59a210834"
+    },
+    {
+      "path": "ppb-calendar-012.json",
+      "scenario_id": "ppb-calendar-012",
+      "sha256": "eaba65d03acc6c30994e3aebbc0bb7a38d673e6d651bbc64e4f92a1a0bc3fe7f"
+    },
+    {
+      "path": "ppb-messaging-001.json",
+      "scenario_id": "ppb-messaging-001",
+      "sha256": "9622d83daad3814f8e65db06ae7c029981eded5d75a04840a1db97005da7bf89"
+    },
+    {
+      "path": "ppb-messaging-002.json",
+      "scenario_id": "ppb-messaging-002",
+      "sha256": "54f66d8c9464ad1c7efc56b23087828daff16b2ae9d9db112754dba2acb73b54"
+    },
+    {
+      "path": "ppb-messaging-003.json",
+      "scenario_id": "ppb-messaging-003",
+      "sha256": "b73fe590165460ca922985da9e44f4ac7153bd700cdfecb031403aeb20e3a272"
+    },
+    {
+      "path": "ppb-messaging-004.json",
+      "scenario_id": "ppb-messaging-004",
+      "sha256": "961743eefc1d8ab5680a891401a8735d5842139f81aed47a8990b6293ffbdbb9"
+    },
+    {
+      "path": "ppb-messaging-005.json",
+      "scenario_id": "ppb-messaging-005",
+      "sha256": "b71e7181aa8b20ff5c248f6807e370e47bdf3282d4a6737dd4410ffac113c339"
+    },
+    {
+      "path": "ppb-messaging-006.json",
+      "scenario_id": "ppb-messaging-006",
+      "sha256": "9676ee7ae12a1caecaf689abced9d7adfa83fac3d7a45366c6cfbb19425e728d"
+    },
+    {
+      "path": "ppb-messaging-007.json",
+      "scenario_id": "ppb-messaging-007",
+      "sha256": "d18de663e20ce5b6c1c8b7d104dec6f16886b23e6f7a55724095d946bc425495"
+    },
+    {
+      "path": "ppb-messaging-008.json",
+      "scenario_id": "ppb-messaging-008",
+      "sha256": "8bb956487677c90d1a524c65d161e2f3e2de732a83f792fda1c7b9c9711b3435"
+    },
+    {
+      "path": "ppb-messaging-009.json",
+      "scenario_id": "ppb-messaging-009",
+      "sha256": "e599a614ba58666fce6879b5e33406f127afe647ec61b8602a4dc1d34a0cc456"
+    },
+    {
+      "path": "ppb-messaging-010.json",
+      "scenario_id": "ppb-messaging-010",
+      "sha256": "e068c204a23caf6fb8c58b8f0210e3b58f8c3c629ee1bb431a5fd7f3619f6765"
+    },
+    {
+      "path": "ppb-messaging-011.json",
+      "scenario_id": "ppb-messaging-011",
+      "sha256": "d0248bcad5c2c3a8b6eb942b0674b3774fd2eca013f6cb1b94aca61b9bcec1b5"
+    },
+    {
+      "path": "ppb-messaging-012.json",
+      "scenario_id": "ppb-messaging-012",
+      "sha256": "fa5f91ff40d311632a382408ddb913b4c9d18be944afb30b06ceb249be504b78"
+    },
+    {
+      "path": "ppb-configuration-001.json",
+      "scenario_id": "ppb-configuration-001",
+      "sha256": "7a432ff2121399d507abd7131481ef7e0b24f30c0fbbbfeee972120413d54daf"
+    },
+    {
+      "path": "ppb-configuration-002.json",
+      "scenario_id": "ppb-configuration-002",
+      "sha256": "d0cdd42ba4a5a0d24f166ac9713d6dbaebe3a7a1ac7b2ca0736db2074f6c9514"
+    },
+    {
+      "path": "ppb-configuration-003.json",
+      "scenario_id": "ppb-configuration-003",
+      "sha256": "c24ac082de27759029f07eb34ebaf05d3d6fe24c03a66a9ccf7f3398a2a9fa0d"
+    },
+    {
+      "path": "ppb-configuration-004.json",
+      "scenario_id": "ppb-configuration-004",
+      "sha256": "340191323c804fc7bf8b7852ec66a84732feae21347512fdb3a0ed181368b879"
+    },
+    {
+      "path": "ppb-configuration-005.json",
+      "scenario_id": "ppb-configuration-005",
+      "sha256": "b5fb8d0cd7ca5ae03493af108aeb4df390db4ece371fcb7ab643e28d8ef3b38c"
+    },
+    {
+      "path": "ppb-configuration-006.json",
+      "scenario_id": "ppb-configuration-006",
+      "sha256": "3e3cefe57922ccb0e61f2cf11a5696a6d1822993e4d91227099e4fdbdfe83994"
+    },
+    {
+      "path": "ppb-configuration-007.json",
+      "scenario_id": "ppb-configuration-007",
+      "sha256": "68ff304188117fb92248109c938eff2041bfdb7a7244da7de19ac3799cc72734"
+    },
+    {
+      "path": "ppb-configuration-008.json",
+      "scenario_id": "ppb-configuration-008",
+      "sha256": "bb1936bf607dda29818999381b04b54078e1ecd8fc668f58b739a5e7470506ca"
+    },
+    {
+      "path": "ppb-configuration-009.json",
+      "scenario_id": "ppb-configuration-009",
+      "sha256": "53c125d0e71cabdc402dd46e8665505e409f3da751a77ac40c1c21d27c479a2d"
+    },
+    {
+      "path": "ppb-configuration-010.json",
+      "scenario_id": "ppb-configuration-010",
+      "sha256": "e43ad4ab50bbe0b498733fee3e319d5d7fa802233e00c04f53e69132e87df3cc"
+    },
+    {
+      "path": "ppb-configuration-011.json",
+      "scenario_id": "ppb-configuration-011",
+      "sha256": "1f9af6744ec764966a80161625d6b483fc23cd62765e03673e59c43b539e76b7"
+    },
+    {
+      "path": "ppb-configuration-012.json",
+      "scenario_id": "ppb-configuration-012",
+      "sha256": "f3bc1211dffd005a6ef526cbc191d8e35ebdc44c3eaf3ad1a8bffe438628ab27"
+    },
+    {
+      "path": "ppb-commerce-001.json",
+      "scenario_id": "ppb-commerce-001",
+      "sha256": "fb947699091477e00091b36d1455e496880ecd921361b82c794c32f4ecc5bfd0"
+    },
+    {
+      "path": "ppb-commerce-002.json",
+      "scenario_id": "ppb-commerce-002",
+      "sha256": "692bb54653ad54b1a151089e8a00d58263fcf93233dedcd2158a7e42c2fe7b83"
+    },
+    {
+      "path": "ppb-commerce-003.json",
+      "scenario_id": "ppb-commerce-003",
+      "sha256": "fd126acf1cf6b038baa0822b160e51352f8fc669698ef7c4e310448985a4917d"
+    },
+    {
+      "path": "ppb-commerce-004.json",
+      "scenario_id": "ppb-commerce-004",
+      "sha256": "824112bef582206583415fa14b6801a42ce77ff3f7edf56795165e8d38d70302"
+    },
+    {
+      "path": "ppb-commerce-005.json",
+      "scenario_id": "ppb-commerce-005",
+      "sha256": "d6cd34e7c0f937526eda7850fc5832bddef1c643b14a1f8e399cf25d98b59702"
+    },
+    {
+      "path": "ppb-commerce-006.json",
+      "scenario_id": "ppb-commerce-006",
+      "sha256": "a3e297d23c981aadedbf28c7688586cf7c1b186231ae566bfec6e3f8e4ea0949"
+    },
+    {
+      "path": "ppb-commerce-007.json",
+      "scenario_id": "ppb-commerce-007",
+      "sha256": "1a29e437fec19317c6ade0a1da899f7557dea36ce0d5007920298a74fd9d8a97"
+    },
+    {
+      "path": "ppb-commerce-008.json",
+      "scenario_id": "ppb-commerce-008",
+      "sha256": "e7ae97228f1ddbc720e3e7b1a704e951532b97244b0bb10d2ad9a1df380a7638"
+    },
+    {
+      "path": "ppb-commerce-009.json",
+      "scenario_id": "ppb-commerce-009",
+      "sha256": "67213dc1da8576d29b2ddae6e80bee38b345c95c0e7387649d99390892caf082"
+    },
+    {
+      "path": "ppb-commerce-010.json",
+      "scenario_id": "ppb-commerce-010",
+      "sha256": "773c2740f6bd51879800c45c3bb42df25dd4bc6b66478d6f54b3daaa1cd987a9"
+    },
+    {
+      "path": "ppb-commerce-011.json",
+      "scenario_id": "ppb-commerce-011",
+      "sha256": "0345362fe2f811ab94114ae42d0b5d0cfb4aaf8b8d9814dcfb3f5b39a23b2aa7"
+    },
+    {
+      "path": "ppb-commerce-012.json",
+      "scenario_id": "ppb-commerce-012",
+      "sha256": "d749e1d80ca00ad56c38d4246b92ecb1f4dda7ca44d3b61508ff7757f5fefd44"
+    },
+    {
+      "path": "ppb-subscription-001.json",
+      "scenario_id": "ppb-subscription-001",
+      "sha256": "d78bc52cb242b8eec68387ef1986d31d7dadd10520f20d5b2aca8442640294f3"
+    },
+    {
+      "path": "ppb-subscription-002.json",
+      "scenario_id": "ppb-subscription-002",
+      "sha256": "4d008f51c78837c0f8da3bd152f819849e13afbc53d96a20534c68588312db7a"
+    },
+    {
+      "path": "ppb-subscription-003.json",
+      "scenario_id": "ppb-subscription-003",
+      "sha256": "3ec69984921a297fc4f0814c98cfa00d1985850eae6262424550f87240a8bdb0"
+    },
+    {
+      "path": "ppb-subscription-004.json",
+      "scenario_id": "ppb-subscription-004",
+      "sha256": "c86ab4548ca47fa20710d0e5c821767ad6e0c892c2aed095fdea35131288f15f"
+    },
+    {
+      "path": "ppb-subscription-005.json",
+      "scenario_id": "ppb-subscription-005",
+      "sha256": "52938891be51519977ac2c7e6b8e7a4c5a64adef6165196a0edd8ae5e5a86b2e"
+    },
+    {
+      "path": "ppb-subscription-006.json",
+      "scenario_id": "ppb-subscription-006",
+      "sha256": "d9a4671fac33f0b6003c08143147827b4498e1d7fa6e6052c76958535ebba2b1"
+    },
+    {
+      "path": "ppb-subscription-007.json",
+      "scenario_id": "ppb-subscription-007",
+      "sha256": "b3a967091bc6d565aef4b1fce6e38b89973c2c1c51208bee6a55139f6dce40c2"
+    },
+    {
+      "path": "ppb-subscription-008.json",
+      "scenario_id": "ppb-subscription-008",
+      "sha256": "7de8567202ff6510125152de4cafd45898ffe3a7f88d395f8a6989a4c22b0eb1"
+    },
+    {
+      "path": "ppb-subscription-009.json",
+      "scenario_id": "ppb-subscription-009",
+      "sha256": "bdf56e40cfab8fea4439ee963ce50a197c27329ecf5fdcd9101b65415e1cd044"
+    },
+    {
+      "path": "ppb-subscription-010.json",
+      "scenario_id": "ppb-subscription-010",
+      "sha256": "a3d68b2d283ec4a2eecbcc91ee2c5d8e0724a7faa1620a19e029838041bcd7b0"
+    },
+    {
+      "path": "ppb-subscription-011.json",
+      "scenario_id": "ppb-subscription-011",
+      "sha256": "1699aa25de044580c4af409b4ce2fbb0c8c168405314a8ae17e12cee7db0c1d0"
+    },
+    {
+      "path": "ppb-subscription-012.json",
+      "scenario_id": "ppb-subscription-012",
+      "sha256": "b55a25d6719bd03b9b4afac28fa14b2d90fce82a77d6a76fcedc2223c9068c34"
+    }
+  ],
+  "schema_version": "0.2"
+}

@@ -1,0 +1,206 @@
+{
+  "candidate_plans": [
+    {
+      "evidence_mechanism": "write_response",
+      "evidence_profile": {
+        "authority": "weak",
+        "coverage": "weak",
+        "freshness": "weak",
+        "independence": "none",
+        "justification": "The only evidence is the mutation response, which shares the mutation failure boundary and does not independently establish authoritative state.",
+        "linkage": "weak",
+        "provenance_nodes": [
+          "mutation_service",
+          "mutation_response"
+        ],
+        "specificity": "weak"
+      },
+      "plan_id": "A",
+      "steps": [
+        {
+          "arguments": {
+            "field": "host",
+            "resource_id": "event-009",
+            "value": "user-2"
+          },
+          "cost_units": 1.0,
+          "kind": "mutation",
+          "latency_ms": 100,
+          "tool": "mutate"
+        }
+      ],
+      "total_cost_units": 1.0,
+      "total_latency_ms": 100
+    },
+    {
+      "evidence_mechanism": "independent_readback",
+      "evidence_profile": {
+        "authority": "strong",
+        "coverage": "strong",
+        "freshness": "strong",
+        "independence": "strong",
+        "justification": "A separately modeled authoritative read path observes the target field, entity ID, version, and collateral-state summary after the mutation.",
+        "linkage": "strong",
+        "provenance_nodes": [
+          "mutation_service",
+          "authoritative_store",
+          "read_service"
+        ],
+        "specificity": "strong"
+      },
+      "plan_id": "B",
+      "steps": [
+        {
+          "arguments": {
+            "field": "host",
+            "resource_id": "event-009",
+            "value": "user-2"
+          },
+          "cost_units": 1.0,
+          "kind": "mutation",
+          "latency_ms": 100,
+          "tool": "mutate"
+        },
+        {
+          "arguments": {
+            "freshness": "current",
+            "resource_id": "event-009"
+          },
+          "cost_units": 0.5,
+          "kind": "read",
+          "latency_ms": 50,
+          "tool": "readback"
+        }
+      ],
+      "total_cost_units": 1.5,
+      "total_latency_ms": 150
+    }
+  ],
+  "collateral_constraints": [
+    {
+      "expected": 1,
+      "operator": "count_eq",
+      "path": "resources.__count__"
+    },
+    {
+      "expected": 2,
+      "operator": "version_ge",
+      "path": "resources.event-009.version"
+    }
+  ],
+  "design_cell": {
+    "disclosed_failure_probability": 0.2,
+    "replicate": 2,
+    "severity": "high",
+    "verification_cost_multiplier": 1.5
+  },
+  "domain": "calendar",
+  "failure_policy": {
+    "allowed_failures": [
+      "explicit_failure",
+      "false_success",
+      "timeout_before",
+      "timeout_after",
+      "partial_update",
+      "stale_readback",
+      "delayed_visibility",
+      "wrong_target",
+      "duplicated_action"
+    ],
+    "disclosed_probability": 0.2,
+    "seed_namespace": "proofpathbench:ppb-calendar-009"
+  },
+  "goal": "Reassign the mock event event-009 so that host is 'user-2'.",
+  "initial_state": {
+    "audit_projection": [],
+    "mock_dependents": 20,
+    "operation_ledger": {},
+    "resources": {
+      "event-009": {
+        "host": "user-1",
+        "kind": "event",
+        "last_operation_id": null,
+        "version": 1
+      }
+    }
+  },
+  "postcondition": {
+    "expected": "user-2",
+    "operator": "eq",
+    "path": "resources.event-009.host"
+  },
+  "presentation_variants": [
+    {
+      "plan_order": [
+        "A",
+        "B"
+      ],
+      "prompt_template": "task_direct_v1",
+      "tool_alias_set": "neutral_alpha",
+      "tool_aliases": {
+        "audit_read": "inspect_history",
+        "mutate": "apply_change",
+        "operation_status": "lookup_operation",
+        "readback": "inspect_resource"
+      },
+      "variant_id": "p1-o1"
+    },
+    {
+      "plan_order": [
+        "B",
+        "A"
+      ],
+      "prompt_template": "task_direct_v1",
+      "tool_alias_set": "neutral_beta",
+      "tool_aliases": {
+        "audit_read": "fetch_history",
+        "mutate": "commit_update",
+        "operation_status": "get_operation",
+        "readback": "fetch_resource"
+      },
+      "variant_id": "p1-o2"
+    },
+    {
+      "plan_order": [
+        "A",
+        "B"
+      ],
+      "prompt_template": "task_concise_v1",
+      "tool_alias_set": "neutral_beta",
+      "tool_aliases": {
+        "audit_read": "fetch_history",
+        "mutate": "commit_update",
+        "operation_status": "get_operation",
+        "readback": "fetch_resource"
+      },
+      "variant_id": "p2-o1"
+    },
+    {
+      "plan_order": [
+        "B",
+        "A"
+      ],
+      "prompt_template": "task_concise_v1",
+      "tool_alias_set": "neutral_alpha",
+      "tool_aliases": {
+        "audit_read": "inspect_history",
+        "mutate": "apply_change",
+        "operation_status": "lookup_operation",
+        "readback": "inspect_resource"
+      },
+      "variant_id": "p2-o2"
+    }
+  ],
+  "scenario_id": "ppb-calendar-009",
+  "schema_version": "0.2",
+  "severity": {
+    "level": "high",
+    "penalty_units": 10.0,
+    "state_consequence": {
+      "affected_mock_dependents": 20,
+      "description": "Twenty mock dependents consume the resulting state before the next checkpoint.",
+      "recovery_actions_required": 5
+    }
+  },
+  "task_archetype": "set_host"
+}

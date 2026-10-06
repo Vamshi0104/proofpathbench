@@ -1,0 +1,52 @@
+__pycache__/
+*.py[cod]
+.DS_Store
+._*
+__MACOSX/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+.idea/
+tmp/
+docs.zip
+benchmark/review_key.json
+research/human_validation/blinding_manifest.json
+dist/
+build/
+*.egg-info/
+.env
+.env.*
+!.env.example
+benchmark/review_key.json
+research/human_validation/blinding_manifest.json
+results/raw/*
+!results/raw/.gitkeep
+results/processed/*
+!results/processed/.gitkeep
+results/figures/*
+!results/figures/.gitkeep
+paper/*.aux
+paper/*.bbl
+paper/*.blg
+paper/*.log
+paper/*.out
+paper/*.pdf
+paper/**/*.aux
+paper/**/*.bbl
+paper/**/*.blg
+paper/**/*.fdb_latexmk
+paper/**/*.fls
+paper/**/*.log
+paper/**/*.out
+paper/**/*.pdf
+
+# Keep the arXiv upload mirror and source bundle local. The canonical public
+# paper deposit in this repository is zenodo/PAPER.pdf.
+paper/arxiv/
+output/proofpath_arxiv_source.tar.gz
+
+# Keep a single committed paper PDF: zenodo/PAPER.pdf. Local release builds and
+# the Pages deployment may generate/copy these duplicates without tracking them.
+output/pdf/
+docs/downloads/proofpath_benchmark.pdf

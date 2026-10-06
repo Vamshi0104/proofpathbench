@@ -1,0 +1,499 @@
+{
+  "$defs": {
+    "CandidatePlan": {
+      "additionalProperties": false,
+      "properties": {
+        "evidence_mechanism": {
+          "enum": [
+            "write_response",
+            "independent_readback",
+            "transaction_status",
+            "multiple_source"
+          ],
+          "title": "Evidence Mechanism",
+          "type": "string"
+        },
+        "evidence_profile": {
+          "$ref": "#/$defs/EvidenceProfile"
+        },
+        "plan_id": {
+          "enum": [
+            "A",
+            "B"
+          ],
+          "title": "Plan Id",
+          "type": "string"
+        },
+        "steps": {
+          "items": {
+            "$ref": "#/$defs/PlanStep"
+          },
+          "minItems": 1,
+          "title": "Steps",
+          "type": "array"
+        },
+        "total_cost_units": {
+          "exclusiveMinimum": 0,
+          "title": "Total Cost Units",
+          "type": "number"
+        },
+        "total_latency_ms": {
+          "minimum": 0,
+          "title": "Total Latency Ms",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "plan_id",
+        "steps",
+        "total_cost_units",
+        "total_latency_ms",
+        "evidence_mechanism",
+        "evidence_profile"
+      ],
+      "title": "CandidatePlan",
+      "type": "object"
+    },
+    "DesignCell": {
+      "additionalProperties": false,
+      "properties": {
+        "disclosed_failure_probability": {
+          "enum": [
+            0.0,
+            0.05,
+            0.2
+          ],
+          "title": "Disclosed Failure Probability",
+          "type": "number"
+        },
+        "replicate": {
+          "maximum": 4,
+          "minimum": 1,
+          "title": "Replicate",
+          "type": "integer"
+        },
+        "severity": {
+          "enum": [
+            "low",
+            "high"
+          ],
+          "title": "Severity",
+          "type": "string"
+        },
+        "verification_cost_multiplier": {
+          "enum": [
+            1.0,
+            1.1,
+            1.5,
+            2.0
+          ],
+          "title": "Verification Cost Multiplier",
+          "type": "number"
+        }
+      },
+      "required": [
+        "verification_cost_multiplier",
+        "disclosed_failure_probability",
+        "severity",
+        "replicate"
+      ],
+      "title": "DesignCell",
+      "type": "object"
+    },
+    "Domain": {
+      "enum": [
+        "filesystem",
+        "database",
+        "profile",
+        "calendar",
+        "messaging",
+        "configuration",
+        "commerce",
+        "subscription"
+      ],
+      "title": "Domain",
+      "type": "string"
+    },
+    "EvidenceLevel": {
+      "enum": [
+        "none",
+        "weak",
+        "strong"
+      ],
+      "title": "EvidenceLevel",
+      "type": "string"
+    },
+    "EvidenceProfile": {
+      "additionalProperties": false,
+      "properties": {
+        "authority": {
+          "$ref": "#/$defs/EvidenceLevel"
+        },
+        "coverage": {
+          "$ref": "#/$defs/EvidenceLevel"
+        },
+        "freshness": {
+          "$ref": "#/$defs/EvidenceLevel"
+        },
+        "independence": {
+          "$ref": "#/$defs/EvidenceLevel"
+        },
+        "justification": {
+          "minLength": 1,
+          "title": "Justification",
+          "type": "string"
+        },
+        "linkage": {
+          "$ref": "#/$defs/EvidenceLevel"
+        },
+        "provenance_nodes": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Provenance Nodes",
+          "type": "array"
+        },
+        "specificity": {
+          "$ref": "#/$defs/EvidenceLevel"
+        }
+      },
+      "required": [
+        "independence",
+        "authority",
+        "specificity",
+        "freshness",
+        "linkage",
+        "coverage",
+        "justification",
+        "provenance_nodes"
+      ],
+      "title": "EvidenceProfile",
+      "type": "object"
+    },
+    "FailurePolicy": {
+      "additionalProperties": false,
+      "properties": {
+        "allowed_failures": {
+          "items": {
+            "enum": [
+              "explicit_failure",
+              "false_success",
+              "timeout_before",
+              "timeout_after",
+              "partial_update",
+              "stale_readback",
+              "delayed_visibility",
+              "wrong_target",
+              "duplicated_action"
+            ],
+            "type": "string"
+          },
+          "title": "Allowed Failures",
+          "type": "array"
+        },
+        "disclosed_probability": {
+          "enum": [
+            0.0,
+            0.05,
+            0.2
+          ],
+          "title": "Disclosed Probability",
+          "type": "number"
+        },
+        "seed_namespace": {
+          "minLength": 1,
+          "title": "Seed Namespace",
+          "type": "string"
+        }
+      },
+      "required": [
+        "disclosed_probability",
+        "allowed_failures",
+        "seed_namespace"
+      ],
+      "title": "FailurePolicy",
+      "type": "object"
+    },
+    "PlanStep": {
+      "additionalProperties": false,
+      "properties": {
+        "arguments": {
+          "additionalProperties": true,
+          "title": "Arguments",
+          "type": "object"
+        },
+        "cost_units": {
+          "minimum": 0,
+          "title": "Cost Units",
+          "type": "number"
+        },
+        "kind": {
+          "enum": [
+            "mutation",
+            "read",
+            "status"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "latency_ms": {
+          "minimum": 0,
+          "title": "Latency Ms",
+          "type": "integer"
+        },
+        "tool": {
+          "enum": [
+            "mutate",
+            "readback",
+            "operation_status",
+            "audit_read"
+          ],
+          "title": "Tool",
+          "type": "string"
+        }
+      },
+      "required": [
+        "tool",
+        "arguments",
+        "kind",
+        "cost_units",
+        "latency_ms"
+      ],
+      "title": "PlanStep",
+      "type": "object"
+    },
+    "Predicate": {
+      "additionalProperties": false,
+      "properties": {
+        "expected": {
+          "default": null,
+          "title": "Expected"
+        },
+        "operator": {
+          "enum": [
+            "eq",
+            "ne",
+            "contains",
+            "absent",
+            "count_eq",
+            "version_ge"
+          ],
+          "title": "Operator",
+          "type": "string"
+        },
+        "path": {
+          "minLength": 1,
+          "title": "Path",
+          "type": "string"
+        }
+      },
+      "required": [
+        "path",
+        "operator"
+      ],
+      "title": "Predicate",
+      "type": "object"
+    },
+    "PresentationVariant": {
+      "additionalProperties": false,
+      "properties": {
+        "plan_order": {
+          "items": {
+            "enum": [
+              "A",
+              "B"
+            ],
+            "type": "string"
+          },
+          "maxItems": 2,
+          "minItems": 2,
+          "title": "Plan Order",
+          "type": "array"
+        },
+        "prompt_template": {
+          "enum": [
+            "task_direct_v1",
+            "task_concise_v1"
+          ],
+          "title": "Prompt Template",
+          "type": "string"
+        },
+        "tool_alias_set": {
+          "enum": [
+            "neutral_alpha",
+            "neutral_beta"
+          ],
+          "title": "Tool Alias Set",
+          "type": "string"
+        },
+        "tool_aliases": {
+          "$ref": "#/$defs/ToolAliases"
+        },
+        "variant_id": {
+          "pattern": "^p[12]-o[12]$",
+          "title": "Variant Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "variant_id",
+        "prompt_template",
+        "tool_alias_set",
+        "tool_aliases",
+        "plan_order"
+      ],
+      "title": "PresentationVariant",
+      "type": "object"
+    },
+    "Severity": {
+      "additionalProperties": false,
+      "properties": {
+        "level": {
+          "enum": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "title": "Level",
+          "type": "string"
+        },
+        "penalty_units": {
+          "minimum": 0,
+          "title": "Penalty Units",
+          "type": "number"
+        },
+        "state_consequence": {
+          "additionalProperties": true,
+          "title": "State Consequence",
+          "type": "object"
+        }
+      },
+      "required": [
+        "level",
+        "state_consequence",
+        "penalty_units"
+      ],
+      "title": "Severity",
+      "type": "object"
+    },
+    "ToolAliases": {
+      "additionalProperties": false,
+      "properties": {
+        "audit_read": {
+          "minLength": 1,
+          "title": "Audit Read",
+          "type": "string"
+        },
+        "mutate": {
+          "minLength": 1,
+          "title": "Mutate",
+          "type": "string"
+        },
+        "operation_status": {
+          "minLength": 1,
+          "title": "Operation Status",
+          "type": "string"
+        },
+        "readback": {
+          "minLength": 1,
+          "title": "Readback",
+          "type": "string"
+        }
+      },
+      "required": [
+        "mutate",
+        "readback",
+        "operation_status",
+        "audit_read"
+      ],
+      "title": "ToolAliases",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "candidate_plans": {
+      "items": {
+        "$ref": "#/$defs/CandidatePlan"
+      },
+      "maxItems": 2,
+      "minItems": 2,
+      "title": "Candidate Plans",
+      "type": "array"
+    },
+    "collateral_constraints": {
+      "items": {
+        "$ref": "#/$defs/Predicate"
+      },
+      "title": "Collateral Constraints",
+      "type": "array"
+    },
+    "design_cell": {
+      "$ref": "#/$defs/DesignCell"
+    },
+    "domain": {
+      "$ref": "#/$defs/Domain"
+    },
+    "failure_policy": {
+      "$ref": "#/$defs/FailurePolicy"
+    },
+    "goal": {
+      "minLength": 1,
+      "title": "Goal",
+      "type": "string"
+    },
+    "initial_state": {
+      "additionalProperties": true,
+      "title": "Initial State",
+      "type": "object"
+    },
+    "postcondition": {
+      "$ref": "#/$defs/Predicate"
+    },
+    "presentation_variants": {
+      "items": {
+        "$ref": "#/$defs/PresentationVariant"
+      },
+      "maxItems": 4,
+      "minItems": 4,
+      "title": "Presentation Variants",
+      "type": "array"
+    },
+    "scenario_id": {
+      "pattern": "^ppb-[a-z_]+-[0-9]{3}$",
+      "title": "Scenario Id",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "0.2",
+      "default": "0.2",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "severity": {
+      "$ref": "#/$defs/Severity"
+    },
+    "task_archetype": {
+      "minLength": 1,
+      "title": "Task Archetype",
+      "type": "string"
+    }
+  },
+  "required": [
+    "scenario_id",
+    "domain",
+    "task_archetype",
+    "goal",
+    "initial_state",
+    "postcondition",
+    "collateral_constraints",
+    "candidate_plans",
+    "failure_policy",
+    "severity",
+    "design_cell",
+    "presentation_variants"
+  ],
+  "title": "Scenario",
+  "type": "object"
+}

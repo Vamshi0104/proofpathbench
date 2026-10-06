@@ -1,0 +1,54 @@
+{
+  "artifact_sha256": "7d21dbcf9bfa8de22a079cec60c662cb34c8dba89e0b8c4ee9d82bf643175f49",
+  "build_timestamp_utc": "2026-10-06T00:00:00Z",
+  "domain_count": 8,
+  "domain_counts": {
+    "calendar": 12,
+    "commerce": 12,
+    "configuration": 12,
+    "database": 12,
+    "filesystem": 12,
+    "messaging": 12,
+    "profile": 12,
+    "subscription": 12
+  },
+  "empirical_model_results_included": false,
+  "expected_major_files": [
+    "README.md",
+    "PAPER.pdf",
+    "CITATION.cff",
+    "metadata.json",
+    "RELEASE_NOTES.md",
+    "LICENSE",
+    "CHECKSUMS.sha256",
+    "artifact/proofpathbench-artifact-v0.0.1.tar.gz",
+    "validation/RELEASE_VALIDATION.md",
+    "validation/manifest.json",
+    "ZENODO_UPLOAD_GUIDE.md",
+    "FINAL_ZENODO_READINESS.md"
+  ],
+  "failure_class_count": 9,
+  "failure_classes": [
+    "delayed_visibility",
+    "duplicated_action",
+    "explicit_failure",
+    "false_success",
+    "partial_update",
+    "stale_readback",
+    "timeout_after",
+    "timeout_before",
+    "wrong_target"
+  ],
+  "human_validation": "blinded protocol included; not yet run",
+  "no_fault_execution_count": 768,
+  "paper_sha256": "5d17c82d4e1dd7064d4c5567814bf1bd9dcad1e11bff7129ea6dc6eabb4be3da",
+  "release_scope": "Research preprint plus deterministic benchmark artifact and prospective evaluation design; no provider-model behavioral results and no completed human-validation results.",
+  "release_version": "0.0.1",
+  "scenario_count": 96,
+  "task_treatment_unit_count": 384,
+  "test_counts": {
+    "python": 48,
+    "website": 26
+  },
+  "zenodo_doi": "10.5281/zenodo.23196925"
+}

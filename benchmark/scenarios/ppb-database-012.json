@@ -1,0 +1,216 @@
+{
+  "candidate_plans": [
+    {
+      "evidence_mechanism": "write_response",
+      "evidence_profile": {
+        "authority": "weak",
+        "coverage": "weak",
+        "freshness": "weak",
+        "independence": "none",
+        "justification": "The only evidence is the mutation response, which shares the mutation failure boundary and does not independently establish authoritative state.",
+        "linkage": "weak",
+        "provenance_nodes": [
+          "mutation_service",
+          "mutation_response"
+        ],
+        "specificity": "weak"
+      },
+      "plan_id": "A",
+      "steps": [
+        {
+          "arguments": {
+            "field": "expiry_day",
+            "resource_id": "record-012",
+            "value": 20
+          },
+          "cost_units": 1.0,
+          "kind": "mutation",
+          "latency_ms": 100,
+          "tool": "mutate"
+        }
+      ],
+      "total_cost_units": 1.0,
+      "total_latency_ms": 100
+    },
+    {
+      "evidence_mechanism": "multiple_source",
+      "evidence_profile": {
+        "authority": "strong",
+        "coverage": "strong",
+        "freshness": "strong",
+        "independence": "strong",
+        "justification": "Authoritative readback and an append-only audit projection independently identify the entity, intended value, committed version, and collateral-state summary.",
+        "linkage": "strong",
+        "provenance_nodes": [
+          "mutation_service",
+          "authoritative_store",
+          "read_service",
+          "audit_projection"
+        ],
+        "specificity": "strong"
+      },
+      "plan_id": "B",
+      "steps": [
+        {
+          "arguments": {
+            "field": "expiry_day",
+            "resource_id": "record-012",
+            "value": 20
+          },
+          "cost_units": 1.0,
+          "kind": "mutation",
+          "latency_ms": 100,
+          "tool": "mutate"
+        },
+        {
+          "arguments": {
+            "freshness": "current",
+            "resource_id": "record-012"
+          },
+          "cost_units": 0.5,
+          "kind": "read",
+          "latency_ms": 50,
+          "tool": "readback"
+        },
+        {
+          "arguments": {
+            "operation_id": "$mutation.operation_id"
+          },
+          "cost_units": 0.5,
+          "kind": "read",
+          "latency_ms": 50,
+          "tool": "audit_read"
+        }
+      ],
+      "total_cost_units": 2.0,
+      "total_latency_ms": 200
+    }
+  ],
+  "collateral_constraints": [
+    {
+      "expected": 1,
+      "operator": "count_eq",
+      "path": "resources.__count__"
+    },
+    {
+      "expected": 2,
+      "operator": "version_ge",
+      "path": "resources.record-012.version"
+    }
+  ],
+  "design_cell": {
+    "disclosed_failure_probability": 0.2,
+    "replicate": 1,
+    "severity": "low",
+    "verification_cost_multiplier": 2.0
+  },
+  "domain": "database",
+  "failure_policy": {
+    "allowed_failures": [
+      "explicit_failure",
+      "false_success",
+      "timeout_before",
+      "timeout_after",
+      "partial_update",
+      "stale_readback",
+      "delayed_visibility",
+      "wrong_target",
+      "duplicated_action"
+    ],
+    "disclosed_probability": 0.2,
+    "seed_namespace": "proofpathbench:ppb-database-012"
+  },
+  "goal": "Extend the mock record record-012 so that expiry_day is 20.",
+  "initial_state": {
+    "audit_projection": [],
+    "mock_dependents": 1,
+    "operation_ledger": {},
+    "resources": {
+      "record-012": {
+        "expiry_day": 10,
+        "kind": "record",
+        "last_operation_id": null,
+        "version": 1
+      }
+    }
+  },
+  "postcondition": {
+    "expected": 20,
+    "operator": "eq",
+    "path": "resources.record-012.expiry_day"
+  },
+  "presentation_variants": [
+    {
+      "plan_order": [
+        "A",
+        "B"
+      ],
+      "prompt_template": "task_direct_v1",
+      "tool_alias_set": "neutral_alpha",
+      "tool_aliases": {
+        "audit_read": "inspect_history",
+        "mutate": "apply_change",
+        "operation_status": "lookup_operation",
+        "readback": "inspect_resource"
+      },
+      "variant_id": "p1-o1"
+    },
+    {
+      "plan_order": [
+        "B",
+        "A"
+      ],
+      "prompt_template": "task_direct_v1",
+      "tool_alias_set": "neutral_beta",
+      "tool_aliases": {
+        "audit_read": "fetch_history",
+        "mutate": "commit_update",
+        "operation_status": "get_operation",
+        "readback": "fetch_resource"
+      },
+      "variant_id": "p1-o2"
+    },
+    {
+      "plan_order": [
+        "A",
+        "B"
+      ],
+      "prompt_template": "task_concise_v1",
+      "tool_alias_set": "neutral_beta",
+      "tool_aliases": {
+        "audit_read": "fetch_history",
+        "mutate": "commit_update",
+        "operation_status": "get_operation",
+        "readback": "fetch_resource"
+      },
+      "variant_id": "p2-o1"
+    },
+    {
+      "plan_order": [
+        "B",
+        "A"
+      ],
+      "prompt_template": "task_concise_v1",
+      "tool_alias_set": "neutral_alpha",
+      "tool_aliases": {
+        "audit_read": "inspect_history",
+        "mutate": "apply_change",
+        "operation_status": "lookup_operation",
+        "readback": "inspect_resource"
+      },
+      "variant_id": "p2-o2"
+    }
+  ],
+  "scenario_id": "ppb-database-012",
+  "schema_version": "0.2",
+  "severity": {
+    "level": "low",
+    "penalty_units": 1.0,
+    "state_consequence": {
+      "affected_mock_dependents": 1,
+      "description": "One isolated mock dependent consumes the resulting state.",
+      "recovery_actions_required": 1
+    }
+  },
+  "task_archetype": "set_expiry"
+}

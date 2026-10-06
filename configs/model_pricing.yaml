@@ -1,0 +1,20 @@
+# Snapshot of official standard short-context list prices on 2026-09-28.
+source: https://developers.openai.com/api/docs/pricing
+captured_at: 2026-09-28
+currency: USD
+per_million_tokens:
+  gpt-6-luna:
+    input: 0.10
+    output: 0.50
+  gpt-6-sol:
+    input: 2.00
+    output: 10.00
+  gpt-6-astra:
+    input: 10.00
+    output: 50.00
+
+estimation:
+  characters_per_input_token: 4.0
+  expected_output_tokens_per_call: 100
+  upper_output_tokens_per_call: 300
+  warning: Actual API usage fields, processing tier, caching, reasoning tokens, and current provider prices are authoritative.

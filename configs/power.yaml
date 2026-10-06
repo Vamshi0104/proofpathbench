@@ -1,0 +1,28 @@
+simulation:
+  seed: 20260928
+  replicates: 10000
+  scenario_count: 96
+  model_count: 3
+  presentation_count: 4
+  repetition_grid: [1, 2, 3]
+  baseline_logit_intercept: 0.0
+  instruction_log_odds_effect: 0.4054651081081642  # 0.50 to 0.60 absent heterogeneity
+  scenario_random_intercept_sd: 1.0
+  model_random_intercept_sd: 0.5
+  alpha: 0.05
+  confirmatory_family_size: 2
+  target_power: 0.80
+  factorial_effects:
+    intercept: 0.4054651081081642
+    premium_scaled: -0.4054651081081642
+    risk_scaled: 0.20
+    severity_high: 0.20
+    instruction_verify: 0.4054651081081642
+    premium_by_risk: 0.4054651081081642
+    premium_by_severity: 0.4054651081081642
+
+interpretation:
+  estimand: paired instruction-condition difference in VPSR
+  smallest_effect_size_of_interest: 0.10
+  decision_rule: one-sided normal test on scenario-by-model cluster differences
+  limitation: factorial power uses a linear-probability approximation with scenario-clustered uncertainty

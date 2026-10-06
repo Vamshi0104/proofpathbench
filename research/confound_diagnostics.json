@@ -1,0 +1,3686 @@
+{
+  "balance": {
+    "dominant_evidence_mechanism": {
+      "independent_readback": 32,
+      "multiple_source": 32,
+      "transaction_status": 32
+    },
+    "dominant_plan_display_position": {
+      "1": 192,
+      "2": 192
+    },
+    "prompt_template": {
+      "task_concise_v1": 192,
+      "task_direct_v1": 192
+    },
+    "tool_alias_set": {
+      "neutral_alpha": 192,
+      "neutral_beta": 192
+    }
+  },
+  "correlations_across_plans": {
+    "cost_latency_pearson": 1.0,
+    "operation_count_serialized_length_pearson": 0.998317247786111
+  },
+  "interpretation": "These diagnostics make residual design couplings explicit. They do not estimate behavioral confounding without model observations.",
+  "known_couplings": [
+    "The evidence-dominant plan necessarily contains one or more verification operations beyond the mutation and is therefore longer than the write-response-only baseline.",
+    "Simulated cost and latency are varied jointly; their effects are not separately identifiable in version 1.",
+    "Tool familiarity and perceived complexity may differ across verification mechanisms even though aliases, prompt templates, and display position are balanced."
+  ],
+  "plan_count": 192,
+  "presentation_count": 384,
+  "scenario_count": 96,
+  "scenarios": [
+    {
+      "domain": "calendar",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 2,
+        "operation_count": 2,
+        "serialized_step_characters": 250,
+        "total_cost_units": 0.0,
+        "total_latency_ms": 0
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "A",
+          "serialized_step_characters": 146,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 3,
+          "evidence_mechanism": "multiple_source",
+          "is_evidence_dominant": true,
+          "operation_count": 3,
+          "plan_id": "B",
+          "serialized_step_characters": 396,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 2
+        }
+      ],
+      "risk": 0.0,
+      "scenario_id": "ppb-calendar-001",
+      "severity": "high",
+      "verification_premium": 1.0
+    },
+    {
+      "domain": "calendar",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 2,
+        "operation_count": 2,
+        "serialized_step_characters": 250,
+        "total_cost_units": 0.0,
+        "total_latency_ms": 0
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "A",
+          "serialized_step_characters": 142,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 3,
+          "evidence_mechanism": "multiple_source",
+          "is_evidence_dominant": true,
+          "operation_count": 3,
+          "plan_id": "B",
+          "serialized_step_characters": 392,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 2
+        }
+      ],
+      "risk": 0.05,
+      "scenario_id": "ppb-calendar-002",
+      "severity": "low",
+      "verification_premium": 1.0
+    },
+    {
+      "domain": "calendar",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 1,
+        "operation_count": 1,
+        "serialized_step_characters": 130,
+        "total_cost_units": 0.0,
+        "total_latency_ms": 0
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "A",
+          "serialized_step_characters": 142,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 2,
+          "evidence_mechanism": "transaction_status",
+          "is_evidence_dominant": true,
+          "operation_count": 2,
+          "plan_id": "B",
+          "serialized_step_characters": 272,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 1
+        }
+      ],
+      "risk": 0.2,
+      "scenario_id": "ppb-calendar-003",
+      "severity": "high",
+      "verification_premium": 1.0
+    },
+    {
+      "domain": "calendar",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 2,
+        "operation_count": 2,
+        "serialized_step_characters": 252,
+        "total_cost_units": 0.10000000000000009,
+        "total_latency_ms": 10
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "B",
+          "serialized_step_characters": 150,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 3,
+          "evidence_mechanism": "multiple_source",
+          "is_evidence_dominant": true,
+          "operation_count": 3,
+          "plan_id": "A",
+          "serialized_step_characters": 402,
+          "total_cost_units": 1.1,
+          "total_latency_ms": 110,
+          "verification_operations_after_mutation": 2
+        }
+      ],
+      "risk": 0.0,
+      "scenario_id": "ppb-calendar-004",
+      "severity": "low",
+      "verification_premium": 1.1
+    },
+    {
+      "domain": "calendar",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 1,
+        "operation_count": 1,
+        "serialized_step_characters": 131,
+        "total_cost_units": 0.10000000000000009,
+        "total_latency_ms": 10
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "B",
+          "serialized_step_characters": 149,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 2,
+          "evidence_mechanism": "transaction_status",
+          "is_evidence_dominant": true,
+          "operation_count": 2,
+          "plan_id": "A",
+          "serialized_step_characters": 280,
+          "total_cost_units": 1.1,
+          "total_latency_ms": 110,
+          "verification_operations_after_mutation": 1
+        }
+      ],
+      "risk": 0.05,
+      "scenario_id": "ppb-calendar-005",
+      "severity": "high",
+      "verification_premium": 1.1
+    },
+    {
+      "domain": "calendar",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 1,
+        "operation_count": 1,
+        "serialized_step_characters": 131,
+        "total_cost_units": 0.10000000000000009,
+        "total_latency_ms": 10
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "B",
+          "serialized_step_characters": 148,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 2,
+          "evidence_mechanism": "transaction_status",
+          "is_evidence_dominant": true,
+          "operation_count": 2,
+          "plan_id": "A",
+          "serialized_step_characters": 279,
+          "total_cost_units": 1.1,
+          "total_latency_ms": 110,
+          "verification_operations_after_mutation": 1
+        }
+      ],
+      "risk": 0.2,
+      "scenario_id": "ppb-calendar-006",
+      "severity": "low",
+      "verification_premium": 1.1
+    },
+    {
+      "domain": "calendar",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 1,
+        "operation_count": 1,
+        "serialized_step_characters": 131,
+        "total_cost_units": 0.5,
+        "total_latency_ms": 50
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "A",
+          "serialized_step_characters": 148,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 2,
+          "evidence_mechanism": "transaction_status",
+          "is_evidence_dominant": true,
+          "operation_count": 2,
+          "plan_id": "B",
+          "serialized_step_characters": 279,
+          "total_cost_units": 1.5,
+          "total_latency_ms": 150,
+          "verification_operations_after_mutation": 1
+        }
+      ],
+      "risk": 0.0,
+      "scenario_id": "ppb-calendar-007",
+      "severity": "high",
+      "verification_premium": 1.5
+    },
+    {
+      "domain": "calendar",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 1,
+        "operation_count": 1,
+        "serialized_step_characters": 131,
+        "total_cost_units": 0.5,
+        "total_latency_ms": 50
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "A",
+          "serialized_step_characters": 150,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 2,
+          "evidence_mechanism": "transaction_status",
+          "is_evidence_dominant": true,
+          "operation_count": 2,
+          "plan_id": "B",
+          "serialized_step_characters": 281,
+          "total_cost_units": 1.5,
+          "total_latency_ms": 150,
+          "verification_operations_after_mutation": 1
+        }
+      ],
+      "risk": 0.05,
+      "scenario_id": "ppb-calendar-008",
+      "severity": "low",
+      "verification_premium": 1.5
+    },
+    {
+      "domain": "calendar",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 1,
+        "operation_count": 1,
+        "serialized_step_characters": 129,
+        "total_cost_units": 0.5,
+        "total_latency_ms": 50
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "A",
+          "serialized_step_characters": 143,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 2,
+          "evidence_mechanism": "independent_readback",
+          "is_evidence_dominant": true,
+          "operation_count": 2,
+          "plan_id": "B",
+          "serialized_step_characters": 272,
+          "total_cost_units": 1.5,
+          "total_latency_ms": 150,
+          "verification_operations_after_mutation": 1
+        }
+      ],
+      "risk": 0.2,
+      "scenario_id": "ppb-calendar-009",
+      "severity": "high",
+      "verification_premium": 1.5
+    },
+    {
+      "domain": "calendar",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 1,
+        "operation_count": 1,
+        "serialized_step_characters": 132,
+        "total_cost_units": 1.0,
+        "total_latency_ms": 100
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "B",
+          "serialized_step_characters": 149,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 2,
+          "evidence_mechanism": "transaction_status",
+          "is_evidence_dominant": true,
+          "operation_count": 2,
+          "plan_id": "A",
+          "serialized_step_characters": 281,
+          "total_cost_units": 2.0,
+          "total_latency_ms": 200,
+          "verification_operations_after_mutation": 1
+        }
+      ],
+      "risk": 0.0,
+      "scenario_id": "ppb-calendar-010",
+      "severity": "low",
+      "verification_premium": 2.0
+    },
+    {
+      "domain": "calendar",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 1,
+        "operation_count": 1,
+        "serialized_step_characters": 130,
+        "total_cost_units": 1.0,
+        "total_latency_ms": 100
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "B",
+          "serialized_step_characters": 153,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 2,
+          "evidence_mechanism": "independent_readback",
+          "is_evidence_dominant": true,
+          "operation_count": 2,
+          "plan_id": "A",
+          "serialized_step_characters": 283,
+          "total_cost_units": 2.0,
+          "total_latency_ms": 200,
+          "verification_operations_after_mutation": 1
+        }
+      ],
+      "risk": 0.05,
+      "scenario_id": "ppb-calendar-011",
+      "severity": "high",
+      "verification_premium": 2.0
+    },
+    {
+      "domain": "calendar",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 1,
+        "operation_count": 1,
+        "serialized_step_characters": 130,
+        "total_cost_units": 1.0,
+        "total_latency_ms": 100
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "B",
+          "serialized_step_characters": 141,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 2,
+          "evidence_mechanism": "independent_readback",
+          "is_evidence_dominant": true,
+          "operation_count": 2,
+          "plan_id": "A",
+          "serialized_step_characters": 271,
+          "total_cost_units": 2.0,
+          "total_latency_ms": 200,
+          "verification_operations_after_mutation": 1
+        }
+      ],
+      "risk": 0.2,
+      "scenario_id": "ppb-calendar-012",
+      "severity": "low",
+      "verification_premium": 2.0
+    },
+    {
+      "domain": "commerce",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 1,
+        "operation_count": 1,
+        "serialized_step_characters": 128,
+        "total_cost_units": 0.0,
+        "total_latency_ms": 0
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "A",
+          "serialized_step_characters": 143,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 2,
+          "evidence_mechanism": "independent_readback",
+          "is_evidence_dominant": true,
+          "operation_count": 2,
+          "plan_id": "B",
+          "serialized_step_characters": 271,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 1
+        }
+      ],
+      "risk": 0.0,
+      "scenario_id": "ppb-commerce-001",
+      "severity": "low",
+      "verification_premium": 1.0
+    },
+    {
+      "domain": "commerce",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 2,
+        "operation_count": 2,
+        "serialized_step_characters": 250,
+        "total_cost_units": 0.0,
+        "total_latency_ms": 0
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "A",
+          "serialized_step_characters": 140,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 3,
+          "evidence_mechanism": "multiple_source",
+          "is_evidence_dominant": true,
+          "operation_count": 3,
+          "plan_id": "B",
+          "serialized_step_characters": 390,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 2
+        }
+      ],
+      "risk": 0.05,
+      "scenario_id": "ppb-commerce-002",
+      "severity": "high",
+      "verification_premium": 1.0
+    },
+    {
+      "domain": "commerce",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 2,
+        "operation_count": 2,
+        "serialized_step_characters": 250,
+        "total_cost_units": 0.0,
+        "total_latency_ms": 0
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "A",
+          "serialized_step_characters": 143,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 3,
+          "evidence_mechanism": "multiple_source",
+          "is_evidence_dominant": true,
+          "operation_count": 3,
+          "plan_id": "B",
+          "serialized_step_characters": 393,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 2
+        }
+      ],
+      "risk": 0.2,
+      "scenario_id": "ppb-commerce-003",
+      "severity": "low",
+      "verification_premium": 1.0
+    },
+    {
+      "domain": "commerce",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 2,
+        "operation_count": 2,
+        "serialized_step_characters": 252,
+        "total_cost_units": 0.10000000000000009,
+        "total_latency_ms": 10
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "B",
+          "serialized_step_characters": 143,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 3,
+          "evidence_mechanism": "multiple_source",
+          "is_evidence_dominant": true,
+          "operation_count": 3,
+          "plan_id": "A",
+          "serialized_step_characters": 395,
+          "total_cost_units": 1.1,
+          "total_latency_ms": 110,
+          "verification_operations_after_mutation": 2
+        }
+      ],
+      "risk": 0.0,
+      "scenario_id": "ppb-commerce-004",
+      "severity": "high",
+      "verification_premium": 1.1
+    },
+    {
+      "domain": "commerce",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 2,
+        "operation_count": 2,
+        "serialized_step_characters": 252,
+        "total_cost_units": 0.10000000000000009,
+        "total_latency_ms": 10
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "B",
+          "serialized_step_characters": 144,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 3,
+          "evidence_mechanism": "multiple_source",
+          "is_evidence_dominant": true,
+          "operation_count": 3,
+          "plan_id": "A",
+          "serialized_step_characters": 396,
+          "total_cost_units": 1.1,
+          "total_latency_ms": 110,
+          "verification_operations_after_mutation": 2
+        }
+      ],
+      "risk": 0.05,
+      "scenario_id": "ppb-commerce-005",
+      "severity": "low",
+      "verification_premium": 1.1
+    },
+    {
+      "domain": "commerce",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 1,
+        "operation_count": 1,
+        "serialized_step_characters": 131,
+        "total_cost_units": 0.10000000000000009,
+        "total_latency_ms": 10
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "B",
+          "serialized_step_characters": 148,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 2,
+          "evidence_mechanism": "transaction_status",
+          "is_evidence_dominant": true,
+          "operation_count": 2,
+          "plan_id": "A",
+          "serialized_step_characters": 279,
+          "total_cost_units": 1.1,
+          "total_latency_ms": 110,
+          "verification_operations_after_mutation": 1
+        }
+      ],
+      "risk": 0.2,
+      "scenario_id": "ppb-commerce-006",
+      "severity": "high",
+      "verification_premium": 1.1
+    },
+    {
+      "domain": "commerce",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 2,
+        "operation_count": 2,
+        "serialized_step_characters": 254,
+        "total_cost_units": 0.5,
+        "total_latency_ms": 50
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "A",
+          "serialized_step_characters": 141,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 3,
+          "evidence_mechanism": "multiple_source",
+          "is_evidence_dominant": true,
+          "operation_count": 3,
+          "plan_id": "B",
+          "serialized_step_characters": 395,
+          "total_cost_units": 1.5,
+          "total_latency_ms": 150,
+          "verification_operations_after_mutation": 2
+        }
+      ],
+      "risk": 0.0,
+      "scenario_id": "ppb-commerce-007",
+      "severity": "low",
+      "verification_premium": 1.5
+    },
+    {
+      "domain": "commerce",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 1,
+        "operation_count": 1,
+        "serialized_step_characters": 131,
+        "total_cost_units": 0.5,
+        "total_latency_ms": 50
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "A",
+          "serialized_step_characters": 146,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 2,
+          "evidence_mechanism": "transaction_status",
+          "is_evidence_dominant": true,
+          "operation_count": 2,
+          "plan_id": "B",
+          "serialized_step_characters": 277,
+          "total_cost_units": 1.5,
+          "total_latency_ms": 150,
+          "verification_operations_after_mutation": 1
+        }
+      ],
+      "risk": 0.05,
+      "scenario_id": "ppb-commerce-008",
+      "severity": "high",
+      "verification_premium": 1.5
+    },
+    {
+      "domain": "commerce",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 1,
+        "operation_count": 1,
+        "serialized_step_characters": 131,
+        "total_cost_units": 0.5,
+        "total_latency_ms": 50
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "A",
+          "serialized_step_characters": 154,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 2,
+          "evidence_mechanism": "transaction_status",
+          "is_evidence_dominant": true,
+          "operation_count": 2,
+          "plan_id": "B",
+          "serialized_step_characters": 285,
+          "total_cost_units": 1.5,
+          "total_latency_ms": 150,
+          "verification_operations_after_mutation": 1
+        }
+      ],
+      "risk": 0.2,
+      "scenario_id": "ppb-commerce-009",
+      "severity": "low",
+      "verification_premium": 1.5
+    },
+    {
+      "domain": "commerce",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 1,
+        "operation_count": 1,
+        "serialized_step_characters": 132,
+        "total_cost_units": 1.0,
+        "total_latency_ms": 100
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "B",
+          "serialized_step_characters": 157,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 2,
+          "evidence_mechanism": "transaction_status",
+          "is_evidence_dominant": true,
+          "operation_count": 2,
+          "plan_id": "A",
+          "serialized_step_characters": 289,
+          "total_cost_units": 2.0,
+          "total_latency_ms": 200,
+          "verification_operations_after_mutation": 1
+        }
+      ],
+      "risk": 0.0,
+      "scenario_id": "ppb-commerce-010",
+      "severity": "high",
+      "verification_premium": 2.0
+    },
+    {
+      "domain": "commerce",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 1,
+        "operation_count": 1,
+        "serialized_step_characters": 132,
+        "total_cost_units": 1.0,
+        "total_latency_ms": 100
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "B",
+          "serialized_step_characters": 148,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 2,
+          "evidence_mechanism": "transaction_status",
+          "is_evidence_dominant": true,
+          "operation_count": 2,
+          "plan_id": "A",
+          "serialized_step_characters": 280,
+          "total_cost_units": 2.0,
+          "total_latency_ms": 200,
+          "verification_operations_after_mutation": 1
+        }
+      ],
+      "risk": 0.05,
+      "scenario_id": "ppb-commerce-011",
+      "severity": "low",
+      "verification_premium": 2.0
+    },
+    {
+      "domain": "commerce",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 1,
+        "operation_count": 1,
+        "serialized_step_characters": 130,
+        "total_cost_units": 1.0,
+        "total_latency_ms": 100
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "B",
+          "serialized_step_characters": 150,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 2,
+          "evidence_mechanism": "independent_readback",
+          "is_evidence_dominant": true,
+          "operation_count": 2,
+          "plan_id": "A",
+          "serialized_step_characters": 280,
+          "total_cost_units": 2.0,
+          "total_latency_ms": 200,
+          "verification_operations_after_mutation": 1
+        }
+      ],
+      "risk": 0.2,
+      "scenario_id": "ppb-commerce-012",
+      "severity": "high",
+      "verification_premium": 2.0
+    },
+    {
+      "domain": "configuration",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 1,
+        "operation_count": 1,
+        "serialized_step_characters": 130,
+        "total_cost_units": 0.0,
+        "total_latency_ms": 0
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "B",
+          "serialized_step_characters": 144,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 2,
+          "evidence_mechanism": "independent_readback",
+          "is_evidence_dominant": true,
+          "operation_count": 2,
+          "plan_id": "A",
+          "serialized_step_characters": 274,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 1
+        }
+      ],
+      "risk": 0.0,
+      "scenario_id": "ppb-configuration-001",
+      "severity": "high",
+      "verification_premium": 1.0
+    },
+    {
+      "domain": "configuration",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 1,
+        "operation_count": 1,
+        "serialized_step_characters": 130,
+        "total_cost_units": 0.0,
+        "total_latency_ms": 0
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "B",
+          "serialized_step_characters": 141,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 2,
+          "evidence_mechanism": "independent_readback",
+          "is_evidence_dominant": true,
+          "operation_count": 2,
+          "plan_id": "A",
+          "serialized_step_characters": 271,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 1
+        }
+      ],
+      "risk": 0.05,
+      "scenario_id": "ppb-configuration-002",
+      "severity": "low",
+      "verification_premium": 1.0
+    },
+    {
+      "domain": "configuration",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 2,
+        "operation_count": 2,
+        "serialized_step_characters": 252,
+        "total_cost_units": 0.0,
+        "total_latency_ms": 0
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "B",
+          "serialized_step_characters": 149,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 3,
+          "evidence_mechanism": "multiple_source",
+          "is_evidence_dominant": true,
+          "operation_count": 3,
+          "plan_id": "A",
+          "serialized_step_characters": 401,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 2
+        }
+      ],
+      "risk": 0.2,
+      "scenario_id": "ppb-configuration-003",
+      "severity": "high",
+      "verification_premium": 1.0
+    },
+    {
+      "domain": "configuration",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 1,
+        "operation_count": 1,
+        "serialized_step_characters": 131,
+        "total_cost_units": 0.10000000000000009,
+        "total_latency_ms": 10
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "A",
+          "serialized_step_characters": 147,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 2,
+          "evidence_mechanism": "independent_readback",
+          "is_evidence_dominant": true,
+          "operation_count": 2,
+          "plan_id": "B",
+          "serialized_step_characters": 278,
+          "total_cost_units": 1.1,
+          "total_latency_ms": 110,
+          "verification_operations_after_mutation": 1
+        }
+      ],
+      "risk": 0.0,
+      "scenario_id": "ppb-configuration-004",
+      "severity": "low",
+      "verification_premium": 1.1
+    },
+    {
+      "domain": "configuration",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 2,
+        "operation_count": 2,
+        "serialized_step_characters": 254,
+        "total_cost_units": 0.10000000000000009,
+        "total_latency_ms": 10
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "A",
+          "serialized_step_characters": 141,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 3,
+          "evidence_mechanism": "multiple_source",
+          "is_evidence_dominant": true,
+          "operation_count": 3,
+          "plan_id": "B",
+          "serialized_step_characters": 395,
+          "total_cost_units": 1.1,
+          "total_latency_ms": 110,
+          "verification_operations_after_mutation": 2
+        }
+      ],
+      "risk": 0.05,
+      "scenario_id": "ppb-configuration-005",
+      "severity": "high",
+      "verification_premium": 1.1
+    },
+    {
+      "domain": "configuration",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 2,
+        "operation_count": 2,
+        "serialized_step_characters": 254,
+        "total_cost_units": 0.10000000000000009,
+        "total_latency_ms": 10
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "A",
+          "serialized_step_characters": 146,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 3,
+          "evidence_mechanism": "multiple_source",
+          "is_evidence_dominant": true,
+          "operation_count": 3,
+          "plan_id": "B",
+          "serialized_step_characters": 400,
+          "total_cost_units": 1.1,
+          "total_latency_ms": 110,
+          "verification_operations_after_mutation": 2
+        }
+      ],
+      "risk": 0.2,
+      "scenario_id": "ppb-configuration-006",
+      "severity": "low",
+      "verification_premium": 1.1
+    },
+    {
+      "domain": "configuration",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 2,
+        "operation_count": 2,
+        "serialized_step_characters": 256,
+        "total_cost_units": 0.5,
+        "total_latency_ms": 50
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "B",
+          "serialized_step_characters": 151,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 3,
+          "evidence_mechanism": "multiple_source",
+          "is_evidence_dominant": true,
+          "operation_count": 3,
+          "plan_id": "A",
+          "serialized_step_characters": 407,
+          "total_cost_units": 1.5,
+          "total_latency_ms": 150,
+          "verification_operations_after_mutation": 2
+        }
+      ],
+      "risk": 0.0,
+      "scenario_id": "ppb-configuration-007",
+      "severity": "high",
+      "verification_premium": 1.5
+    },
+    {
+      "domain": "configuration",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 2,
+        "operation_count": 2,
+        "serialized_step_characters": 256,
+        "total_cost_units": 0.5,
+        "total_latency_ms": 50
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "B",
+          "serialized_step_characters": 142,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 3,
+          "evidence_mechanism": "multiple_source",
+          "is_evidence_dominant": true,
+          "operation_count": 3,
+          "plan_id": "A",
+          "serialized_step_characters": 398,
+          "total_cost_units": 1.5,
+          "total_latency_ms": 150,
+          "verification_operations_after_mutation": 2
+        }
+      ],
+      "risk": 0.05,
+      "scenario_id": "ppb-configuration-008",
+      "severity": "low",
+      "verification_premium": 1.5
+    },
+    {
+      "domain": "configuration",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 1,
+        "operation_count": 1,
+        "serialized_step_characters": 131,
+        "total_cost_units": 0.5,
+        "total_latency_ms": 50
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "B",
+          "serialized_step_characters": 151,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 2,
+          "evidence_mechanism": "transaction_status",
+          "is_evidence_dominant": true,
+          "operation_count": 2,
+          "plan_id": "A",
+          "serialized_step_characters": 282,
+          "total_cost_units": 1.5,
+          "total_latency_ms": 150,
+          "verification_operations_after_mutation": 1
+        }
+      ],
+      "risk": 0.2,
+      "scenario_id": "ppb-configuration-009",
+      "severity": "high",
+      "verification_premium": 1.5
+    },
+    {
+      "domain": "configuration",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 2,
+        "operation_count": 2,
+        "serialized_step_characters": 254,
+        "total_cost_units": 1.0,
+        "total_latency_ms": 100
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "A",
+          "serialized_step_characters": 143,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 3,
+          "evidence_mechanism": "multiple_source",
+          "is_evidence_dominant": true,
+          "operation_count": 3,
+          "plan_id": "B",
+          "serialized_step_characters": 397,
+          "total_cost_units": 2.0,
+          "total_latency_ms": 200,
+          "verification_operations_after_mutation": 2
+        }
+      ],
+      "risk": 0.0,
+      "scenario_id": "ppb-configuration-010",
+      "severity": "low",
+      "verification_premium": 2.0
+    },
+    {
+      "domain": "configuration",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 1,
+        "operation_count": 1,
+        "serialized_step_characters": 132,
+        "total_cost_units": 1.0,
+        "total_latency_ms": 100
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "A",
+          "serialized_step_characters": 148,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 2,
+          "evidence_mechanism": "transaction_status",
+          "is_evidence_dominant": true,
+          "operation_count": 2,
+          "plan_id": "B",
+          "serialized_step_characters": 280,
+          "total_cost_units": 2.0,
+          "total_latency_ms": 200,
+          "verification_operations_after_mutation": 1
+        }
+      ],
+      "risk": 0.05,
+      "scenario_id": "ppb-configuration-011",
+      "severity": "high",
+      "verification_premium": 2.0
+    },
+    {
+      "domain": "configuration",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 1,
+        "operation_count": 1,
+        "serialized_step_characters": 132,
+        "total_cost_units": 1.0,
+        "total_latency_ms": 100
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "A",
+          "serialized_step_characters": 150,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 2,
+          "evidence_mechanism": "transaction_status",
+          "is_evidence_dominant": true,
+          "operation_count": 2,
+          "plan_id": "B",
+          "serialized_step_characters": 282,
+          "total_cost_units": 2.0,
+          "total_latency_ms": 200,
+          "verification_operations_after_mutation": 1
+        }
+      ],
+      "risk": 0.2,
+      "scenario_id": "ppb-configuration-012",
+      "severity": "low",
+      "verification_premium": 2.0
+    },
+    {
+      "domain": "database",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 1,
+        "operation_count": 1,
+        "serialized_step_characters": 130,
+        "total_cost_units": 0.0,
+        "total_latency_ms": 0
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "B",
+          "serialized_step_characters": 148,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 2,
+          "evidence_mechanism": "transaction_status",
+          "is_evidence_dominant": true,
+          "operation_count": 2,
+          "plan_id": "A",
+          "serialized_step_characters": 278,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 1
+        }
+      ],
+      "risk": 0.0,
+      "scenario_id": "ppb-database-001",
+      "severity": "high",
+      "verification_premium": 1.0
+    },
+    {
+      "domain": "database",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 1,
+        "operation_count": 1,
+        "serialized_step_characters": 130,
+        "total_cost_units": 0.0,
+        "total_latency_ms": 0
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "B",
+          "serialized_step_characters": 146,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 2,
+          "evidence_mechanism": "transaction_status",
+          "is_evidence_dominant": true,
+          "operation_count": 2,
+          "plan_id": "A",
+          "serialized_step_characters": 276,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 1
+        }
+      ],
+      "risk": 0.05,
+      "scenario_id": "ppb-database-002",
+      "severity": "low",
+      "verification_premium": 1.0
+    },
+    {
+      "domain": "database",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 1,
+        "operation_count": 1,
+        "serialized_step_characters": 129,
+        "total_cost_units": 0.0,
+        "total_latency_ms": 0
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "B",
+          "serialized_step_characters": 141,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 2,
+          "evidence_mechanism": "independent_readback",
+          "is_evidence_dominant": true,
+          "operation_count": 2,
+          "plan_id": "A",
+          "serialized_step_characters": 270,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 1
+        }
+      ],
+      "risk": 0.2,
+      "scenario_id": "ppb-database-003",
+      "severity": "high",
+      "verification_premium": 1.0
+    },
+    {
+      "domain": "database",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 1,
+        "operation_count": 1,
+        "serialized_step_characters": 131,
+        "total_cost_units": 0.10000000000000009,
+        "total_latency_ms": 10
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "A",
+          "serialized_step_characters": 145,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 2,
+          "evidence_mechanism": "transaction_status",
+          "is_evidence_dominant": true,
+          "operation_count": 2,
+          "plan_id": "B",
+          "serialized_step_characters": 276,
+          "total_cost_units": 1.1,
+          "total_latency_ms": 110,
+          "verification_operations_after_mutation": 1
+        }
+      ],
+      "risk": 0.0,
+      "scenario_id": "ppb-database-004",
+      "severity": "low",
+      "verification_premium": 1.1
+    },
+    {
+      "domain": "database",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 1,
+        "operation_count": 1,
+        "serialized_step_characters": 130,
+        "total_cost_units": 0.10000000000000009,
+        "total_latency_ms": 10
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "A",
+          "serialized_step_characters": 142,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 2,
+          "evidence_mechanism": "independent_readback",
+          "is_evidence_dominant": true,
+          "operation_count": 2,
+          "plan_id": "B",
+          "serialized_step_characters": 272,
+          "total_cost_units": 1.1,
+          "total_latency_ms": 110,
+          "verification_operations_after_mutation": 1
+        }
+      ],
+      "risk": 0.05,
+      "scenario_id": "ppb-database-005",
+      "severity": "high",
+      "verification_premium": 1.1
+    },
+    {
+      "domain": "database",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 1,
+        "operation_count": 1,
+        "serialized_step_characters": 130,
+        "total_cost_units": 0.10000000000000009,
+        "total_latency_ms": 10
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "A",
+          "serialized_step_characters": 139,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 2,
+          "evidence_mechanism": "independent_readback",
+          "is_evidence_dominant": true,
+          "operation_count": 2,
+          "plan_id": "B",
+          "serialized_step_characters": 269,
+          "total_cost_units": 1.1,
+          "total_latency_ms": 110,
+          "verification_operations_after_mutation": 1
+        }
+      ],
+      "risk": 0.2,
+      "scenario_id": "ppb-database-006",
+      "severity": "low",
+      "verification_premium": 1.1
+    },
+    {
+      "domain": "database",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 1,
+        "operation_count": 1,
+        "serialized_step_characters": 130,
+        "total_cost_units": 0.5,
+        "total_latency_ms": 50
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "B",
+          "serialized_step_characters": 149,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 2,
+          "evidence_mechanism": "independent_readback",
+          "is_evidence_dominant": true,
+          "operation_count": 2,
+          "plan_id": "A",
+          "serialized_step_characters": 279,
+          "total_cost_units": 1.5,
+          "total_latency_ms": 150,
+          "verification_operations_after_mutation": 1
+        }
+      ],
+      "risk": 0.0,
+      "scenario_id": "ppb-database-007",
+      "severity": "high",
+      "verification_premium": 1.5
+    },
+    {
+      "domain": "database",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 1,
+        "operation_count": 1,
+        "serialized_step_characters": 130,
+        "total_cost_units": 0.5,
+        "total_latency_ms": 50
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "B",
+          "serialized_step_characters": 149,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 2,
+          "evidence_mechanism": "independent_readback",
+          "is_evidence_dominant": true,
+          "operation_count": 2,
+          "plan_id": "A",
+          "serialized_step_characters": 279,
+          "total_cost_units": 1.5,
+          "total_latency_ms": 150,
+          "verification_operations_after_mutation": 1
+        }
+      ],
+      "risk": 0.05,
+      "scenario_id": "ppb-database-008",
+      "severity": "low",
+      "verification_premium": 1.5
+    },
+    {
+      "domain": "database",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 2,
+        "operation_count": 2,
+        "serialized_step_characters": 255,
+        "total_cost_units": 0.5,
+        "total_latency_ms": 50
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "B",
+          "serialized_step_characters": 143,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 3,
+          "evidence_mechanism": "multiple_source",
+          "is_evidence_dominant": true,
+          "operation_count": 3,
+          "plan_id": "A",
+          "serialized_step_characters": 398,
+          "total_cost_units": 1.5,
+          "total_latency_ms": 150,
+          "verification_operations_after_mutation": 2
+        }
+      ],
+      "risk": 0.2,
+      "scenario_id": "ppb-database-009",
+      "severity": "high",
+      "verification_premium": 1.5
+    },
+    {
+      "domain": "database",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 1,
+        "operation_count": 1,
+        "serialized_step_characters": 131,
+        "total_cost_units": 1.0,
+        "total_latency_ms": 100
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "A",
+          "serialized_step_characters": 144,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 2,
+          "evidence_mechanism": "independent_readback",
+          "is_evidence_dominant": true,
+          "operation_count": 2,
+          "plan_id": "B",
+          "serialized_step_characters": 275,
+          "total_cost_units": 2.0,
+          "total_latency_ms": 200,
+          "verification_operations_after_mutation": 1
+        }
+      ],
+      "risk": 0.0,
+      "scenario_id": "ppb-database-010",
+      "severity": "low",
+      "verification_premium": 2.0
+    },
+    {
+      "domain": "database",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 2,
+        "operation_count": 2,
+        "serialized_step_characters": 253,
+        "total_cost_units": 1.0,
+        "total_latency_ms": 100
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "A",
+          "serialized_step_characters": 147,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 3,
+          "evidence_mechanism": "multiple_source",
+          "is_evidence_dominant": true,
+          "operation_count": 3,
+          "plan_id": "B",
+          "serialized_step_characters": 400,
+          "total_cost_units": 2.0,
+          "total_latency_ms": 200,
+          "verification_operations_after_mutation": 2
+        }
+      ],
+      "risk": 0.05,
+      "scenario_id": "ppb-database-011",
+      "severity": "high",
+      "verification_premium": 2.0
+    },
+    {
+      "domain": "database",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 2,
+        "operation_count": 2,
+        "serialized_step_characters": 253,
+        "total_cost_units": 1.0,
+        "total_latency_ms": 100
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "A",
+          "serialized_step_characters": 144,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 3,
+          "evidence_mechanism": "multiple_source",
+          "is_evidence_dominant": true,
+          "operation_count": 3,
+          "plan_id": "B",
+          "serialized_step_characters": 397,
+          "total_cost_units": 2.0,
+          "total_latency_ms": 200,
+          "verification_operations_after_mutation": 2
+        }
+      ],
+      "risk": 0.2,
+      "scenario_id": "ppb-database-012",
+      "severity": "low",
+      "verification_premium": 2.0
+    },
+    {
+      "domain": "filesystem",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 1,
+        "operation_count": 1,
+        "serialized_step_characters": 127,
+        "total_cost_units": 0.0,
+        "total_latency_ms": 0
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "B",
+          "serialized_step_characters": 150,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 2,
+          "evidence_mechanism": "independent_readback",
+          "is_evidence_dominant": true,
+          "operation_count": 2,
+          "plan_id": "A",
+          "serialized_step_characters": 277,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 1
+        }
+      ],
+      "risk": 0.0,
+      "scenario_id": "ppb-filesystem-001",
+      "severity": "low",
+      "verification_premium": 1.0
+    },
+    {
+      "domain": "filesystem",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 2,
+        "operation_count": 2,
+        "serialized_step_characters": 249,
+        "total_cost_units": 0.0,
+        "total_latency_ms": 0
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "B",
+          "serialized_step_characters": 145,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 3,
+          "evidence_mechanism": "multiple_source",
+          "is_evidence_dominant": true,
+          "operation_count": 3,
+          "plan_id": "A",
+          "serialized_step_characters": 394,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 2
+        }
+      ],
+      "risk": 0.05,
+      "scenario_id": "ppb-filesystem-002",
+      "severity": "high",
+      "verification_premium": 1.0
+    },
+    {
+      "domain": "filesystem",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 2,
+        "operation_count": 2,
+        "serialized_step_characters": 249,
+        "total_cost_units": 0.0,
+        "total_latency_ms": 0
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "B",
+          "serialized_step_characters": 146,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 3,
+          "evidence_mechanism": "multiple_source",
+          "is_evidence_dominant": true,
+          "operation_count": 3,
+          "plan_id": "A",
+          "serialized_step_characters": 395,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 2
+        }
+      ],
+      "risk": 0.2,
+      "scenario_id": "ppb-filesystem-003",
+      "severity": "low",
+      "verification_premium": 1.0
+    },
+    {
+      "domain": "filesystem",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 2,
+        "operation_count": 2,
+        "serialized_step_characters": 251,
+        "total_cost_units": 0.10000000000000009,
+        "total_latency_ms": 10
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "A",
+          "serialized_step_characters": 146,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 3,
+          "evidence_mechanism": "multiple_source",
+          "is_evidence_dominant": true,
+          "operation_count": 3,
+          "plan_id": "B",
+          "serialized_step_characters": 397,
+          "total_cost_units": 1.1,
+          "total_latency_ms": 110,
+          "verification_operations_after_mutation": 2
+        }
+      ],
+      "risk": 0.0,
+      "scenario_id": "ppb-filesystem-004",
+      "severity": "high",
+      "verification_premium": 1.1
+    },
+    {
+      "domain": "filesystem",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 2,
+        "operation_count": 2,
+        "serialized_step_characters": 251,
+        "total_cost_units": 0.10000000000000009,
+        "total_latency_ms": 10
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "A",
+          "serialized_step_characters": 143,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 3,
+          "evidence_mechanism": "multiple_source",
+          "is_evidence_dominant": true,
+          "operation_count": 3,
+          "plan_id": "B",
+          "serialized_step_characters": 394,
+          "total_cost_units": 1.1,
+          "total_latency_ms": 110,
+          "verification_operations_after_mutation": 2
+        }
+      ],
+      "risk": 0.05,
+      "scenario_id": "ppb-filesystem-005",
+      "severity": "low",
+      "verification_premium": 1.1
+    },
+    {
+      "domain": "filesystem",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 1,
+        "operation_count": 1,
+        "serialized_step_characters": 131,
+        "total_cost_units": 0.10000000000000009,
+        "total_latency_ms": 10
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "A",
+          "serialized_step_characters": 148,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 2,
+          "evidence_mechanism": "transaction_status",
+          "is_evidence_dominant": true,
+          "operation_count": 2,
+          "plan_id": "B",
+          "serialized_step_characters": 279,
+          "total_cost_units": 1.1,
+          "total_latency_ms": 110,
+          "verification_operations_after_mutation": 1
+        }
+      ],
+      "risk": 0.2,
+      "scenario_id": "ppb-filesystem-006",
+      "severity": "high",
+      "verification_premium": 1.1
+    },
+    {
+      "domain": "filesystem",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 2,
+        "operation_count": 2,
+        "serialized_step_characters": 253,
+        "total_cost_units": 0.5,
+        "total_latency_ms": 50
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "B",
+          "serialized_step_characters": 145,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 3,
+          "evidence_mechanism": "multiple_source",
+          "is_evidence_dominant": true,
+          "operation_count": 3,
+          "plan_id": "A",
+          "serialized_step_characters": 398,
+          "total_cost_units": 1.5,
+          "total_latency_ms": 150,
+          "verification_operations_after_mutation": 2
+        }
+      ],
+      "risk": 0.0,
+      "scenario_id": "ppb-filesystem-007",
+      "severity": "low",
+      "verification_premium": 1.5
+    },
+    {
+      "domain": "filesystem",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 1,
+        "operation_count": 1,
+        "serialized_step_characters": 131,
+        "total_cost_units": 0.5,
+        "total_latency_ms": 50
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "B",
+          "serialized_step_characters": 142,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 2,
+          "evidence_mechanism": "transaction_status",
+          "is_evidence_dominant": true,
+          "operation_count": 2,
+          "plan_id": "A",
+          "serialized_step_characters": 273,
+          "total_cost_units": 1.5,
+          "total_latency_ms": 150,
+          "verification_operations_after_mutation": 1
+        }
+      ],
+      "risk": 0.05,
+      "scenario_id": "ppb-filesystem-008",
+      "severity": "high",
+      "verification_premium": 1.5
+    },
+    {
+      "domain": "filesystem",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 1,
+        "operation_count": 1,
+        "serialized_step_characters": 131,
+        "total_cost_units": 0.5,
+        "total_latency_ms": 50
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "B",
+          "serialized_step_characters": 147,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 2,
+          "evidence_mechanism": "transaction_status",
+          "is_evidence_dominant": true,
+          "operation_count": 2,
+          "plan_id": "A",
+          "serialized_step_characters": 278,
+          "total_cost_units": 1.5,
+          "total_latency_ms": 150,
+          "verification_operations_after_mutation": 1
+        }
+      ],
+      "risk": 0.2,
+      "scenario_id": "ppb-filesystem-009",
+      "severity": "low",
+      "verification_premium": 1.5
+    },
+    {
+      "domain": "filesystem",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 1,
+        "operation_count": 1,
+        "serialized_step_characters": 132,
+        "total_cost_units": 1.0,
+        "total_latency_ms": 100
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "A",
+          "serialized_step_characters": 146,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 2,
+          "evidence_mechanism": "transaction_status",
+          "is_evidence_dominant": true,
+          "operation_count": 2,
+          "plan_id": "B",
+          "serialized_step_characters": 278,
+          "total_cost_units": 2.0,
+          "total_latency_ms": 200,
+          "verification_operations_after_mutation": 1
+        }
+      ],
+      "risk": 0.0,
+      "scenario_id": "ppb-filesystem-010",
+      "severity": "high",
+      "verification_premium": 2.0
+    },
+    {
+      "domain": "filesystem",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 1,
+        "operation_count": 1,
+        "serialized_step_characters": 132,
+        "total_cost_units": 1.0,
+        "total_latency_ms": 100
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "A",
+          "serialized_step_characters": 149,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 2,
+          "evidence_mechanism": "transaction_status",
+          "is_evidence_dominant": true,
+          "operation_count": 2,
+          "plan_id": "B",
+          "serialized_step_characters": 281,
+          "total_cost_units": 2.0,
+          "total_latency_ms": 200,
+          "verification_operations_after_mutation": 1
+        }
+      ],
+      "risk": 0.05,
+      "scenario_id": "ppb-filesystem-011",
+      "severity": "low",
+      "verification_premium": 2.0
+    },
+    {
+      "domain": "filesystem",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 1,
+        "operation_count": 1,
+        "serialized_step_characters": 129,
+        "total_cost_units": 1.0,
+        "total_latency_ms": 100
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "A",
+          "serialized_step_characters": 142,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 2,
+          "evidence_mechanism": "independent_readback",
+          "is_evidence_dominant": true,
+          "operation_count": 2,
+          "plan_id": "B",
+          "serialized_step_characters": 271,
+          "total_cost_units": 2.0,
+          "total_latency_ms": 200,
+          "verification_operations_after_mutation": 1
+        }
+      ],
+      "risk": 0.2,
+      "scenario_id": "ppb-filesystem-012",
+      "severity": "high",
+      "verification_premium": 2.0
+    },
+    {
+      "domain": "messaging",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 2,
+        "operation_count": 2,
+        "serialized_step_characters": 252,
+        "total_cost_units": 0.0,
+        "total_latency_ms": 0
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "B",
+          "serialized_step_characters": 150,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 3,
+          "evidence_mechanism": "multiple_source",
+          "is_evidence_dominant": true,
+          "operation_count": 3,
+          "plan_id": "A",
+          "serialized_step_characters": 402,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 2
+        }
+      ],
+      "risk": 0.0,
+      "scenario_id": "ppb-messaging-001",
+      "severity": "low",
+      "verification_premium": 1.0
+    },
+    {
+      "domain": "messaging",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 1,
+        "operation_count": 1,
+        "serialized_step_characters": 130,
+        "total_cost_units": 0.0,
+        "total_latency_ms": 0
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "B",
+          "serialized_step_characters": 151,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 2,
+          "evidence_mechanism": "transaction_status",
+          "is_evidence_dominant": true,
+          "operation_count": 2,
+          "plan_id": "A",
+          "serialized_step_characters": 281,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 1
+        }
+      ],
+      "risk": 0.05,
+      "scenario_id": "ppb-messaging-002",
+      "severity": "high",
+      "verification_premium": 1.0
+    },
+    {
+      "domain": "messaging",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 1,
+        "operation_count": 1,
+        "serialized_step_characters": 130,
+        "total_cost_units": 0.0,
+        "total_latency_ms": 0
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "B",
+          "serialized_step_characters": 147,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 2,
+          "evidence_mechanism": "transaction_status",
+          "is_evidence_dominant": true,
+          "operation_count": 2,
+          "plan_id": "A",
+          "serialized_step_characters": 277,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 1
+        }
+      ],
+      "risk": 0.2,
+      "scenario_id": "ppb-messaging-003",
+      "severity": "low",
+      "verification_premium": 1.0
+    },
+    {
+      "domain": "messaging",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 1,
+        "operation_count": 1,
+        "serialized_step_characters": 131,
+        "total_cost_units": 0.10000000000000009,
+        "total_latency_ms": 10
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "A",
+          "serialized_step_characters": 150,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 2,
+          "evidence_mechanism": "transaction_status",
+          "is_evidence_dominant": true,
+          "operation_count": 2,
+          "plan_id": "B",
+          "serialized_step_characters": 281,
+          "total_cost_units": 1.1,
+          "total_latency_ms": 110,
+          "verification_operations_after_mutation": 1
+        }
+      ],
+      "risk": 0.0,
+      "scenario_id": "ppb-messaging-004",
+      "severity": "high",
+      "verification_premium": 1.1
+    },
+    {
+      "domain": "messaging",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 1,
+        "operation_count": 1,
+        "serialized_step_characters": 131,
+        "total_cost_units": 0.10000000000000009,
+        "total_latency_ms": 10
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "A",
+          "serialized_step_characters": 151,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 2,
+          "evidence_mechanism": "transaction_status",
+          "is_evidence_dominant": true,
+          "operation_count": 2,
+          "plan_id": "B",
+          "serialized_step_characters": 282,
+          "total_cost_units": 1.1,
+          "total_latency_ms": 110,
+          "verification_operations_after_mutation": 1
+        }
+      ],
+      "risk": 0.05,
+      "scenario_id": "ppb-messaging-005",
+      "severity": "low",
+      "verification_premium": 1.1
+    },
+    {
+      "domain": "messaging",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 1,
+        "operation_count": 1,
+        "serialized_step_characters": 131,
+        "total_cost_units": 0.10000000000000009,
+        "total_latency_ms": 10
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "A",
+          "serialized_step_characters": 147,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 2,
+          "evidence_mechanism": "independent_readback",
+          "is_evidence_dominant": true,
+          "operation_count": 2,
+          "plan_id": "B",
+          "serialized_step_characters": 278,
+          "total_cost_units": 1.1,
+          "total_latency_ms": 110,
+          "verification_operations_after_mutation": 1
+        }
+      ],
+      "risk": 0.2,
+      "scenario_id": "ppb-messaging-006",
+      "severity": "high",
+      "verification_premium": 1.1
+    },
+    {
+      "domain": "messaging",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 1,
+        "operation_count": 1,
+        "serialized_step_characters": 131,
+        "total_cost_units": 0.5,
+        "total_latency_ms": 50
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "B",
+          "serialized_step_characters": 152,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 2,
+          "evidence_mechanism": "transaction_status",
+          "is_evidence_dominant": true,
+          "operation_count": 2,
+          "plan_id": "A",
+          "serialized_step_characters": 283,
+          "total_cost_units": 1.5,
+          "total_latency_ms": 150,
+          "verification_operations_after_mutation": 1
+        }
+      ],
+      "risk": 0.0,
+      "scenario_id": "ppb-messaging-007",
+      "severity": "low",
+      "verification_premium": 1.5
+    },
+    {
+      "domain": "messaging",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 1,
+        "operation_count": 1,
+        "serialized_step_characters": 131,
+        "total_cost_units": 0.5,
+        "total_latency_ms": 50
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "B",
+          "serialized_step_characters": 146,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 2,
+          "evidence_mechanism": "independent_readback",
+          "is_evidence_dominant": true,
+          "operation_count": 2,
+          "plan_id": "A",
+          "serialized_step_characters": 277,
+          "total_cost_units": 1.5,
+          "total_latency_ms": 150,
+          "verification_operations_after_mutation": 1
+        }
+      ],
+      "risk": 0.05,
+      "scenario_id": "ppb-messaging-008",
+      "severity": "high",
+      "verification_premium": 1.5
+    },
+    {
+      "domain": "messaging",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 1,
+        "operation_count": 1,
+        "serialized_step_characters": 131,
+        "total_cost_units": 0.5,
+        "total_latency_ms": 50
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "B",
+          "serialized_step_characters": 147,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 2,
+          "evidence_mechanism": "independent_readback",
+          "is_evidence_dominant": true,
+          "operation_count": 2,
+          "plan_id": "A",
+          "serialized_step_characters": 278,
+          "total_cost_units": 1.5,
+          "total_latency_ms": 150,
+          "verification_operations_after_mutation": 1
+        }
+      ],
+      "risk": 0.2,
+      "scenario_id": "ppb-messaging-009",
+      "severity": "low",
+      "verification_premium": 1.5
+    },
+    {
+      "domain": "messaging",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 1,
+        "operation_count": 1,
+        "serialized_step_characters": 132,
+        "total_cost_units": 1.0,
+        "total_latency_ms": 100
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "A",
+          "serialized_step_characters": 143,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 2,
+          "evidence_mechanism": "independent_readback",
+          "is_evidence_dominant": true,
+          "operation_count": 2,
+          "plan_id": "B",
+          "serialized_step_characters": 275,
+          "total_cost_units": 2.0,
+          "total_latency_ms": 200,
+          "verification_operations_after_mutation": 1
+        }
+      ],
+      "risk": 0.0,
+      "scenario_id": "ppb-messaging-010",
+      "severity": "high",
+      "verification_premium": 2.0
+    },
+    {
+      "domain": "messaging",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 1,
+        "operation_count": 1,
+        "serialized_step_characters": 132,
+        "total_cost_units": 1.0,
+        "total_latency_ms": 100
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "A",
+          "serialized_step_characters": 145,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 2,
+          "evidence_mechanism": "independent_readback",
+          "is_evidence_dominant": true,
+          "operation_count": 2,
+          "plan_id": "B",
+          "serialized_step_characters": 277,
+          "total_cost_units": 2.0,
+          "total_latency_ms": 200,
+          "verification_operations_after_mutation": 1
+        }
+      ],
+      "risk": 0.05,
+      "scenario_id": "ppb-messaging-011",
+      "severity": "low",
+      "verification_premium": 2.0
+    },
+    {
+      "domain": "messaging",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 2,
+        "operation_count": 2,
+        "serialized_step_characters": 254,
+        "total_cost_units": 1.0,
+        "total_latency_ms": 100
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "A",
+          "serialized_step_characters": 147,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 3,
+          "evidence_mechanism": "multiple_source",
+          "is_evidence_dominant": true,
+          "operation_count": 3,
+          "plan_id": "B",
+          "serialized_step_characters": 401,
+          "total_cost_units": 2.0,
+          "total_latency_ms": 200,
+          "verification_operations_after_mutation": 2
+        }
+      ],
+      "risk": 0.2,
+      "scenario_id": "ppb-messaging-012",
+      "severity": "high",
+      "verification_premium": 2.0
+    },
+    {
+      "domain": "profile",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 1,
+        "operation_count": 1,
+        "serialized_step_characters": 130,
+        "total_cost_units": 0.0,
+        "total_latency_ms": 0
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "A",
+          "serialized_step_characters": 145,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 2,
+          "evidence_mechanism": "transaction_status",
+          "is_evidence_dominant": true,
+          "operation_count": 2,
+          "plan_id": "B",
+          "serialized_step_characters": 275,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 1
+        }
+      ],
+      "risk": 0.0,
+      "scenario_id": "ppb-profile-001",
+      "severity": "low",
+      "verification_premium": 1.0
+    },
+    {
+      "domain": "profile",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 1,
+        "operation_count": 1,
+        "serialized_step_characters": 130,
+        "total_cost_units": 0.0,
+        "total_latency_ms": 0
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "A",
+          "serialized_step_characters": 148,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 2,
+          "evidence_mechanism": "independent_readback",
+          "is_evidence_dominant": true,
+          "operation_count": 2,
+          "plan_id": "B",
+          "serialized_step_characters": 278,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 1
+        }
+      ],
+      "risk": 0.05,
+      "scenario_id": "ppb-profile-002",
+      "severity": "high",
+      "verification_premium": 1.0
+    },
+    {
+      "domain": "profile",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 1,
+        "operation_count": 1,
+        "serialized_step_characters": 130,
+        "total_cost_units": 0.0,
+        "total_latency_ms": 0
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "A",
+          "serialized_step_characters": 146,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 2,
+          "evidence_mechanism": "independent_readback",
+          "is_evidence_dominant": true,
+          "operation_count": 2,
+          "plan_id": "B",
+          "serialized_step_characters": 276,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 1
+        }
+      ],
+      "risk": 0.2,
+      "scenario_id": "ppb-profile-003",
+      "severity": "low",
+      "verification_premium": 1.0
+    },
+    {
+      "domain": "profile",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 1,
+        "operation_count": 1,
+        "serialized_step_characters": 131,
+        "total_cost_units": 0.10000000000000009,
+        "total_latency_ms": 10
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "B",
+          "serialized_step_characters": 158,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 2,
+          "evidence_mechanism": "independent_readback",
+          "is_evidence_dominant": true,
+          "operation_count": 2,
+          "plan_id": "A",
+          "serialized_step_characters": 289,
+          "total_cost_units": 1.1,
+          "total_latency_ms": 110,
+          "verification_operations_after_mutation": 1
+        }
+      ],
+      "risk": 0.0,
+      "scenario_id": "ppb-profile-004",
+      "severity": "high",
+      "verification_premium": 1.1
+    },
+    {
+      "domain": "profile",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 1,
+        "operation_count": 1,
+        "serialized_step_characters": 131,
+        "total_cost_units": 0.10000000000000009,
+        "total_latency_ms": 10
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "B",
+          "serialized_step_characters": 152,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 2,
+          "evidence_mechanism": "independent_readback",
+          "is_evidence_dominant": true,
+          "operation_count": 2,
+          "plan_id": "A",
+          "serialized_step_characters": 283,
+          "total_cost_units": 1.1,
+          "total_latency_ms": 110,
+          "verification_operations_after_mutation": 1
+        }
+      ],
+      "risk": 0.05,
+      "scenario_id": "ppb-profile-005",
+      "severity": "low",
+      "verification_premium": 1.1
+    },
+    {
+      "domain": "profile",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 2,
+        "operation_count": 2,
+        "serialized_step_characters": 254,
+        "total_cost_units": 0.10000000000000009,
+        "total_latency_ms": 10
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "B",
+          "serialized_step_characters": 151,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 3,
+          "evidence_mechanism": "multiple_source",
+          "is_evidence_dominant": true,
+          "operation_count": 3,
+          "plan_id": "A",
+          "serialized_step_characters": 405,
+          "total_cost_units": 1.1,
+          "total_latency_ms": 110,
+          "verification_operations_after_mutation": 2
+        }
+      ],
+      "risk": 0.2,
+      "scenario_id": "ppb-profile-006",
+      "severity": "high",
+      "verification_premium": 1.1
+    },
+    {
+      "domain": "profile",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 1,
+        "operation_count": 1,
+        "serialized_step_characters": 131,
+        "total_cost_units": 0.5,
+        "total_latency_ms": 50
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "A",
+          "serialized_step_characters": 151,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 2,
+          "evidence_mechanism": "independent_readback",
+          "is_evidence_dominant": true,
+          "operation_count": 2,
+          "plan_id": "B",
+          "serialized_step_characters": 282,
+          "total_cost_units": 1.5,
+          "total_latency_ms": 150,
+          "verification_operations_after_mutation": 1
+        }
+      ],
+      "risk": 0.0,
+      "scenario_id": "ppb-profile-007",
+      "severity": "low",
+      "verification_premium": 1.5
+    },
+    {
+      "domain": "profile",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 2,
+        "operation_count": 2,
+        "serialized_step_characters": 256,
+        "total_cost_units": 0.5,
+        "total_latency_ms": 50
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "A",
+          "serialized_step_characters": 150,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 3,
+          "evidence_mechanism": "multiple_source",
+          "is_evidence_dominant": true,
+          "operation_count": 3,
+          "plan_id": "B",
+          "serialized_step_characters": 406,
+          "total_cost_units": 1.5,
+          "total_latency_ms": 150,
+          "verification_operations_after_mutation": 2
+        }
+      ],
+      "risk": 0.05,
+      "scenario_id": "ppb-profile-008",
+      "severity": "high",
+      "verification_premium": 1.5
+    },
+    {
+      "domain": "profile",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 2,
+        "operation_count": 2,
+        "serialized_step_characters": 256,
+        "total_cost_units": 0.5,
+        "total_latency_ms": 50
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "A",
+          "serialized_step_characters": 154,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 3,
+          "evidence_mechanism": "multiple_source",
+          "is_evidence_dominant": true,
+          "operation_count": 3,
+          "plan_id": "B",
+          "serialized_step_characters": 410,
+          "total_cost_units": 1.5,
+          "total_latency_ms": 150,
+          "verification_operations_after_mutation": 2
+        }
+      ],
+      "risk": 0.2,
+      "scenario_id": "ppb-profile-009",
+      "severity": "low",
+      "verification_premium": 1.5
+    },
+    {
+      "domain": "profile",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 2,
+        "operation_count": 2,
+        "serialized_step_characters": 254,
+        "total_cost_units": 1.0,
+        "total_latency_ms": 100
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "B",
+          "serialized_step_characters": 158,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 3,
+          "evidence_mechanism": "multiple_source",
+          "is_evidence_dominant": true,
+          "operation_count": 3,
+          "plan_id": "A",
+          "serialized_step_characters": 412,
+          "total_cost_units": 2.0,
+          "total_latency_ms": 200,
+          "verification_operations_after_mutation": 2
+        }
+      ],
+      "risk": 0.0,
+      "scenario_id": "ppb-profile-010",
+      "severity": "high",
+      "verification_premium": 2.0
+    },
+    {
+      "domain": "profile",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 2,
+        "operation_count": 2,
+        "serialized_step_characters": 254,
+        "total_cost_units": 1.0,
+        "total_latency_ms": 100
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "B",
+          "serialized_step_characters": 146,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 3,
+          "evidence_mechanism": "multiple_source",
+          "is_evidence_dominant": true,
+          "operation_count": 3,
+          "plan_id": "A",
+          "serialized_step_characters": 400,
+          "total_cost_units": 2.0,
+          "total_latency_ms": 200,
+          "verification_operations_after_mutation": 2
+        }
+      ],
+      "risk": 0.05,
+      "scenario_id": "ppb-profile-011",
+      "severity": "low",
+      "verification_premium": 2.0
+    },
+    {
+      "domain": "profile",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 1,
+        "operation_count": 1,
+        "serialized_step_characters": 132,
+        "total_cost_units": 1.0,
+        "total_latency_ms": 100
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "B",
+          "serialized_step_characters": 146,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 2,
+          "evidence_mechanism": "transaction_status",
+          "is_evidence_dominant": true,
+          "operation_count": 2,
+          "plan_id": "A",
+          "serialized_step_characters": 278,
+          "total_cost_units": 2.0,
+          "total_latency_ms": 200,
+          "verification_operations_after_mutation": 1
+        }
+      ],
+      "risk": 0.2,
+      "scenario_id": "ppb-profile-012",
+      "severity": "high",
+      "verification_premium": 2.0
+    },
+    {
+      "domain": "subscription",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 1,
+        "operation_count": 1,
+        "serialized_step_characters": 130,
+        "total_cost_units": 0.0,
+        "total_latency_ms": 0
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "A",
+          "serialized_step_characters": 148,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 2,
+          "evidence_mechanism": "transaction_status",
+          "is_evidence_dominant": true,
+          "operation_count": 2,
+          "plan_id": "B",
+          "serialized_step_characters": 278,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 1
+        }
+      ],
+      "risk": 0.0,
+      "scenario_id": "ppb-subscription-001",
+      "severity": "high",
+      "verification_premium": 1.0
+    },
+    {
+      "domain": "subscription",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 1,
+        "operation_count": 1,
+        "serialized_step_characters": 130,
+        "total_cost_units": 0.0,
+        "total_latency_ms": 0
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "A",
+          "serialized_step_characters": 152,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 2,
+          "evidence_mechanism": "transaction_status",
+          "is_evidence_dominant": true,
+          "operation_count": 2,
+          "plan_id": "B",
+          "serialized_step_characters": 282,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 1
+        }
+      ],
+      "risk": 0.05,
+      "scenario_id": "ppb-subscription-002",
+      "severity": "low",
+      "verification_premium": 1.0
+    },
+    {
+      "domain": "subscription",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 1,
+        "operation_count": 1,
+        "serialized_step_characters": 135,
+        "total_cost_units": 0.0,
+        "total_latency_ms": 0
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "A",
+          "serialized_step_characters": 152,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 2,
+          "evidence_mechanism": "independent_readback",
+          "is_evidence_dominant": true,
+          "operation_count": 2,
+          "plan_id": "B",
+          "serialized_step_characters": 287,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 1
+        }
+      ],
+      "risk": 0.2,
+      "scenario_id": "ppb-subscription-003",
+      "severity": "high",
+      "verification_premium": 1.0
+    },
+    {
+      "domain": "subscription",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 1,
+        "operation_count": 1,
+        "serialized_step_characters": 131,
+        "total_cost_units": 0.10000000000000009,
+        "total_latency_ms": 10
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "B",
+          "serialized_step_characters": 155,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 2,
+          "evidence_mechanism": "transaction_status",
+          "is_evidence_dominant": true,
+          "operation_count": 2,
+          "plan_id": "A",
+          "serialized_step_characters": 286,
+          "total_cost_units": 1.1,
+          "total_latency_ms": 110,
+          "verification_operations_after_mutation": 1
+        }
+      ],
+      "risk": 0.0,
+      "scenario_id": "ppb-subscription-004",
+      "severity": "low",
+      "verification_premium": 1.1
+    },
+    {
+      "domain": "subscription",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 1,
+        "operation_count": 1,
+        "serialized_step_characters": 136,
+        "total_cost_units": 0.10000000000000009,
+        "total_latency_ms": 10
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "B",
+          "serialized_step_characters": 152,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 2,
+          "evidence_mechanism": "independent_readback",
+          "is_evidence_dominant": true,
+          "operation_count": 2,
+          "plan_id": "A",
+          "serialized_step_characters": 288,
+          "total_cost_units": 1.1,
+          "total_latency_ms": 110,
+          "verification_operations_after_mutation": 1
+        }
+      ],
+      "risk": 0.05,
+      "scenario_id": "ppb-subscription-005",
+      "severity": "high",
+      "verification_premium": 1.1
+    },
+    {
+      "domain": "subscription",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 1,
+        "operation_count": 1,
+        "serialized_step_characters": 136,
+        "total_cost_units": 0.10000000000000009,
+        "total_latency_ms": 10
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "B",
+          "serialized_step_characters": 151,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 2,
+          "evidence_mechanism": "independent_readback",
+          "is_evidence_dominant": true,
+          "operation_count": 2,
+          "plan_id": "A",
+          "serialized_step_characters": 287,
+          "total_cost_units": 1.1,
+          "total_latency_ms": 110,
+          "verification_operations_after_mutation": 1
+        }
+      ],
+      "risk": 0.2,
+      "scenario_id": "ppb-subscription-006",
+      "severity": "low",
+      "verification_premium": 1.1
+    },
+    {
+      "domain": "subscription",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 1,
+        "operation_count": 1,
+        "serialized_step_characters": 136,
+        "total_cost_units": 0.5,
+        "total_latency_ms": 50
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "A",
+          "serialized_step_characters": 144,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 2,
+          "evidence_mechanism": "independent_readback",
+          "is_evidence_dominant": true,
+          "operation_count": 2,
+          "plan_id": "B",
+          "serialized_step_characters": 280,
+          "total_cost_units": 1.5,
+          "total_latency_ms": 150,
+          "verification_operations_after_mutation": 1
+        }
+      ],
+      "risk": 0.0,
+      "scenario_id": "ppb-subscription-007",
+      "severity": "high",
+      "verification_premium": 1.5
+    },
+    {
+      "domain": "subscription",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 1,
+        "operation_count": 1,
+        "serialized_step_characters": 136,
+        "total_cost_units": 0.5,
+        "total_latency_ms": 50
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "A",
+          "serialized_step_characters": 156,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 2,
+          "evidence_mechanism": "independent_readback",
+          "is_evidence_dominant": true,
+          "operation_count": 2,
+          "plan_id": "B",
+          "serialized_step_characters": 292,
+          "total_cost_units": 1.5,
+          "total_latency_ms": 150,
+          "verification_operations_after_mutation": 1
+        }
+      ],
+      "risk": 0.05,
+      "scenario_id": "ppb-subscription-008",
+      "severity": "low",
+      "verification_premium": 1.5
+    },
+    {
+      "domain": "subscription",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 2,
+        "operation_count": 2,
+        "serialized_step_characters": 261,
+        "total_cost_units": 0.5,
+        "total_latency_ms": 50
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "A",
+          "serialized_step_characters": 152,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 3,
+          "evidence_mechanism": "multiple_source",
+          "is_evidence_dominant": true,
+          "operation_count": 3,
+          "plan_id": "B",
+          "serialized_step_characters": 413,
+          "total_cost_units": 1.5,
+          "total_latency_ms": 150,
+          "verification_operations_after_mutation": 2
+        }
+      ],
+      "risk": 0.2,
+      "scenario_id": "ppb-subscription-009",
+      "severity": "high",
+      "verification_premium": 1.5
+    },
+    {
+      "domain": "subscription",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 1,
+        "operation_count": 1,
+        "serialized_step_characters": 137,
+        "total_cost_units": 1.0,
+        "total_latency_ms": 100
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "B",
+          "serialized_step_characters": 150,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 2,
+          "evidence_mechanism": "independent_readback",
+          "is_evidence_dominant": true,
+          "operation_count": 2,
+          "plan_id": "A",
+          "serialized_step_characters": 287,
+          "total_cost_units": 2.0,
+          "total_latency_ms": 200,
+          "verification_operations_after_mutation": 1
+        }
+      ],
+      "risk": 0.0,
+      "scenario_id": "ppb-subscription-010",
+      "severity": "low",
+      "verification_premium": 2.0
+    },
+    {
+      "domain": "subscription",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 2,
+        "operation_count": 2,
+        "serialized_step_characters": 259,
+        "total_cost_units": 1.0,
+        "total_latency_ms": 100
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "B",
+          "serialized_step_characters": 160,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 3,
+          "evidence_mechanism": "multiple_source",
+          "is_evidence_dominant": true,
+          "operation_count": 3,
+          "plan_id": "A",
+          "serialized_step_characters": 419,
+          "total_cost_units": 2.0,
+          "total_latency_ms": 200,
+          "verification_operations_after_mutation": 2
+        }
+      ],
+      "risk": 0.05,
+      "scenario_id": "ppb-subscription-011",
+      "severity": "high",
+      "verification_premium": 2.0
+    },
+    {
+      "domain": "subscription",
+      "dominant_minus_baseline": {
+        "distinct_tool_count": 2,
+        "operation_count": 2,
+        "serialized_step_characters": 259,
+        "total_cost_units": 1.0,
+        "total_latency_ms": 100
+      },
+      "plans": [
+        {
+          "distinct_tool_count": 1,
+          "evidence_mechanism": "write_response",
+          "is_evidence_dominant": false,
+          "operation_count": 1,
+          "plan_id": "B",
+          "serialized_step_characters": 151,
+          "total_cost_units": 1.0,
+          "total_latency_ms": 100,
+          "verification_operations_after_mutation": 0
+        },
+        {
+          "distinct_tool_count": 3,
+          "evidence_mechanism": "multiple_source",
+          "is_evidence_dominant": true,
+          "operation_count": 3,
+          "plan_id": "A",
+          "serialized_step_characters": 410,
+          "total_cost_units": 2.0,
+          "total_latency_ms": 200,
+          "verification_operations_after_mutation": 2
+        }
+      ],
+      "risk": 0.2,
+      "scenario_id": "ppb-subscription-012",
+      "severity": "low",
+      "verification_premium": 2.0
+    }
+  ],
+  "schema_version": "1.0",
+  "status": "deterministic_design_diagnostic_not_behavioral_results"
+}

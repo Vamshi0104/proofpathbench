@@ -1,0 +1,585 @@
+\documentclass[10pt,twocolumn]{article}
+
+\usepackage[margin=0.72in,columnsep=0.25in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{microtype}
+\usepackage{natbib}
+\usepackage{tabularx}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{xurl}
+\usepackage[hidelinks]{hyperref}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{titlesec}
+
+\hypersetup{
+  pdftitle={ProofPathBench: A Benchmark for Verifiability-Aware Planning by Tool-Using Language Agents},
+  pdfauthor={Vamshi Krishna Madhavan},
+  pdfsubject={Benchmark design and deterministic validation for verification-aware agent planning},
+  pdfkeywords={language agents, tool use, verification, benchmark, reliability}
+}
+
+\definecolor{protocolblue}{HTML}{1769AA}
+\definecolor{protocolgray}{HTML}{475569}
+\setlist[itemize,enumerate]{nosep,leftmargin=*}
+\setlength{\parskip}{2.5pt}
+\setlength{\parindent}{1em}
+\widowpenalty=10000
+\clubpenalty=10000
+\displaywidowpenalty=10000
+\renewcommand{\topfraction}{0.9}
+\renewcommand{\bottomfraction}{0.8}
+\renewcommand{\textfraction}{0.08}
+\renewcommand{\floatpagefraction}{0.8}
+\titleformat{\section}{\large\bfseries}{\thesection}{0.65em}{}
+\titleformat{name=\section,numberless}{\large\bfseries}{}{0pt}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.65em}{}
+\titlespacing*{\section}{0pt}{1.35ex plus 0.5ex minus 0.2ex}{0.75ex}
+\titlespacing*{\subsection}{0pt}{1.0ex plus 0.4ex minus 0.2ex}{0.5ex}
+
+\newcommand{\system}{\textsc{ProofPath}}
+\newcommand{\bench}{\textsc{ProofPathBench}}
+\newcommand{\vpsr}{\textsc{VPSR}}
+\newcommand{\vts}{\textsc{VTS}}
+\newcommand{\fcr}{\textsc{FCR}}
+
+\title{\vspace{-1.1em}\resizebox{0.98\textwidth}{!}{\textbf{ProofPathBench: A Benchmark for Verifiability-Aware Planning by Tool-Using Language Agents}}}
+\author{
+  Vamshi Krishna Madhavan\\
+  Independent Researcher\\
+  \href{mailto:vamshi-madhavan@outlook.com}{\texttt{vamshi-madhavan@outlook.com}}\\
+  \href{https://vamshi0104.github.io/proofpathbench/}{\texttt{vamshi0104.github.io/proofpathbench/}}
+}
+\date{Benchmark release: October 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Tool-using language agents can change files, accounts, and other persistent state. A tool
+may report success even when the intended change did not occur. We introduce \bench, an
+implemented benchmark that tests whether an agent chooses a plan with stronger
+independent evidence before execution begins. This voluntary, ex-ante choice is distinct
+from detecting or recovering from a failure after a tool has run. The benchmark contains 96 synthetic
+scenarios across eight domains. Each scenario offers two plans for the same goal and
+varies the simulated cost and delay of verification, the stated failure risk, the
+consequence severity, and the instruction given to the agent. The environment keeps the
+true state separate from tool responses and from an evaluator-only trace. Automated
+checks cover 384 task-treatment units, 768 no-fault plan executions, state isolation,
+balanced presentation, and nine seeded failure types. A prospective power analysis also
+defines a 2,304-choice reference evaluation and shows which comparisons it can support.
+This paper presents the benchmark, its outcome definitions, its deterministic validation,
+and its evaluation design. The complete scenarios, implementation, validation records,
+and release checks accompany the paper. It does not report results from language models
+and makes no claim about how current agents value verification.
+\end{abstract}
+
+\section{Introduction}
+
+Language-model agents increasingly use tools to modify files, databases, profiles,
+calendars, messages, and configurations. This creates a basic reliability problem: a
+tool's reply may not match the state of the outside world. A write can report success
+after doing nothing, time out after committing, update only part of an object, or change
+the wrong target. If an agent treats a plausible reply as proof, it may confidently claim
+that an unfinished task is complete.
+
+Prior work studies stateful tool-use evaluation, runtime failures, false success,
+postcondition checking, transactional execution, and verification-aware interfaces
+\citep{trivedi2024appworld,yao2025taubench,lu2025toolsandbox,sun2024tools,
+advani2026confident,wang2026callability,mansoor2026verified,liu2026toolgate}.
+We ask a narrower question. When two plans pursue the same goal, will an agent choose the
+plan that makes the result easier to verify independently? How much simulated cost or
+delay will it accept for that evidence?
+
+\bench{} turns this question into a fixed choice made before execution. The benchmark is
+fully synthetic: it makes no real purchase, sends no message, and changes no real account
+or infrastructure. Its main rule is simple: a tool response is not ground truth. The
+evaluator checks the final state separately from everything shown to the agent.
+
+This work contributes:
+
+\begin{itemize}
+  \item a task-specific definition of outcome verifiability with six dimensions;
+  \item 96 typed, deterministic scenarios with paired plans and counterbalanced
+        presentations;
+  \item a controlled design for measuring how verification choices change with price,
+        stated risk, and consequence severity;
+  \item an implemented mock environment, fault injector, evaluator, immutable run logger,
+        and analysis pipeline; and
+  \item deterministic validation and a power analysis that show what the reference
+        evaluation can and cannot support.
+\end{itemize}
+
+The contribution is the benchmark and its validated research artifact. We do not claim
+that any agent or model family already prefers verifiable plans. Model comparisons and a
+possible \system{} planner are outside the scope of this release.
+
+\section{Problem Formulation}
+
+Let a task be
+\begin{equation}
+T=(s_0,g,\phi_g,\kappa,B),
+\end{equation}
+where $s_0$ is authoritative initial state, $g$ is the semantic goal,
+$\phi_g(s)$ is the authoritative postcondition, $\kappa$ is a set of collateral
+constraints, and $B$ is an execution budget. A plan $P$ is a sequence of mutation,
+read-only, and control operations with declared simulated cost and latency.
+
+Two plans count as matched only if a deterministic no-fault run shows that both satisfy
+$\phi_g$ and $\kappa$, use the same authorization and inputs, and differ only in their
+evidence steps and stated overhead. An extra read or status check cannot change the
+target or value of the write.
+
+\subsection{Outcome verifiability}
+
+An evidence item $e$ is evaluated relative to $T$ using
+\begin{equation}
+Q(e,T)=(I,A,S,F,L,C),
+\end{equation}
+Here, $I$ measures independence from the write response and its failure boundary; $A$
+measures source authority; $S$ measures how directly the evidence addresses the desired
+state; $F$ measures freshness; $L$ links the evidence to the intended entity or action;
+and $C$ measures coverage of the goal and its constraints. Each dimension is rated
+\emph{none}, \emph{weak}, or \emph{strong}. Every rating has a written reason and a
+provenance graph. We do not combine the dimensions with an arbitrary weighted score.
+
+Plan $P_2$ evidence-dominates $P_1$ when its best valid evidence is at least as strong on
+all six dimensions and stronger on at least one. Every primary item must have one clear
+dominant plan. A write response such as \texttt{\{"status":"success"\}} has
+$I=\mathrm{none}$, so it cannot provide independent evidence by itself.
+
+\subsection{Estimands}
+
+The main outcome is the Verifiable Plan Selection Rate (\vpsr): the share of eligible
+choices that select the evidence-dominant plan. The main comparisons are the baseline
+selection rate, the effect of an explicit verification instruction, and the effect of a
+higher verification premium. The environment also supports
+Verified Task Success (\vts), False Completion Rate (\fcr), recovery success, uncertainty
+fidelity, and cost and delay overhead. These measures require model runs and are defined
+here for future evaluations.
+
+\begin{figure*}[t]
+  \centering
+  \includegraphics[width=0.94\textwidth]{figures/proofpath_architecture.pdf}
+  \caption{Measurement architecture. Plan registration occurs before execution. The
+  tool-visible response may diverge from authoritative state; the evaluator scores the
+  latter using an evaluator-only oracle trace. The diagram is schematic, not an empirical
+  result.}
+  \label{fig:architecture}
+\end{figure*}
+
+\section{Related Work}
+
+\paragraph{Stateful tool-use benchmarks.}
+AppWorld evaluates cross-application tasks against state-based unit tests and collateral
+constraints \citep{trivedi2024appworld}. \(\tau\)-bench measures tool-agent-user
+interaction over persistent domain state \citep{yao2025taubench}, while ToolSandbox
+evaluates conversational tool use through state milestones \citep{lu2025toolsandbox}.
+ToolEmu uses model-emulated sandboxes to expose risky agent behavior
+\citep{ruan2024toolemu}. Proxy State-Based Evaluation instead infers structured state
+from interaction traces and validates it with model-based judges
+\citep{chuang2026proxy}. Together, these studies show why final state should be checked
+directly. They do not isolate a voluntary choice between matched plans that mainly differ
+in the evidence they produce.
+
+\paragraph{Tool failures and false completion.}
+Tools Fail studies whether models detect silent errors in faulty tools
+\citep{sun2024tools}; more recent work examines dynamic replanning, production API failure,
+recoverable tool-environment hazards, and confident false-success claims
+\citep{zhu2026when,tian2026toolbenchx,li2026silentprobe,advani2026confident}. This line
+asks whether agents detect, recover from, or accurately report failures. \bench{} instead
+measures demand for evidence before the agent knows whether a failure occurred.
+
+\paragraph{Selection and presentation effects.}
+ToolTweak shows that names and descriptions can strongly bias selection among
+functionally similar tools \citep{sneh2025tooltweak}. This result motivates the neutral
+aliases, reversed plan order, prompt paraphrases, and presentation covariates used here.
+Those controls reduce obvious presentation bias, but they do not prove that every
+remaining wording effect has been removed.
+
+\paragraph{Verification and execution mechanisms.}
+Controlled interface interventions, verified tool-call wrappers, contract-grounded
+execution, and semantic enterprise APIs can improve operational reliability
+\citep{wang2026callability,mansoor2026verified,liu2026toolgate,pan2026agentfirst}.
+Pre-execution verifiers for robot plans and shell commands audit or revise a proposed
+action rather than ask whether an agent voluntarily pays for outcome evidence
+\citep{grigorev2025verifyllm,liu2026care}. Recent work also separates planning-mode
+selection from faithful execution, but studies planning structure rather than
+outcome-evidence demand \citep{oota2026declaration}.
+
+Transactional systems such as Atomix and Cordon address settlement, isolation, and
+validation of tool effects \citep{mohammadi2026atomix,chen2026cordon}. AgentOps tracks
+the agent lifecycle \citep{dong2024agentops}. These systems are close technical
+precedents. In most cases, however, the system assigns the safeguard; the agent does not
+choose it at a controlled range of prices.
+
+Within the sources checked, we found no work that combines matched plan choices before
+execution, an explicit verification premium, risk and severity factors, and scoring from
+authoritative state. Tool-selection bias, unreliable-tool recovery, postcondition-aware
+runtimes, and state-based evaluation are established neighboring areas rather than claims
+of novelty here. The narrower conclusion is limited to our structured search and may
+change as new work appears.
+
+\section{ProofPathBench}
+
+\subsection{Scenario composition}
+
+The benchmark contains 96 base scenarios, with 12 in each of eight domains. Every
+operation runs in a local mock environment. Severity is represented through concrete
+simulated effects, such as dependents, attendees, recipients, service instances,
+fulfillment penalties, or entitlement periods. It is not represented by a label alone.
+
+\begin{table}[t]
+  \centering
+  \caption{Benchmark composition generated from scenario manifests.}
+  \label{tab:composition}
+  \input{tables/benchmark_composition.tex}
+\end{table}
+
+Each item defines a goal, the initial state, success and safety conditions, two candidate
+plans, evidence profiles, failure rules, cost and delay, and four balanced presentation
+versions. Neutral plan names and plan order rotate so that the stronger option is not
+tied to one label or position.
+
+The stronger plan uses an independent readback, an operation-status lookup, or evidence
+from more than one source. Each method appears in 32 base scenarios. The analysis adjusts
+for the method but does not make causal claims about one method versus another.
+
+\subsection{Evaluation design}
+
+Risk and severity are balanced across the 96 base tasks. Each task appears at all four
+verification premiums. This produces 384 task-treatment units and 16 units in every
+premium-by-risk-by-severity cell. The four presentation versions rotate across premiums
+within each task. Cost and delay change together, so the design measures one combined
+execution premium rather than separate cost and delay effects.
+
+\begin{table}[t]
+  \centering
+  \caption{Reference evaluation factors.}
+  \label{tab:factors}
+  \input{tables/design_factors.tex}
+\end{table}
+
+\subsection{Failure model and state separation}
+
+The environment implements nine seeded faults: explicit failure, false success, timeout
+before execution, timeout after execution, partial update, stale readback, delayed
+visibility, wrong-target update, and duplicated action. Each seed is derived from the
+master seed and fixed run identifiers. The environment keeps three state layers separate:
+
+\begin{enumerate}
+  \item authoritative state, used for outcome scoring;
+  \item tool-visible state and responses, which may be faulty; and
+  \item an append-only evaluator-only oracle trace.
+\end{enumerate}
+
+This design can return a valid-looking success message even when the goal is false. It
+can also return a timeout after the write has already committed.
+
+\section{Deterministic Validation}
+
+The validation suite checks schemas, content hashes, factor balance, hidden label
+leakage, name and order rotation, evidence dominance, cost, and delay. Runtime tests run
+both plans without faults in all 384 treatment units. They confirm that both plans reach
+the same goal and satisfy the same safety conditions. Other tests confirm that tool
+responses cannot change evaluator state, every fault activates under a known seed, and
+both passing and failing conditions are exercised.
+
+\begin{table}[t]
+  \centering
+  \caption{Deterministic acceptance evidence generated from the runtime report.}
+  \label{tab:validation}
+  \input{tables/validation_summary.tex}
+\end{table}
+
+At the release freeze, all 48 automated tests pass, along with static linting and strict
+type checking. The runtime report has no validation errors. It covers 768 no-fault plan
+executions and activates all nine failure types. These results validate the software and
+the benchmark design. They are not observations of language-model behavior and do not
+test a behavioral hypothesis.
+
+Mechanical checks show that the implementation is internally consistent. They cannot
+establish full construct validity. Before interpreting model scores, researchers should
+still use independent human review to check task equivalence, evidence strength, and
+wording bias. The release includes a fixed, blinded 32-item protocol for two independent
+reviewers, balanced at four items per domain. It prespecifies completeness rules,
+agreement statistics, thresholds, and adjudication. The review has not been run, so no
+human-validation result is claimed. We therefore describe this release as implemented
+and mechanically validated.
+
+\section{Evaluation Framework}
+
+\subsection{Pre-execution registration}
+
+In an evaluation run, the agent receives a task, two neutrally named plans, their
+simulated cost and delay, and the stated risk. It must choose one plan before execution.
+The choice cannot be changed. Model mistakes remain part of the results. A run is excluded
+only for a provider failure before any response, invalid structured output after the
+fixed repair allowance, or a recorded infrastructure failure.
+
+The reference evaluation contains
+\[
+96\ \text{tasks}\times4\ \text{premiums}\times2\ \text{instructions}
+\times3\ \text{models}=2{,}304
+\]
+registered choices. The system stores exact model versions, parameters, prompts, schemas,
+seeds, raw responses, and exclusions without overwriting earlier records. This release
+tests the pipeline with fixtures but does not call provider models.
+
+\subsection{Hypotheses and analysis}
+
+The pilot defines two confirmatory tests in advance:
+
+\begin{description}
+  \item[H1:] vanilla \vpsr{} at zero premium exceeds chance;
+  \item[H2:] an explicit verification instruction increases \vpsr{}.
+\end{description}
+
+The premium slope (H3), premium-by-risk term (H4), and premium-by-severity term (H5) are
+directional estimation targets, not confirmatory pilot tests. H1 is the marginal vanilla,
+zero-premium rate contrast against 0.5. The other estimates use logistic regression with
+premium, risk, severity, instruction, and the two planned interactions, adjusting for
+model, domain, presentation, evidence method, and plan order. H3 is reported as the
+design-average log-odds slope rather than a single reference-cell coefficient. The
+three-model pilot uses model fixed effects and scenario-cluster-robust uncertainty; three
+model clusters are too few for a stable model-cluster sandwich estimate. A later,
+broader study may use two-way clustering when the number of distinct model clusters is
+adequate. Holm correction covers H1 and H2 only. Every result must report raw rates,
+denominators, exclusions, effect sizes, and confidence intervals.
+
+The smallest effect of interest is fixed at 10 percentage points, and the analysis formula
+is set before model data are collected. Comparisons by model or evidence method, unusual
+curve shapes, rationales, and open-action traces remain exploratory unless a separate
+study has enough power for them.
+
+\section{Evaluation Sizing and Sensitivity}
+
+The power analysis does not use language-model outcomes. It uses 10,000 Monte Carlo runs
+for the instruction comparison and a scenario-clustered linear-probability approximation
+for the factorial terms. It assumes two confirmatory one-sided tests with Holm correction
+and the documented random-effect and Bernoulli structure. Power for H1 is not simulated:
+its precision depends on the as-yet unobserved baseline rate and cluster variation.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\columnwidth]{figures/prospective_power.pdf}
+  \caption{Prospective power under stated simulation assumptions. These curves are not
+  empirical model results. Repetitions increase call-level precision but do not add new
+  task archetypes.}
+  \label{fig:power}
+\end{figure}
+
+\begin{table*}[t]
+  \centering
+  \caption{Prospective estimated power. ``Instr.'' is the instruction contrast; the
+  final column reports premium-by-risk and premium-by-severity interaction estimates.
+  Values are simulation outputs, not observed effects.}
+  \label{tab:power}
+  \input{tables/power_summary.tex}
+\end{table*}
+
+With one repetition, estimated power is 0.991 for the assumed instruction effect. Power
+is approximately 0.484 for premium, 0.290 for the premium-by-risk interaction, and 0.377 for
+the premium-by-severity interaction under the stated assumptions. The exact generated
+values appear in Table~\ref{tab:power}. The 2,304-choice design is therefore useful for
+the instruction comparison and for estimating benchmark variance, but not for definitive
+premium or interaction claims. A later confirmatory study should use blinded pilot
+estimates to set its sample size.
+
+\section{Artifact Controls}
+
+The arXiv ancillary archive contains the generated scenarios, JSON schema, hash index,
+configuration snapshots, seed rules, mock environments, fault schedules, evaluation
+conditions, run-directory checks, analysis code, tests, bibliography audit, and
+related-work matrix. The script \texttt{paper/build\_assets.py} builds the paper's figures
+and tables from stored JSON and YAML files.
+
+The accompanying confound report records operation count, serialized plan length,
+distinct tools, extra verification operations, cost, latency, aliases, plan order, and
+evidence mechanism for every scenario. Alias set, prompt template, evidence method, and
+dominant-plan display position are balanced. The diagnostic also confirms two residual
+couplings: the evidence-dominant plan is necessarily longer, and simulated cost and
+latency are perfectly correlated. Neither effect can be identified separately in this
+version.
+
+Evaluation commands reject incomplete preregistration and review files. Fixture outputs
+are labeled non-empirical and cannot enter the confirmatory analysis. Provider responses
+go into fixed, uniquely named run directories. Versioned artifacts exclude secrets and
+API keys. These controls reduce the chance of mixing fixtures, simulations, and model
+observations. They do not replace independent replication or scientific review.
+
+The ancillary archive is self-contained, carries the Apache License 2.0, and includes
+the exact scenario manifests and validation reports used by this paper. The release
+build recreates figures and tables from machine-readable records, compiles the manuscript
+from a clean unpacked source archive, compares extracted text and page count with the
+local build, and rejects unresolved citations, missing fonts, unsafe filenames,
+placeholders, and private or generated cache files.
+
+\section{Limitations}
+
+\paragraph{Scope of the current release.}
+This release provides evidence about benchmark construction and deterministic execution.
+It does not include a provider-model evaluation. It therefore cannot show whether agents
+prefer verifiable plans, whether instructions change that preference, or whether
+verification improves task success.
+
+\paragraph{Construct validation.}
+Mechanical equivalence does not rule out every wording, salience, or perceived-capability
+bias. A behavioral study should complete the released blinded human review and a
+prospectively registered manipulation check before interpreting differences between
+conditions.
+
+\paragraph{External review.}
+The current release has not undergone peer review or the planned blinded two-reviewer
+assessment of semantic equivalence and evidence dominance. Automated tests cannot replace
+those judgments. This paper should therefore be read as a benchmark-and-methods release,
+not as validated evidence about model behavior.
+
+\paragraph{Synthetic incentives.}
+Cost, delay, failure probability, and consequences are simulated. A language model does
+not bear these costs in the same way as a person or organization. Its choice may reflect
+prompt associations rather than a stable attitude toward risk.
+
+\paragraph{Joint premium.}
+Cost and delay change together, so this study cannot separate their effects. That would
+require a design that varies them independently. Plan length, tool familiarity, and the
+extra operation may also influence the choice despite neutral names and balanced order.
+
+\paragraph{Evidence independence.}
+Evidence independence depends on the task and system design. A read endpoint backed by
+the same faulty subsystem may add little useful confirmation. The categorical rubric
+avoids false numerical precision, but it still includes author judgment.
+
+\paragraph{Generalization and drift.}
+Ninety-six synthetic tasks cannot support broad claims about real systems, agent designs,
+or model families. Provider changes and nondeterministic behavior may also make later
+replication harder, even with fixed seeds.
+
+\paragraph{Literature coverage.}
+The related-work audit is a structured rapid review, not a complete systematic review.
+Several closely related sources are recent preprints. New work may change the novelty
+boundary.
+
+\section{Ethics}
+
+All benchmark actions run in deterministic mock environments. The package makes no real
+payment, sends no real message, and changes no real account or infrastructure. Scenarios
+use synthetic entities and limited simulated consequences. The main risk is
+misinterpretation: readers could mistake a polished benchmark for completed behavioral
+evidence. The abstract, validation section, and conclusion therefore state clearly what
+was and was not tested.
+
+A future model evaluation would have financial and environmental costs. It should use a
+declared budget, bounded outputs, and the smallest design that answers the prospectively specified
+question. Negative and null results should be retained. This benchmark alone is not
+enough evidence to deploy a system as a reliability safeguard.
+
+\section{Conclusion}
+
+\bench{} is an implemented benchmark for studying whether tool-using language agents
+choose plans that make external outcomes easier to verify independently. Before
+execution, the agent chooses between two matched plans. The benchmark varies the price of
+evidence, the stated failure risk, and the consequence severity. It keeps the true state
+separate from the response shown to the agent. The released software passes deterministic
+validation across 384 task-treatment units, 768 no-fault plan executions, and nine
+injected failure types. These results show that the benchmark works as specified. They do
+not answer the behavioral question. The artifact supports transparent, comparable model
+evaluations while keeping simulated and prospective values separate from observed
+results.
+
+\section*{AI Assistance Disclosure}
+
+Generative-AI tools assisted with software development, literature-search support,
+manuscript drafting and language editing, and figure layout. No AI system is listed as an
+author. The named human author remains responsible for the research design,
+source verification, claims, code, and final text.
+
+\section*{Author Contributions}
+
+The author designed the study, implemented and validated the software and benchmark,
+conducted the literature audit and prospective analysis, and prepared the manuscript and
+release artifact.
+
+\section*{Data and Code Availability}
+
+The complete benchmark, source code, configuration files, deterministic validation
+records, tests, and analysis scaffolding are included as an arXiv ancillary archive. The
+software is released under the Apache License 2.0. No proprietary model output, personal
+data, credentials, or undisclosed empirical results are included.
+
+\bibliographystyle{plainnat}
+\begingroup
+\small
+\bibliography{references}
+\endgroup
+
+\appendix
+\clearpage
+\onecolumn
+
+\section{Failure Semantics}
+
+\begin{table}[h]
+\centering
+\caption{Implemented failure classes and their intended evaluator semantics.}
+\begin{tabularx}{\textwidth}{@{}lXX@{}}
+\toprule
+Failure & Authoritative transition & Agent-visible behavior \\
+\midrule
+Explicit failure & No intended change & Explicit error \\
+False success & No intended change & Syntactically valid success \\
+Timeout before & No intended change & Timeout or unknown status \\
+Timeout after & Intended change commits & Same timeout or unknown status \\
+Partial update & Subset of fields commits & Success, partial, or timeout by condition \\
+Stale readback & Current state exists & Older version is returned \\
+Delayed visibility & Write commits; read model lags & Old value until the seeded visibility step \\
+Wrong target & Unintended entity changes & Plausible success for the requested call \\
+Duplicated action & Logical effect applies twice & One or ambiguous response \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Outcome Definitions}
+
+\begin{description}
+  \item[VPSR:] evidence-dominant registrations divided by eligible registered choices.
+  \item[VTS:] authoritative postcondition and all collateral constraints hold at termination.
+  \item[FCR:] the agent asserts completion while \vts{} is false.
+  \item[Recovery success:] after an activated fault, the goal is satisfied without a
+        prohibited duplicate or collateral effect.
+  \item[Uncertainty fidelity:] the terminal claim distinguishes verified success,
+        verified failure, and unresolved status correctly.
+\end{description}
+
+Every future metric report must include its numerator, denominator, exclusions,
+confidence interval, and scenario/model clustering strategy.
+
+\par\vspace{1.2ex}
+\section{Artifact Map}
+
+The source package is backed by the following repository paths:
+
+\begin{itemize}
+  \item \texttt{benchmark/scenarios/}: 96 generated task manifests;
+  \item \texttt{benchmark/runtime\_validation\_report.json}: deterministic runtime evidence;
+  \item \texttt{configs/pilot.yaml}: proposed empirical configuration and gates;
+  \item \texttt{proofpath/environments/} and \texttt{proofpath/failures/}: mock state and faults;
+  \item \texttt{proofpath/evaluation/}: outcomes, metrics, and inferential analysis;
+  \item \texttt{research/power\_analysis.json}: prospective power outputs;
+  \item \texttt{research/confound\_diagnostics.json}: design-coupling diagnostics;
+  \item \texttt{research/human\_validation/}: blinded two-reviewer protocol and blank form;
+  \item \texttt{research/related\_work\_matrix.md}: structured comparison; and
+  \item \texttt{research/citation\_audit.md}: bibliography verification status.
+\end{itemize}
+
+\par\vspace{1.2ex}
+\section{Release Scope Statement}
+
+The release contains fixture smoke tests but no OpenAI or other provider-model evaluation.
+Fixtures are explicitly marked non-empirical. The manuscript includes no blank,
+simulated, or prospective quantity as if it were an observed behavioral result.
+
+\end{document}

@@ -1,0 +1,39 @@
+{
+  "assumptions": {
+    "characters_per_input_token": 4.0,
+    "expected_output_tokens_per_call": 100,
+    "upper_output_tokens_per_call": 300,
+    "warning": "Actual API usage fields, processing tier, caching, reasoning tokens, and current provider prices are authoritative."
+  },
+  "combined_expected_standard_cost_usd": 12.416935299999999,
+  "combined_upper_output_allowance_cost_usd": 21.7097353,
+  "per_model": {
+    "gpt-6-astra": {
+      "call_count": 768,
+      "estimated_input_tokens": 642193,
+      "estimated_standard_cost_usd": 10.26193,
+      "expected_output_tokens": 76800,
+      "upper_output_allowance_cost_usd": 17.94193,
+      "upper_output_tokens": 230400
+    },
+    "gpt-6-luna": {
+      "call_count": 768,
+      "estimated_input_tokens": 642193,
+      "estimated_standard_cost_usd": 0.1026193,
+      "expected_output_tokens": 76800,
+      "upper_output_allowance_cost_usd": 0.1794193,
+      "upper_output_tokens": 230400
+    },
+    "gpt-6-sol": {
+      "call_count": 768,
+      "estimated_input_tokens": 642193,
+      "estimated_standard_cost_usd": 2.052386,
+      "expected_output_tokens": 76800,
+      "upper_output_allowance_cost_usd": 3.588386,
+      "upper_output_tokens": 230400
+    }
+  },
+  "pricing_captured_at": "2026-09-28",
+  "pricing_source": "https://developers.openai.com/api/docs/pricing",
+  "scope": "prospective estimate; not a bill or observed token usage"
+}

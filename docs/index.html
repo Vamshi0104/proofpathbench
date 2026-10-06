@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="An interactive ProofPathBench demonstration of verifiability-aware planning for tool-using agents."
+    />
+    <meta name="theme-color" content="#07111f" />
+    <link rel="canonical" href="https://vamshi0104.github.io/proofpathbench/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://vamshi0104.github.io/proofpathbench/" />
+    <meta property="og:site_name" content="ProofPathBench" />
+    <meta property="og:title" content="ProofPath Lab — Can an agent prove the change happened?" />
+    <meta
+      property="og:description"
+      content="Explore a deterministic benchmark for verifiability-aware planning by tool-using language agents."
+    />
+    <meta property="og:image" content="https://vamshi0104.github.io/proofpathbench/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="ProofPathBench: Can an agent prove the change happened? 96 scenarios, 8 domains, 9 failure classes." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="ProofPathBench — Can an agent prove the change happened?" />
+    <meta name="twitter:description" content="A deterministic benchmark and local simulation for verifiability-aware planning." />
+    <meta name="twitter:image" content="https://vamshi0104.github.io/proofpathbench/og-image.png" />
+    <title>ProofPath Lab — Can an agent prove the change happened?</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="data.js" defer></script>
+    <script src="site-config.js" defer></script>
+    <script src="release-meta.js" defer></script>
+    <script src="engine.js" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#lab">Skip to the experiment</a>
+
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="ProofPath Lab home">
+        <span class="brand-mark" aria-hidden="true">P</span>
+        <span>
+          <strong>ProofPath</strong>
+          <small>Interactive lab</small>
+        </span>
+      </a>
+      <nav aria-label="Primary navigation">
+        <a href="#lab">Experiment</a>
+        <a href="#method">Method</a>
+        <a href="#about">About</a>
+        <a href="#research">Research</a>
+      </nav>
+      <span class="status-chip"><span aria-hidden="true"></span> deterministic sandbox</span>
+    </header>
+
+    <main id="top">
+      <section class="intro" aria-labelledby="page-title">
+        <div>
+          <p class="eyebrow">A deterministic ProofPathBench concept demo</p>
+          <h1 id="page-title">A tool said “success.”<br /><em>Did the change actually happen?</em></h1>
+        </div>
+        <p class="intro-copy">
+          Compare a fast plan that trusts a write response with a plan that checks independent
+          evidence. Inject a failure, run both, and inspect the authoritative state.
+        </p>
+      </section>
+
+      <section class="lab-shell" id="lab" aria-labelledby="lab-title">
+        <div class="lab-heading">
+          <div>
+            <p class="section-kicker">01 / Choose the conditions</p>
+            <h2 id="lab-title">Verification decision lab</h2>
+          </div>
+          <button class="text-button" id="reset-button" type="button">Reset experiment</button>
+        </div>
+
+        <div class="lab-grid">
+          <aside class="control-panel" aria-label="Experiment controls">
+            <label for="scenario-select">Scenario</label>
+            <div class="select-wrap">
+              <select id="scenario-select"></select>
+            </div>
+
+            <div class="scenario-card" aria-live="polite">
+              <div class="scenario-meta">
+                <span id="domain-badge"></span>
+                <span id="severity-badge"></span>
+              </div>
+              <h3 id="scenario-goal"></h3>
+              <dl class="state-change">
+                <div>
+                  <dt>Before</dt>
+                  <dd id="before-value"></dd>
+                </div>
+                <div aria-hidden="true" class="state-divider">→</div>
+                <div>
+                  <dt>Target</dt>
+                  <dd id="target-value"></dd>
+                </div>
+              </dl>
+              <p id="consequence-copy" class="consequence"></p>
+            </div>
+
+            <label for="failure-select">Single-run condition</label>
+            <div class="select-wrap">
+              <select id="failure-select">
+                <option value="explicit_failure">Explicit failure — reports an error</option>
+                <option value="false_success">False success — says done, changes nothing</option>
+                <option value="timeout_before">Timeout before execution — no change, outcome unknown</option>
+                <option value="timeout_after">Timeout after commit — changed, response lost</option>
+                <option value="partial_update">Partial update — goal changes, constraints fail</option>
+                <option value="stale_readback">Stale readback — check sees old state</option>
+                <option value="delayed_visibility">Delayed visibility — committed state is temporarily hidden</option>
+                <option value="wrong_target">Wrong target — changes another resource</option>
+                <option value="duplicated_action">Duplicated action — logical effect occurs twice</option>
+                <option value="none">No failure — normal execution</option>
+                <option value="random">Random — use disclosed risk</option>
+              </select>
+            </div>
+
+            <div class="range-field">
+              <div class="label-row">
+                <label for="risk-range">Simulated failure risk</label>
+                <output id="risk-output" for="risk-range">20%</output>
+              </div>
+              <input id="risk-range" type="range" min="0" max="2" step="1" value="2" />
+              <div class="range-scale" aria-hidden="true"><span>0%</span><span>5%</span><span>20%</span></div>
+            </div>
+
+            <div class="range-field">
+              <div class="label-row">
+                <label for="premium-range">Verification cost</label>
+                <output id="premium-output" for="premium-range">+50%</output>
+              </div>
+              <input id="premium-range" type="range" min="0" max="3" step="1" value="2" />
+              <div class="range-scale" aria-hidden="true"><span>same</span><span>+10%</span><span>+50%</span><span>2×</span></div>
+            </div>
+          </aside>
+
+          <div class="experiment-panel">
+            <div class="panel-topline">
+              <div>
+                <p class="section-kicker">02 / Select a plan</p>
+                <p class="helper">Both plans attempt the same goal. Only the evidence path differs.</p>
+              </div>
+              <div class="selection-status" id="selection-status">Verified plan selected</div>
+            </div>
+
+            <div class="plan-grid" id="plan-grid" role="radiogroup" aria-label="Candidate plans">
+              <button class="plan-card" type="button" role="radio" data-plan="direct" aria-checked="false" tabindex="-1">
+                <span class="plan-label">Direct plan</span>
+                <span class="plan-title">Write, then trust the response</span>
+                <span class="plan-route" aria-label="Mutation service then response">
+                  <span>Mutation</span><b aria-hidden="true">→</b><span>Response</span>
+                </span>
+                <span class="plan-facts">
+                  <span><small>Cost</small><strong>1.0 unit</strong></span>
+                  <span><small>Evidence</small><strong>Dependent</strong></span>
+                </span>
+                <span class="radio-mark" aria-hidden="true"></span>
+              </button>
+
+              <button class="plan-card is-selected" type="button" role="radio" data-plan="verified" aria-checked="true" tabindex="0">
+                <span class="plan-label">Verified plan</span>
+                <span class="plan-title">Write, then check an independent source</span>
+                <span class="plan-route" aria-label="Mutation service, authoritative store, then verification">
+                  <span>Mutation</span><b aria-hidden="true">→</b><span>State</span><b aria-hidden="true">→</b><span>Verify</span>
+                </span>
+                <span class="plan-facts">
+                  <span><small>Cost</small><strong id="verified-cost">1.5 units</strong></span>
+                  <span><small>Evidence</small><strong id="mechanism-label">Readback</strong></span>
+                </span>
+                <span class="radio-mark" aria-hidden="true"></span>
+              </button>
+            </div>
+
+            <section class="realtime-card" aria-labelledby="realtime-title">
+              <div class="realtime-header">
+                <div>
+                  <div class="live-label"><span aria-hidden="true"></span> Live computation</div>
+                  <h3 id="realtime-title">Paired simulation</h3>
+                  <p>Recomputes both plans immediately from the disclosed failure risk.</p>
+                </div>
+                <div class="model-controls">
+                  <label>
+                    <span>Runs per plan</span>
+                    <select id="sample-size">
+                      <option value="100">100</option>
+                      <option value="1000" selected>1,000</option>
+                      <option value="10000">10,000</option>
+                    </select>
+                  </label>
+                  <label>
+                    <span>Seed</span>
+                    <input id="seed-input" type="number" min="0" max="999999" step="1" value="27" inputmode="numeric" />
+                  </label>
+                </div>
+              </div>
+
+              <div class="distribution" id="live-distribution" aria-live="polite"></div>
+
+              <div class="distribution-legend" aria-label="Outcome legend">
+                <span class="supported">Supported completion</span>
+                <span class="false">False completion</span>
+                <span class="uncertain">Uncertain</span>
+                <span class="caught">Failure detected</span>
+              </div>
+
+              <div class="live-metrics">
+                <div><small>False completions avoided</small><strong id="avoided-value">—</strong></div>
+                <div><small>Extra verification cost</small><strong id="overhead-value">—</strong></div>
+                <div><small>Cost per avoided claim</small><strong id="efficiency-value">—</strong></div>
+                <div><small>Computation</small><strong id="compute-time">—</strong></div>
+              </div>
+              <p class="model-note" id="model-note"></p>
+            </section>
+
+            <div class="run-row">
+              <button class="primary-button" id="run-button" type="button">Run selected plan</button>
+              <button class="secondary-button" id="compare-button" type="button">Inspect live batch</button>
+              <p>All outcomes are simulated locally. No external systems are changed.</p>
+            </div>
+
+            <section class="result-card" id="result-card" aria-live="polite" aria-labelledby="result-title">
+              <div class="empty-result" id="empty-result">
+                <span class="empty-mark" aria-hidden="true">⌁</span>
+                <div>
+                  <h3 id="result-title">Ready to test the plan</h3>
+                  <p>Run the experiment to compare the tool-visible response with authoritative state.</p>
+                </div>
+              </div>
+
+              <div class="single-result" id="single-result" hidden>
+                <div class="result-summary">
+                  <div>
+                    <p class="section-kicker">03 / Inspect the outcome</p>
+                    <h3 id="verdict-title"></h3>
+                  </div>
+                  <span id="verdict-badge" class="verdict-badge"></span>
+                </div>
+                <div class="trace" id="trace-list"></div>
+                <div class="result-insight" id="result-insight"></div>
+              </div>
+
+              <div class="comparison-result" id="comparison-result" hidden>
+                <div class="result-summary">
+                  <div>
+                    <p class="section-kicker">03 / Compare repeated runs</p>
+                    <h3 id="comparison-title">What each plan can honestly claim</h3>
+                  </div>
+                  <span class="sample-chip" id="comparison-sample">n = 1,000 per plan</span>
+                </div>
+                <div class="metric-grid" id="metric-grid"></div>
+                <p class="comparison-note" id="comparison-note"></p>
+              </div>
+            </section>
+          </div>
+        </div>
+      </section>
+
+      <section class="evidence-section" id="method" aria-labelledby="evidence-title">
+        <div class="section-intro">
+          <p class="section-kicker">The measurement model</p>
+          <h2 id="evidence-title">Evidence is not a binary checkbox.</h2>
+          <p>
+            ProofPath evaluates six task-relative dimensions. A mutation response is useful
+            operational feedback, but it cannot independently prove the resulting state.
+          </p>
+        </div>
+        <div class="evidence-table-wrap">
+          <table>
+            <caption class="sr-only">Evidence quality comparison between direct and independently verified plans</caption>
+            <thead>
+              <tr>
+                <th scope="col">Evidence dimension</th>
+                <th scope="col">Direct plan</th>
+                <th scope="col">Verified plan</th>
+                <th scope="col">What it asks</th>
+              </tr>
+            </thead>
+            <tbody id="evidence-body"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="architecture" aria-labelledby="architecture-title">
+        <div class="section-intro">
+          <p class="section-kicker">Separation of concerns</p>
+          <h2 id="architecture-title">Three views of one action.</h2>
+        </div>
+        <div class="architecture-grid">
+          <article>
+            <span>01</span>
+            <h3>Agent-visible response</h3>
+            <p>What the tool reports. It may be correct, stale, incomplete, or confidently wrong.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>Authoritative state</h3>
+            <p>What actually exists after execution, isolated from the response shown to the agent.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>Evaluator-only trace</h3>
+            <p>An immutable oracle record used to score success, false completion, and recovery.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="about-section" id="about" aria-labelledby="about-title">
+        <div>
+          <p class="section-kicker">About ProofPathBench</p>
+          <h2 id="about-title">A benchmark artifact, not a behavioral claim.</h2>
+          <p>
+            The implemented benchmark isolates one decision: when two plans can achieve the same
+            goal, will an agent pay for stronger evidence that the outcome is real?
+          </p>
+          <p>
+            This demo projects eight representative scenarios from the 96-scenario benchmark and
+            illustrates the protocol with deterministic synthetic outcomes. It does not report
+            results about any model or provider.
+          </p>
+        </div>
+        <dl class="benchmark-stats">
+          <div><dt>96</dt><dd>typed scenarios</dd></div>
+          <div><dt>8</dt><dd>stateful domains</dd></div>
+          <div><dt>9</dt><dd>failure classes</dd></div>
+          <div><dt>6</dt><dd>evidence dimensions</dd></div>
+        </dl>
+      </section>
+
+      <section class="research-section" id="research" aria-labelledby="research-title">
+        <div class="research-copy">
+          <p class="section-kicker">Research artifact</p>
+          <h2 id="research-title">Inspect the evidence, not just the demo.</h2>
+          <p>
+            Read the benchmark paper, inspect the public source repository,
+            download the auditable artifact, or copy the citation.
+            The current release is mechanically validated but intentionally reports no
+            behavioral model results.
+          </p>
+          <div class="research-actions" aria-label="Research downloads">
+            <a class="primary-link" href="downloads/proofpath_benchmark.pdf">Read the paper</a>
+            <a class="secondary-link" id="zenodo-link" hidden>View on Zenodo</a>
+            <a class="secondary-link" id="arxiv-link" hidden>View on arXiv</a>
+            <a class="secondary-link" id="repository-link" hidden>Browse source</a>
+            <a class="secondary-link" href="downloads/proofpath_artifact.tar.gz" download>Download artifact</a>
+            <button class="secondary-link" id="citation-button" type="button">Cite ProofPathBench</button>
+          </div>
+          <p class="configuration-note" id="repository-note">Loading the public source repository link.</p>
+          <a class="metadata-download" href="downloads/CITATION.cff" download>Download CITATION.cff</a>
+        </div>
+        <dl class="release-status">
+          <div><dt>Benchmark software</dt><dd><span id="benchmark-test-count">—</span> validation tests</dd><span>Validated</span></div>
+          <div><dt>Interactive demo</dt><dd><span id="interactive-test-count">—</span> interface/engine tests</dd><span>Validated</span></div>
+          <div><dt>Benchmark</dt><dd>96 scenarios · 384 task-treatment units · 9 failure classes</dd><span>Validated</span></div>
+          <div><dt>Behavioral evidence</dt><dd>No provider-model runs in this release</dd><span class="pending">Not claimed</span></div>
+        </dl>
+      </section>
+    </main>
+
+    <footer>
+      <div class="brand footer-brand">
+        <span class="brand-mark" aria-hidden="true">P</span>
+        <span><strong>ProofPath</strong><small>Verifiability-aware planning</small></span>
+      </div>
+      <p>Open benchmark. Deterministic demo. Transparent scope.</p>
+      <a href="#top">Back to top</a>
+    </footer>
+
+    <dialog id="citation-dialog" aria-labelledby="citation-title">
+      <div class="dialog-header">
+        <div>
+          <p class="section-kicker">Citation</p>
+          <h2 id="citation-title">Cite ProofPathBench</h2>
+        </div>
+        <button class="dialog-close" id="citation-close" type="button" aria-label="Close citation dialog" autofocus>×</button>
+      </div>
+      <p id="citation-identifier-note">No DOI or arXiv identifier is included because none is configured for this release.</p>
+      <pre id="bibtex-output" tabindex="0"></pre>
+      <div class="dialog-actions">
+        <button class="primary-button" id="copy-citation" type="button">Copy BibTeX</button>
+        <a class="secondary-link" href="downloads/CITATION.cff" download>Download CITATION.cff</a>
+      </div>
+      <p class="copy-status" id="copy-status" aria-live="polite"></p>
+    </dialog>
+
+    <noscript>
+      <div class="noscript">This interactive demo requires JavaScript to run the local simulator.</div>
+    </noscript>
+  </body>
+</html>

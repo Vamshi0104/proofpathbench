@@ -1,0 +1,45 @@
+{
+  "metadata": {
+    "upload_type": "publication",
+    "publication_type": "preprint",
+    "title": "ProofPathBench: A Benchmark for Verifiability-Aware Planning by Tool-Using Language Agents",
+    "creators": [
+      {
+        "name": "Madhavan, Vamshi Krishna",
+        "affiliation": "Independent Researcher"
+      }
+    ],
+    "description": "ProofPathBench is an implemented research benchmark for whether tool-using language agents select matched plans that produce independent evidence of external-state outcomes. Version 0.0.1 contains 96 synthetic scenarios across eight domains, 384 task-treatment units, 768 deterministic no-fault plan executions, and nine seeded failure classes. The deposit includes a research preprint and an Apache-2.0 benchmark software artifact. It reports no provider-model behavioral results; fixtures and prospective power simulations are not empirical model results. A blinded human construct-validation protocol is included but has not been run. The work has not undergone peer review. Author: Vamshi Krishna Madhavan, Independent Researcher. Correspondence: vamshi-madhavan@outlook.com. Source repository: https://github.com/Vamshi0104/proofpathbench. Project website: https://vamshi0104.github.io/proofpathbench/.",
+    "access_right": "open",
+    "license": "Apache-2.0",
+    "keywords": [
+      "tool-using language agents",
+      "LLM agents",
+      "verification",
+      "verifiability-aware planning",
+      "agent reliability",
+      "tool use",
+      "benchmark",
+      "false success",
+      "state verification",
+      "evaluation"
+    ],
+    "language": "eng",
+    "version": "0.0.1",
+    "publication_date": "2026-10-06",
+    "related_identifiers": [
+      {
+        "identifier": "https://github.com/Vamshi0104/proofpathbench",
+        "relation": "isSupplementedBy",
+        "resource_type": "software"
+      },
+      {
+        "identifier": "https://vamshi0104.github.io/proofpathbench/",
+        "relation": "isDocumentedBy",
+        "resource_type": "other"
+      }
+    ],
+    "notes": "Research preprint with a benchmark software artifact; not peer reviewed. Corresponding author: Vamshi Krishna Madhavan (Independent Researcher), vamshi-madhavan@outlook.com. Apache-2.0 is the canonical software/artifact license. The repository does not declare a separate manuscript content license; confirm that license manually before publication. Zenodo DOI: 10.5281/zenodo.23196925. No arXiv identifier, ORCID, or funding record is asserted.",
+    "doi": "10.5281/zenodo.23196925"
+  }
+}

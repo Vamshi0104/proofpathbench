@@ -1,0 +1,2 @@
+# Convenience bootstrap. The authoritative dependency declarations are in pyproject.toml.
+-e .[dev,plots]

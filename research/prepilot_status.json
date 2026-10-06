@@ -1,0 +1,64 @@
+{
+  "checks": {
+    "blinded_human_review": {
+      "evidence": "research/human_review_report.json",
+      "note": "Missing or unresolved reviewer disagreements require human action.",
+      "passed": false
+    },
+    "config_preregistered": {
+      "evidence": {
+        "frozen_at_utc": null,
+        "status": "gate2_approved_not_preregistered"
+      },
+      "passed": false
+    },
+    "empirical_manipulation_check": {
+      "evidence": null,
+      "note": "Fixture smoke output is never eligible.",
+      "passed": false
+    },
+    "instruction_power_and_budget": {
+      "configured_repetitions": 1,
+      "evidence": "research/power_analysis.json",
+      "passed": true,
+      "recommended_repetitions": 1
+    },
+    "interaction_power_review": {
+      "estimated_power": {
+        "premium_by_risk": 0.2899,
+        "premium_by_severity": 0.3768,
+        "premium_scaled": 0.4839
+      },
+      "evidence": "research/power_analysis.json",
+      "gate2_amendment_approved": true,
+      "interactions_confirmatory_in_pilot": false,
+      "note": "Underpowered interactions require approved prospective designation as pilot estimation targets rather than confirmatory tests.",
+      "passed": true
+    },
+    "model_snapshots_frozen": {
+      "evidence": [],
+      "passed": false
+    },
+    "premium_power_review": {
+      "estimated_power": 0.4839,
+      "evidence": "research/power_analysis.json",
+      "gate2_amendment_approved": true,
+      "note": "An underpowered premium slope must remain an approved pilot estimation target.",
+      "passed": true,
+      "premium_confirmatory_in_pilot": false
+    },
+    "runtime_validation": {
+      "current_config_sha256": "cb5ee5e66b31fc3cd19eb61e78f05fcd7cc98089fe49e4609e46159dc44f6ec9",
+      "evidence": "benchmark/runtime_validation_report.json",
+      "passed": true,
+      "validated_config_sha256": "cb5ee5e66b31fc3cd19eb61e78f05fcd7cc98089fe49e4609e46159dc44f6ec9"
+    }
+  },
+  "eligible_for_empirical_pilot": false,
+  "next_actions": [
+    "blinded_human_review",
+    "empirical_manipulation_check",
+    "model_snapshots_frozen",
+    "config_preregistered"
+  ]
+}
